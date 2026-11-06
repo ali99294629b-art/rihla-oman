@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>جبال الحجر | رِحلة</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Tahoma, Arial, sans-serif;
+            background: #f6f2e9;
+            color: #39372f;
+            line-height: 1.9;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* شريط التنقل */
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            flex-wrap: wrap;
+            padding: 15px 6%;
+            background: #fdfbf6;
+            border-bottom: 1px solid #ddd3c3;
+        }
+
+        .logo {
+            color: #7c5739;
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px 18px;
+        }
+
+        .nav-links a {
+            font-size: 13px;
+            color: #514a3f;
+            transition: 0.3s;
+            padding: 7px 10px;
+            border-radius: 7px;
+        }
+
+        .nav-links a:hover {
+            background: #80603a;
+            color: white;
+        }
+
+        /* الواجهة الرئيسية */
+
+        .hero {
+            min-height: 560px;
+            display: flex;
+            align-items: flex-end;
+            padding: 65px 8%;
+            position: relative;
+            overflow: hidden;
+            color: white;
+
+            background:
+                linear-gradient(
+                    0deg,
+                    rgba(25, 25, 20, 0.88),
+                    rgba(25, 25, 20, 0.04) 90%
+                ),
+                url("../images/hero_mountains.jpg") center/cover no-repeat;
+        }
+
+        .hero-content {
+            max-width: 760px;
+            animation: appear 1.2s ease;
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-label {
+            display: inline-block;
+            color: #f3d4a5;
+            border-right: 3px solid #d6a46e;
+            padding-right: 12px;
+            font-size: 14px;
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 7vw, 76px);
+            line-height: 1.25;
+            margin: 15px 0;
+            font-weight: bold;
+        }
+
+        .hero p {
+            max-width: 600px;
+            font-size: 17px;
+            color: #f0e8dc;
+        }
+
+        .hero-button {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 23px;
+            border: 1px solid #e3c49b;
+            color: white;
+            transition: 0.3s;
+        }
+
+        .hero-button:hover {
+            background: #e3c49b;
+            color: #342b21;
+        }
+
+        /* شريط المعلومات */
+
+        .quick-info {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            background: #756047;
+            color: #fffaf1;
+            padding: 23px 7%;
+            gap: 20px;
+            text-align: center;
+        }
+
+        .quick-info strong {
+            display: block;
+            color: #f0d1a6;
+            font-size: 17px;
+            margin-bottom: 4px;
+        }
+
+        .quick-info span {
+            font-size: 13px;
+        }
+
+        /* المحتوى الرئيسي */
+
+        .page-layout {
+            width: 88%;
+            max-width: 1180px;
+            margin: 75px auto;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 285px;
+            gap: 45px;
+            align-items: start;
+        }
+
+        .main-content {
+            min-width: 0;
+        }
+
+        .section-number {
+            color: #a67b4d;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .section-title {
+            color: #58432f;
+            font-size: 30px;
+            line-height: 1.5;
+            margin: 5px 0 18px;
+        }
+
+        .intro {
+            font-size: 16px;
+            text-align: justify;
+            color: #625b50;
+        }
+
+        .editorial-note {
+            border-right: 4px solid #b58b5d;
+            padding: 15px 20px;
+            margin: 30px 0;
+            background: #ece4d5;
+            color: #5a4a37;
+            font-size: 15px;
+        }
+
+        /* الشريط الجانبي */
+
+        .side-panel {
+            background: #e9e0d1;
+            padding: 25px;
+            border-top: 5px solid #8b6946;
+        }
+
+        .side-panel h3 {
+            margin-top: 0;
+            font-size: 21px;
+            color: #59432f;
+        }
+
+        .side-item {
+            padding: 13px 0;
+            border-bottom: 1px solid #d2c4b0;
+        }
+
+        .side-item:last-child {
+            border-bottom: none;
+        }
+
+        .side-item strong {
+            display: block;
+            color: #785739;
+            font-size: 14px;
+        }
+
+        .side-item span {
+            display: block;
+            font-size: 13px;
+            color: #665c4e;
+        }
+
+        .side-panel .side-tip {
+            margin-top: 20px;
+            padding: 13px;
+            background: #f8f4ec;
+            font-size: 13px;
+        }
+
+        /* محطات الاستكشاف */
+
+        .journey-section {
+            padding: 65px 6%;
+            background: #e9e0d1;
+        }
+
+        .journey-inner {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .journey-heading {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .journey-heading h2 {
+            color: #58432f;
+            font-size: 31px;
+            margin: 8px 0;
+        }
+
+        .journey-heading p {
+            color: #756957;
+            font-size: 14px;
+        }
+
+        .journey-stages {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 13px;
+        }
+
+        .journey-stage {
+            border: none;
+            background: #f9f5ed;
+            padding: 22px 10px;
+            color: #65513b;
+            cursor: pointer;
+            font-family: Tahoma, Arial, sans-serif;
+            border-radius: 12px;
+            border-bottom: 4px solid #b28b5d;
+            transition: 0.3s;
+        }
+
+        .journey-stage:hover,
+        .journey-stage.active {
+            background: #80613b;
+            color: white;
+            transform: translateY(-7px);
+        }
+
+        .journey-stage span {
+            display: block;
+            font-size: 35px;
+            margin-bottom: 8px;
+        }
+
+        .journey-stage strong {
+            display: block;
+            font-size: 16px;
+        }
+
+        .journey-stage small {
+            display: block;
+            margin-top: 5px;
+            font-size: 12px;
+        }
+
+        .journey-display {
+            margin-top: 25px;
+            background: #fffaf2;
+            padding: 28px;
+            border-radius: 15px;
+            display: grid;
+            grid-template-columns: 75px 1fr;
+            gap: 20px;
+            align-items: center;
+            min-height: 145px;
+            box-shadow: 0 5px 18px rgba(76, 57, 35, 0.06);
+        }
+
+        .journey-display-icon {
+            width: 70px;
+            height: 70px;
+            background: #e9ddc9;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 35px;
+        }
+
+        .journey-display h3 {
+            color: #79583a;
+            margin: 0 0 7px;
+            font-size: 21px;
+        }
+
+        .journey-display p {
+            color: #6a6257;
+            margin: 0;
+            font-size: 14px;
+            line-height: 2;
+        }
+
+        /* المناطق الجبلية */
+
+        .places-section {
+            width: 88%;
+            max-width: 1180px;
+            margin: 75px auto;
+        }
+
+        .places-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 28px;
+            border-bottom: 1px solid #d9cbb8;
+            padding-bottom: 20px;
+        }
+
+        .places-heading h2 {
+            font-size: 31px;
+            color: #58432f;
+            margin: 0;
+        }
+
+        .places-heading p {
+            max-width: 450px;
+            margin: 0;
+            font-size: 14px;
+            color: #746b5e;
+        }
+
+        .place-list {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0 35px;
+        }
+
+        .place {
+            display: grid;
+            grid-template-columns: 65px minmax(0, 1fr);
+            gap: 17px;
+            padding: 25px 0;
+            border-bottom: 1px solid #ddd2c1;
+            transition: 0.3s;
+        }
+
+        .place:hover {
+            transform: translateX(-5px);
+        }
+
+        .place-icon {
+            width: 65px;
+            height: 65px;
+            background: #e7dbc8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 29px;
+            border-radius: 50%;
+        }
+
+        .place h3 {
+            color: #79583a;
+            margin: 0 0 6px;
+            font-size: 19px;
+        }
+
+        .place p {
+            margin: 0;
+            color: #6a6257;
+            font-size: 14px;
+        }
+
+        /* ألوان جبال الحجر */
+
+        .colors-section {
+            padding: 65px 7%;
+            background: #fdfbf6;
+        }
+
+        .colors-inner {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .colors-heading {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .colors-heading h2 {
+            color: #58432f;
+            font-size: 30px;
+            margin: 8px 0;
+        }
+
+        .colors-heading p {
+            color: #756957;
+            font-size: 14px;
+        }
+
+        .color-cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+
+        .color-card {
+            background: #f6f2e9;
+            border-radius: 13px;
+            overflow: hidden;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .color-card:hover {
+            transform: translateY(-7px);
+        }
+
+        .color-image {
+            height: 125px;
+        }
+
+        .color-one {
+            background: linear-gradient(135deg, #82786b, #c1ad91);
+        }
+
+        .color-two {
+            background: linear-gradient(135deg, #8d9b68, #c3b78d);
+        }
+
+        .color-three {
+            background: linear-gradient(135deg, #b18c60, #e0c99f);
+        }
+
+        .color-four {
+            background: linear-gradient(135deg, #657b70, #b7c0a0);
+        }
+
+        .color-card h3 {
+            color: #79583a;
+            font-size: 16px;
+            margin: 13px 5px 4px;
+        }
+
+        .color-card p {
+            color: #756957;
+            font-size: 12px;
+            padding: 0 10px 12px;
+            margin: 0;
+        }
+
+        /* الأنشطة */
+
+        .experience {
+            background: #ded2bf;
+            padding: 65px 6%;
+        }
+
+        .experience-inner {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .experience h2 {
+            color: #4d3c2b;
+            font-size: 31px;
+            margin-top: 5px;
+        }
+
+        .experience-intro {
+            max-width: 650px;
+            color: #645747;
+        }
+
+        .experience-list {
+            margin-top: 35px;
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 25px;
+        }
+
+        .experience-item {
+            border-top: 2px solid #a27b50;
+            padding-top: 15px;
+        }
+
+        .experience-item span {
+            font-size: 25px;
+        }
+
+        .experience-item h3 {
+            font-size: 17px;
+            color: #59432f;
+            margin: 8px 0;
+        }
+
+        .experience-item p {
+            font-size: 13px;
+            color: #655b4e;
+            margin: 0;
+        }
+
+        /* إرشادات الزيارة */
+
+        .visit-section {
+            width: 88%;
+            max-width: 1100px;
+            margin: 75px auto;
+        }
+
+        .visit-section h2 {
+            color: #58432f;
+            font-size: 30px;
+        }
+
+        .visit-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 25px;
+        }
+
+        .visit-list li {
+            padding: 14px 0;
+            border-bottom: 1px solid #ddd2c1;
+            color: #62594d;
+        }
+
+        .visit-list li strong {
+            color: #7c5938;
+        }
+
+        /* الخاتمة */
+
+        .closing {
+            text-align: center;
+            padding: 65px 20px;
+            background: #584632;
+            color: #fff9ee;
+        }
+
+        .closing h2 {
+            font-size: 30px;
+            margin: 0 0 12px;
+        }
+
+        .closing p {
+            max-width: 650px;
+            margin: auto;
+            color: #e8d8c2;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 9px 20px;
+            border: 1px solid #d7b68e;
+            color: #fff9ee;
+            transition: 0.3s;
+        }
+
+        .back-link:hover {
+            background: #d7b68e;
+            color: #342b21;
+        }
+
+        footer {
+            background: #30291f;
+            color: #dcd0bf;
+            padding: 23px 15px;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        /* التوافق مع الهاتف */
+
+        @media (max-width: 900px) {
+            .page-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .experience-list,
+            .color-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                justify-content: center;
+            }
+
+            .nav-links {
+                gap: 10px;
+            }
+
+            .hero {
+                min-height: 450px;
+                padding: 45px 7%;
+            }
+
+            .quick-info {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+
+            .page-layout,
+            .places-section,
+            .visit-section {
+                width: 90%;
+                margin-top: 45px;
+            }
+
+            .place-list {
+                grid-template-columns: 1fr;
+            }
+
+            .experience-list,
+            .color-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .journey-stages {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .journey-display {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .journey-display-icon {
+                margin: auto;
+            }
+
+            .section-title,
+            .places-heading h2,
+            .experience h2,
+            .visit-section h2 {
+                font-size: 25px;
+            }
+
+            .closing h2 {
+                font-size: 24px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- شريط التنقل -->
+
+    <nav>
+
+        <a class="logo" href="../index.html">رِحلة</a>
+
+        <div class="nav-links">
+            <a href="../index.html">الرئيسية</a>
+            <a href="discover.html">اكتشف</a>
+            <a href="wilayat.html">الولايات والمناطق</a>
+            <a href="stay.html">الإقامة والتجارة</a>
+            <a href="plan.html">خطط رحلتك</a>
+            <a href="contact.html">تواصل معنا</a>
+        </div>
+
+    </nav>
+
+    <!-- الواجهة الرئيسية -->
+
+    <header class="hero">
+
+        <div class="hero-content">
+
+            <span class="hero-label">ملف سياحي | شمال عُمان</span>
+
+            <h1>جبال الحجر</h1>
+
+            <p>
+                حيث ترتفع القمم نحو السماء، وتتوارى القرى بين الصخور،
+                وتحكي الأرض حكايات الطبيعة والتراث العُماني.
+            </p>
+
+            <a class="hero-button" href="#about">
+                ابدئي الاستكشاف ↓
+            </a>
+
+        </div>
+
+    </header>
+
+    <!-- معلومات سريعة -->
+
+    <section class="quick-info">
+
+        <div>
+            <strong>⛰️ تضاريس متنوعة</strong>
+            <span>قمم ووديان ومنحدرات صخرية</span>
+        </div>
+
+        <div>
+            <strong>🏡 تراث جبلي</strong>
+            <span>قرى ومدرجات زراعية تقليدية</span>
+        </div>
+
+        <div>
+            <strong>🌿 طبيعة مميزة</strong>
+            <span>مناظر تختلف باختلاف الارتفاع</span>
+        </div>
+
+    </section>
+
+    <!-- المحتوى والشريط الجانبي -->
+
+    <main class="page-layout" id="about">
+
+        <article class="main-content">
+
+            <span class="section-number">01 — اكتشفي المكان</span>
+
+            <h2 class="section-title">قصة جبال صنعت ملامح المكان</h2>
+
+            <p class="intro">
+                تُعد جبال الحجر من أبرز المعالم الطبيعية في سلطنة عُمان،
+                وتمتد عبر أجزاء من شمال البلاد. وتتميز بتضاريسها الصخرية
+                الشاهقة وأوديتها وقراها التي تتناثر بين المرتفعات.
+            </p>
+
+            <p class="intro">
+                ليست جبال الحجر مجرد مشهد طبيعي؛ فهي أيضًا جزء من تاريخ
+                الحياة في عُمان. فقد تكيف السكان مع طبيعتها، واستفادوا
+                من الأراضي المتاحة في الزراعة وبناء القرى، وطوّروا
+                أساليب تناسب ظروف البيئة الجبلية.
+            </p>
+
+            <p class="intro">
+                وتضم السلسلة مناطق معروفة مثل الجبل الأخضر وجبل شمس،
+                ولكل منطقة طبيعتها وخصائصها. ويتيح استكشافها التعرف
+                على التنوع الجغرافي والثقافي الذي تتميز به السلطنة.
+            </p>
+
+            <div class="editorial-note">
+                «في جبال الحجر، تلتقي قوة الصخور بهدوء القرى،
+                وتمنح المرتفعات الزائر منظورًا مختلفًا لجمال عُمان».
+            </div>
+
+            <span class="section-number">02 — تنوع طبيعي</span>
+
+            <h2 class="section-title">من القمم إلى الأودية</h2>
+
+            <p class="intro">
+                تتغير المشاهد الطبيعية في جبال الحجر من مكان إلى آخر؛
+                فهناك المنحدرات الصخرية، والقمم المرتفعة، والأودية
+                التي تشكلت بفعل العوامل الطبيعية على مدى فترات طويلة.
+                كما تختلف النباتات والظروف المناخية بحسب الارتفاع
+                والموقع ومواسم الأمطار.
+            </p>
+
+            <p class="intro">
+                ويجعل هذا التنوع المنطقة مناسبة لمحبي الطبيعة والتصوير
+                والتعرف على التضاريس، مع أهمية الالتزام بالمسارات الآمنة
+                واحترام البيئة المحلية.
+            </p>
+
+        </article>
+
+        <!-- الشريط الجانبي -->
+
+        <aside class="side-panel">
+
+            <h3>دليل الزائر</h3>
+
+            <div class="side-item">
+                <strong>📍 الموقع</strong>
+                <span>شمال سلطنة عُمان</span>
+            </div>
+
+            <div class="side-item">
+                <strong>🌦️ الطقس</strong>
+                <span>تختلف درجات الحرارة حسب الارتفاع والفصل.</span>
+            </div>
+
+            <div class="side-item">
+                <strong>🥾 التجربة</strong>
+                <span>مناظر جبلية، وتصوير، ومسارات مناسبة بحسب المنطقة.</span>
+            </div>
+
+            <div class="side-item">
+                <strong>🎒 الاستعداد</strong>
+                <span>ماء للشرب وحذاء مناسب وملابس تلائم الطقس.</span>
+            </div>
+
+            <div class="side-tip">
+                <strong>تنبيه مهم</strong>
+                <p>
+                    تحققي من حالة الطقس والطريق قبل الزيارة،
+                    وتجنبي الأودية أثناء الأمطار والتحذيرات الجوية.
+                </p>
+            </div>
+
+        </aside>
+
+    </main>
+
+    <!-- رحلة تفاعلية من السفح إلى القمة -->
+
+    <section class="journey-section">
+
+        <div class="journey-inner">
+
+            <div class="journey-heading">
+
+                <span class="section-number">03 — رحلة استكشافية</span>
+
+                <h2>⛰️ من سفح الجبل إلى القمة</h2>
+
+                <p>
+                    اكتشفي كيف تتغير الطبيعة كلما ارتفعنا في جبال الحجر.
+                    اضغطي على المحطات لمشاهدة تفاصيل الرحلة.
+                </p>
+
+            </div>
+
+            <div class="journey-stages">
+
+                <button class="journey-stage active"
+                    onclick="showJourney(0, this)">
+
+                    <span>🌿</span>
+                    <strong>السفح</strong>
+                    <small>بداية الرحلة</small>
+
+                </button>
+
+                <button class="journey-stage"
+                    onclick="showJourney(1, this)">
+
+                    <span>🏡</span>
+                    <strong>القرى</strong>
+                    <small>حياة الجبل</small>
+
+                </button>
+
+                <button class="journey-stage"
+                    onclick="showJourney(2, this)">
+
+                    <span>🌳</span>
+                    <strong>المرتفعات</strong>
+                    <small>الطبيعة الخضراء</small>
+
+                </button>
+
+                <button class="journey-stage"
+                    onclick="showJourney(3, this)">
+
+                    <span>🏔️</span>
+                    <strong>القمم</strong>
+                    <small>مشهد من الأعلى</small>
+
+                </button>
+
+            </div>
+
+            <div class="journey-display">
+
+                <div class="journey-display-icon" id="journeyIcon">
+                    🌿
+                </div>
+
+                <div>
+
+                    <h3 id="journeyTitle">عند سفح الجبل</h3>
+
+                    <p id="journeyText">
+                        تبدأ الرحلة من المناطق المحيطة بالجبال،
+                        حيث تظهر التضاريس الصخرية وتتنوع المشاهد الطبيعية
+                        بين السهول والمرتفعات.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- أبرز المناطق -->
+
+    <section class="places-section">
+
+        <div class="places-heading">
+
+            <h2>محطات تستحق الاكتشاف</h2>
+
+            <p>
+                تضم جبال الحجر مناطق متنوعة، لكل منها
+                مشهدها الطبيعي وطابعها الخاص.
+            </p>
+
+        </div>
+
+        <div class="place-list">
+
+            <article class="place">
+
+                <div class="place-icon">🏔️</div>
+
+                <div>
+                    <h3>جبل شمس</h3>
+
+                    <p>
+                        من أشهر المناطق الجبلية في عُمان، ويتميز
+                        بالقمم المرتفعة والإطلالات على الأخاديد
+                        والمنحدرات الصخرية.
+                    </p>
+                </div>
+
+            </article>
+
+            <article class="place">
+
+                <div class="place-icon">🌹</div>
+
+                <div>
+                    <h3>الجبل الأخضر</h3>
+
+                    <p>
+                        منطقة جبلية تشتهر بالمدرجات الزراعية
+                        والقرى والبساتين، وتختلف أجواؤها بحسب
+                        الموسم والارتفاع.
+                    </p>
+                </div>
+
+            </article>
+
+            <article class="place">
+
+                <div class="place-icon">🏡</div>
+
+                <div>
+                    <h3>القرى الجبلية</h3>
+
+                    <p>
+                        تعكس القرى التقليدية أساليب البناء
+                        والحياة المحلية، وعلاقة السكان
+                        بالبيئة المحيطة بهم.
+                    </p>
+                </div>
+
+            </article>
+
+            <article class="place">
+
+                <div class="place-icon">🌱</div>
+
+                <div>
+                    <h3>المدرجات الزراعية</h3>
+
+                    <p>
+                        شاهد على خبرة السكان في استغلال
+                        الأراضي الجبلية وزراعة المحاصيل
+                        الملائمة للظروف المحلية.
+                    </p>
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+    <!-- ألوان جبال الحجر -->
+
+    <section class="colors-section">
+
+        <div class="colors-inner">
+
+            <div class="colors-heading">
+
+                <span class="section-number">04 — لوحة الطبيعة</span>
+
+                <h2>🎨 ألوان جبال الحجر</h2>
+
+                <p>
+                    تتنوع ألوان الجبال بين الصخور والنباتات والتربة
+                    والسماء، لتصنع لوحة طبيعية جميلة.
+                </p>
+
+            </div>
+
+            <div class="color-cards">
+
+                <article class="color-card">
+
+                    <div class="color-image color-one"></div>
+
+                    <h3>الرمادي الصخري</h3>
+
+                    <p>لون القمم والتكوينات الصخرية.</p>
+
+                </article>
+
+                <article class="color-card">
+
+                    <div class="color-image color-two"></div>
+
+                    <h3>الأخضر الطبيعي</h3>
+
+                    <p>لون النباتات والأشجار في المرتفعات.</p>
+
+                </article>
+
+                <article class="color-card">
+
+                    <div class="color-image color-three"></div>
+
+                    <h3>الذهبي الترابي</h3>
+
+                    <p>لون التربة والمنحدرات الجبلية.</p>
+
+                </article>
+
+                <article class="color-card">
+
+                    <div class="color-image color-four"></div>
+
+                    <h3>الأخضر الهادئ</h3>
+
+                    <p>لون الطبيعة في القرى والمدرجات.</p>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- الأنشطة -->
+
+    <section class="experience">
+
+        <div class="experience-inner">
+
+            <span class="section-number">05 — عيشي التجربة</span>
+
+            <h2>كيف تستمتعين برحلتك؟</h2>
+
+            <p class="experience-intro">
+                يمكنك اكتشاف جمال جبال الحجر بطرق مختلفة،
+                من التأمل في المشاهد الطبيعية إلى التعرف
+                على التراث الجبلي.
+            </p>
+
+            <div class="experience-list">
+
+                <article class="experience-item">
+                    <span>📷</span>
+                    <h3>التصوير</h3>
+                    <p>
+                        التقطي صورًا للقمم والوديان
+                        والتكوينات الصخرية من نقاط آمنة.
+                    </p>
+                </article>
+
+                <article class="experience-item">
+                    <span>🥾</span>
+                    <h3>المشي</h3>
+                    <p>
+                        اختاري مسارات مناسبة والتزمي
+                        بالإرشادات المحلية.
+                    </p>
+                </article>
+
+                <article class="experience-item">
+                    <span>🏘️</span>
+                    <h3>التراث</h3>
+                    <p>
+                        تعرفي على القرى الجبلية
+                        والمدرجات الزراعية التقليدية.
+                    </p>
+                </article>
+
+                <article class="experience-item">
+                    <span>🌄</span>
+                    <h3>التأمل</h3>
+                    <p>
+                        استمتعي بالمناظر الواسعة
+                        وتنوع التضاريس الطبيعية.
+                    </p>
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- إرشادات الزيارة -->
+
+    <section class="visit-section">
+
+        <span class="section-number">06 — رحلة مسؤولة</span>
+
+        <h2>قبل أن تنطلقي</h2>
+
+        <ul class="visit-list">
+
+            <li>
+                <strong>الاستعداد:</strong>
+                احملي الماء والطعام الخفيف وارتدي حذاءً مناسبًا.
+            </li>
+
+            <li>
+                <strong>حالة الطقس:</strong>
+                تحققي من التوقعات الجوية وظروف الطريق قبل الانطلاق.
+            </li>
+
+            <li>
+                <strong>السلامة:</strong>
+                ابتعدي عن الحواف والمنحدرات، ولا تسلكي مسارات مجهولة.
+            </li>
+
+            <li>
+                <strong>حماية البيئة:</strong>
+                خذي نفاياتك معك، ولا تتلفي النباتات أو الصخور.
+            </li>
+
+            <li>
+                <strong>احترام السكان:</strong>
+                احترمي خصوصية القرى والممتلكات الخاصة والعادات المحلية.
+            </li>
+
+        </ul>
+
+    </section>
+
+    <!-- الخاتمة -->
+
+    <section class="closing">
+
+        <h2>جبال الحجر... حكاية من قلب عُمان</h2>
+
+        <p>
+            بين عظمة القمم وهدوء القرى وأصالة التراث،
+            تظل جبال الحجر إحدى الوجهات التي تكشف
+            جانبًا فريدًا من جمال سلطنة عُمان.
+        </p>
+
+        <a class="back-link" href="wilayat.html">
+            العودة إلى الولايات والمناطق ↑
+        </a>
+
+    </section>
+
+    <footer>
+        رِحلة | دليلك السياحي في عُمان
+    </footer>
+
+    <script>
+
+        /* رحلة تفاعلية من السفح إلى القمة */
+
+        const journeyData = [
+
+            {
+                icon: "🌿",
+                title: "عند سفح الجبل",
+                text: "تبدأ الرحلة من المناطق المحيطة بالجبال، حيث تظهر التضاريس الصخرية وتتنوع المشاهد الطبيعية بين السهول والمرتفعات."
+            },
+
+            {
+                icon: "🏡",
+                title: "القرى الجبلية",
+                text: "بين الجبال تنتشر قرى عُمانية تقليدية، تعكس ارتباط الإنسان بالأرض، وتظهر فيها المباني الحجرية وأساليب الحياة التي تكيفت مع البيئة الجبلية."
+            },
+
+            {
+                icon: "🌳",
+                title: "المرتفعات والمدرجات",
+                text: "تتميز بعض المرتفعات بالمدرجات الزراعية والبساتين، وتتنوع النباتات والمحاصيل بحسب المناخ والارتفاع ومواسم الزراعة."
+            },
+
+            {
+                icon: "🏔️",
+                title: "قمم جبال الحجر",
+                text: "في القمم تظهر المشاهد الجبلية الواسعة والتكوينات الصخرية المميزة، وتمنح المرتفعات إطلالات رائعة على الطبيعة العُمانية."
+            }
+
+        ];
+
+        function showJourney(index, button) {
+
+            document.getElementById("journeyIcon").textContent =
+                journeyData[index].icon;
+
+            document.getElementById("journeyTitle").textContent =
+                journeyData[index].title;
+
+            document.getElementById("journeyText").textContent =
+                journeyData[index].text;
+
+            const buttons = document.querySelectorAll(".journey-stage");
+
+            buttons.forEach(function (item) {
+                item.classList.remove("active");
+            });
+
+            button.classList.add("active");
+
+        }
+
+    </script>
+
+</body>
+</html>

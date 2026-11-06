@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>مدينة صور | رحلة</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #f8f5ef;
+            color: #493d30;
+            font-family: Arial, sans-serif;
+        }
+
+        /* شريط التنقل */
+        .sur-navbar {
+            min-height: 72px;
+            padding: 12px 5%;
+            background: #fffaf1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .sur-logo {
+            color: #795b35;
+            font-size: 26px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .sur-nav-links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+
+        .sur-nav-links a {
+            color: #514536;
+            text-decoration: none;
+            font-size: 13px;
+            transition: 0.3s;
+        }
+
+        .sur-nav-links a:hover {
+            color: #a17a45;
+        }
+
+        /* الصورة الرئيسية */
+        .sur-hero {
+            height: 320px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sur-hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .sur-hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to left,
+                rgba(36, 29, 20, 0.65),
+                rgba(36, 29, 20, 0.05)
+            );
+        }
+
+        .sur-hero-text {
+            position: absolute;
+            z-index: 2;
+            right: 8%;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+        }
+
+        .sur-hero-text small {
+            font-size: 15px;
+            color: #fff0d4;
+        }
+
+        .sur-hero-text h1 {
+            color: white;
+            font-size: 43px;
+            margin: 8px 0;
+        }
+
+        .sur-hero-text p {
+            color: white;
+            font-size: 17px;
+            margin: 0;
+        }
+
+        /* التبويبات */
+        .sur-tabs {
+            position: relative;
+            z-index: 3;
+            width: 88%;
+            max-width: 1000px;
+            margin: -28px auto 35px;
+            padding: 10px;
+            background: #fffaf1;
+            border-radius: 18px;
+            box-shadow: 0 5px 18px rgba(76, 57, 35, 0.12);
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+        }
+
+        .sur-tab {
+            padding: 13px 8px;
+            border-radius: 12px;
+            background: #f3ecdf;
+            color: #65533b;
+            text-align: center;
+            text-decoration: none;
+            font-size: 15px;
+            transition: 0.2s;
+        }
+
+        .sur-tab:hover,
+        .sur-tab.active {
+            background: #80613b;
+            color: white;
+        }
+
+        /* مقدمة المدينة */
+        .sur-intro {
+            max-width: 1050px;
+            margin: 0 auto 45px;
+            padding: 0 25px;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .sur-intro h2,
+        .sur-section-title h2 {
+            color: #765632;
+            font-size: 27px;
+            margin: 5px 0 12px;
+        }
+
+        .sur-eyebrow {
+            color: #a18153;
+            font-size: 14px;
+        }
+
+        .sur-intro p {
+            color: #6d6255;
+            font-size: 15px;
+            line-height: 2;
+            margin: 0 0 10px;
+        }
+
+        .sur-intro-image {
+            height: 230px;
+            overflow: hidden;
+            border-radius: 16px;
+        }
+
+        .sur-intro-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* معلومات سريعة */
+        .sur-info {
+            max-width: 1050px;
+            margin: 0 auto 50px;
+            padding: 0 25px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .sur-info-card {
+            padding: 20px 12px;
+            text-align: center;
+            background: #eee4d3;
+            border-radius: 14px;
+        }
+
+        .sur-info-card span {
+            font-size: 28px;
+        }
+
+        .sur-info-card h3 {
+            color: #795b35;
+            margin: 8px 0 5px;
+            font-size: 17px;
+        }
+
+        .sur-info-card p {
+            color: #776b5b;
+            font-size: 13px;
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        /* قسم الأماكن */
+        .sur-places {
+            max-width: 1050px;
+            margin: 0 auto 55px;
+            padding: 0 25px;
+        }
+
+        .sur-section-title {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .sur-section-title p {
+            color: #827566;
+            font-size: 14px;
+            margin: 0;
+        }
+
+        .sur-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .sur-card {
+            background: #fffaf2;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 14px rgba(76, 57, 35, 0.08);
+            transition: 0.3s;
+        }
+
+        .sur-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .sur-card-icon {
+            height: 125px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #e9ddc9;
+            font-size: 46px;
+        }
+
+        .sur-card-content {
+            padding: 16px;
+        }
+
+        .sur-card h3 {
+            color: #795b35;
+            font-size: 18px;
+            margin: 0 0 8px;
+        }
+
+        .sur-card p {
+            color: #776b5b;
+            font-size: 13px;
+            line-height: 1.9;
+            margin: 0;
+        }
+
+        /* التراث البحري */
+        .sur-heritage {
+            padding: 38px 8%;
+            background: #eee4d3;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .sur-heritage h2 {
+            color: #765632;
+            font-size: 26px;
+            margin: 5px 0 12px;
+        }
+
+        .sur-heritage p {
+            color: #6d6255;
+            font-size: 15px;
+            line-height: 2;
+        }
+
+        .sur-heritage-art {
+            min-height: 180px;
+            border-radius: 16px;
+            background: #d9c6a7;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .sur-heritage-art span {
+            font-size: 65px;
+        }
+
+        .sur-heritage-art h3 {
+            color: #725333;
+            margin: 5px 0;
+        }
+
+        /* رحلة صناعة السفن */
+        .sur-ship-journey {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .sur-ship-journey h2,
+        .sur-trip-planner h2,
+        .sur-quiz h2 {
+            color: #765632;
+            font-size: 27px;
+        }
+
+        .ship-stages {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .ship-stage {
+            background: #fffaf2;
+            border: 1px solid #e5d9c5;
+            border-bottom: 4px solid #a8875b;
+            border-radius: 13px;
+            padding: 20px 12px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-family: Arial, sans-serif;
+            color: #66513a;
+        }
+
+        .ship-stage:hover,
+        .ship-stage.selected {
+            background: #80613b;
+            color: white;
+            transform: translateY(-6px);
+        }
+
+        .ship-stage span {
+            display: block;
+            font-size: 35px;
+            margin-bottom: 10px;
+        }
+
+        .ship-stage h3 {
+            font-size: 16px;
+            margin: 5px 0;
+        }
+
+        .ship-result {
+            background: #eee4d3;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+            color: #66513a;
+            line-height: 2;
+            min-height: 80px;
+        }
+
+        /* خططي رحلتك في صور */
+        .sur-trip-planner {
+            background: #eee4d3;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .trip-options {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 25px 0;
+        }
+
+        .trip-option {
+            padding: 13px 20px;
+            border: 1px solid #d7c5a7;
+            border-radius: 25px;
+            background: #fffaf2;
+            color: #765632;
+            cursor: pointer;
+            font-family: Arial, sans-serif;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        .trip-option:hover,
+        .trip-option.selected {
+            background: #80613b;
+            color: white;
+        }
+
+        .trip-result {
+            max-width: 650px;
+            margin: 20px auto 0;
+            padding: 22px;
+            background: #fffaf2;
+            border-radius: 13px;
+            color: #66513a;
+            line-height: 2;
+            display: none;
+        }
+
+        /* تحدي معلومات صور */
+        .sur-quiz {
+            max-width: 850px;
+            margin: 45px auto;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .quiz-box {
+            background: #fffaf2;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(76, 57, 35, 0.08);
+        }
+
+        .quiz-question {
+            color: #765632;
+            font-size: 19px;
+            font-weight: bold;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .quiz-answers {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .quiz-answer {
+            padding: 13px;
+            background: #eee4d3;
+            border: none;
+            border-radius: 9px;
+            color: #66513a;
+            font-size: 15px;
+            cursor: pointer;
+            font-family: Arial, sans-serif;
+            transition: 0.3s;
+        }
+
+        .quiz-answer:hover:not(:disabled) {
+            background: #80613b;
+            color: white;
+        }
+
+        .quiz-answer:disabled {
+            cursor: default;
+            opacity: 0.8;
+        }
+
+        .quiz-feedback {
+            margin-top: 18px;
+            font-weight: bold;
+            line-height: 1.8;
+            color: #765632;
+        }
+
+        .quiz-next {
+            margin-top: 15px;
+            padding: 11px 24px;
+            border: none;
+            border-radius: 25px;
+            background: #80613b;
+            color: white;
+            cursor: pointer;
+            font-size: 15px;
+            display: none;
+            font-family: Arial, sans-serif;
+        }
+
+        .quiz-next:hover {
+            background: #64482b;
+        }
+
+        /* العودة والتذييل */
+        .sur-bottom {
+            padding: 35px 20px;
+            text-align: center;
+        }
+
+        .sur-bottom h2 {
+            color: #795b35;
+            font-size: 24px;
+        }
+
+        .sur-bottom p {
+            color: #776b5b;
+        }
+
+        .sur-back {
+            display: inline-block;
+            padding: 11px 25px;
+            border-radius: 25px;
+            background: #80613b;
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .sur-back:hover {
+            background: #64482b;
+        }
+
+        .sur-footer {
+            padding: 20px;
+            background: #e9dfcf;
+            color: #776b5b;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        .sur-footer strong {
+            display: block;
+            color: #795b35;
+            font-size: 23px;
+        }
+
+        /* الشاشات الصغيرة */
+        @media (max-width: 700px) {
+            .sur-navbar {
+                justify-content: center;
+            }
+
+            .sur-nav-links {
+                gap: 12px;
+            }
+
+            .sur-hero {
+                height: 260px;
+            }
+
+            .sur-hero-text h1 {
+                font-size: 34px;
+            }
+
+            .sur-tabs {
+                width: 94%;
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .sur-intro,
+            .sur-heritage {
+                grid-template-columns: 1fr;
+            }
+
+            .sur-info {
+                grid-template-columns: 1fr;
+            }
+
+            .sur-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .ship-stages {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .quiz-answers {
+                grid-template-columns: 1fr;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- شريط التنقل -->
+    <nav class="sur-navbar">
+
+        <a href="../index.html" class="sur-logo">رِحلة</a>
+
+        <div class="sur-nav-links">
+            <a href="../index.html">الرئيسية</a>
+            <a href="discover.html">اكتشف</a>
+            <a href="wilayat.html">الولايات والمناطق</a>
+            <a href="plan.html">خطط رحلتك</a>
+            <a href="stay.html">الإقامة والتجارة</a>
+            <a href="contact.html">تواصل معنا</a>
+        </div>
+
+    </nav>
+
+    <!-- الصورة الرئيسية -->
+    <header class="sur-hero">
+
+        <img src="../images/sur-hero.jpg" alt="مدينة صور العُمانية">
+
+        <div class="sur-hero-text">
+            <small>من جمال الساحل العُماني</small>
+            <h1>مدينة صور</h1>
+            <p>حكاية البحر والسفن والتراث العُماني</p>
+        </div>
+
+    </header>
+
+    <!-- التبويبات -->
+    <nav class="sur-tabs">
+
+        <a href="#intro" class="sur-tab active">⚓ نبذة عن المدينة</a>
+        <a href="#places" class="sur-tab">📍 أبرز الأماكن</a>
+        <a href="#heritage" class="sur-tab">⛵ التراث البحري</a>
+        <a href="#tips" class="sur-tab">📷 نصائح الزيارة</a>
+
+    </nav>
+
+    <main>
+
+        <!-- مقدمة المدينة -->
+        <section class="sur-intro" id="intro">
+
+            <div>
+                <span class="sur-eyebrow">تعرفي على المدينة</span>
+
+                <h2>صور.. لؤلؤة الساحل الشرقي</h2>
+
+                <p>
+                    تُعد مدينة صور من المدن الساحلية العُمانية المعروفة،
+                    وترتبط بتاريخ بحري عريق وصناعة السفن الخشبية التقليدية.
+                    وتمتاز بأجوائها الساحلية ومعالمها التي تعكس أصالة
+                    التراث العُماني.
+                </p>
+
+                <p>
+                    وتمنح المدينة زوارها فرصة للتعرف على تاريخ الملاحة
+                    والاستمتاع بالمشاهد البحرية واكتشاف جوانب من الحياة
+                    العُمانية التقليدية.
+                </p>
+            </div>
+
+            <div class="sur-intro-image">
+                <img src="../images/hero_home.jpg" alt="مدينة صور العُمانية">
+            </div>
+
+        </section>
+
+        <!-- معلومات سريعة -->
+        <section class="sur-info">
+
+            <div class="sur-info-card">
+                <span>⚓</span>
+                <h3>تاريخ بحري</h3>
+                <p>مدينة ارتبط اسمها بالملاحة وصناعة السفن التقليدية.</p>
+            </div>
+
+            <div class="sur-info-card">
+                <span>🌊</span>
+                <h3>طبيعة ساحلية</h3>
+                <p>مشاهد بحرية وأجواء ساحلية جميلة.</p>
+            </div>
+
+            <div class="sur-info-card">
+                <span>🏛️</span>
+                <h3>تراث عُماني</h3>
+                <p>هوية ثقافية تعكس تاريخ المدينة وأصالتها.</p>
+            </div>
+
+        </section>
+
+        <!-- الأماكن -->
+        <section class="sur-places" id="places">
+
+            <div class="sur-section-title">
+                <span class="sur-eyebrow">اكتشفي صور</span>
+                <h2>أبرز التجارب والأماكن</h2>
+                <p>تعرّفي على ما يجعل زيارة المدينة تجربة مميزة.</p>
+            </div>
+
+            <div class="sur-cards">
+
+                <article class="sur-card">
+                    <div class="sur-card-icon">⚓</div>
+                    <div class="sur-card-content">
+                        <h3>صناعة السفن</h3>
+                        <p>
+                            تعرّفي على صناعة السفن الخشبية التقليدية
+                            التي ارتبطت بتاريخ صور البحري.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="sur-card">
+                    <div class="sur-card-icon">🌊</div>
+                    <div class="sur-card-content">
+                        <h3>الشواطئ والواجهة البحرية</h3>
+                        <p>
+                            استمتعي بمشاهدة البحر والتعرف على
+                            الطابع الساحلي الذي تتميز به المدينة.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="sur-card">
+                    <div class="sur-card-icon">🏛️</div>
+                    <div class="sur-card-content">
+                        <h3>المعالم التراثية</h3>
+                        <p>
+                            اكتشفي المعالم التي تحكي جانبًا من
+                            تاريخ المدينة وهويتها العُمانية.
+                        </p>
+                    </div>
+                </article>
+
+            </div>
+
+        </section>
+
+        <!-- التراث البحري -->
+        <section class="sur-heritage" id="heritage">
+
+            <div>
+                <span class="sur-eyebrow">حكاية من الماضي</span>
+
+                <h2>السفن العُمانية.. ذاكرة البحر</h2>
+
+                <p>
+                    اشتهرت صور بتاريخها البحري وصناعة السفن الخشبية،
+                    التي أسهمت في الرحلات التجارية والتواصل مع مناطق
+                    مختلفة عبر البحار. وتظل هذه الحرفة جزءًا مهمًا
+                    من التراث العُماني الذي يستحق التعرف عليه.
+                </p>
+            </div>
+
+            <div class="sur-heritage-art">
+                <span>⛵</span>
+                <h3>تراث بحري أصيل</h3>
+            </div>
+
+        </section>
+
+        <!-- رحلة صناعة السفن -->
+        <section class="sur-ship-journey">
+
+            <span class="sur-eyebrow">اكتشفي حرفة الأجداد</span>
+
+            <h2>⛵ كيف تُصنع السفينة العُمانية؟</h2>
+
+            <p>اضغطي على كل مرحلة لتتعرفي على أسرار صناعة السفن التقليدية.</p>
+
+            <div class="ship-stages">
+
+                <button class="ship-stage" onclick="showShipStage(0)">
+                    <span>🌳</span>
+                    <h3>اختيار الخشب</h3>
+                    <p>المرحلة الأولى</p>
+                </button>
+
+                <button class="ship-stage" onclick="showShipStage(1)">
+                    <span>🪚</span>
+                    <h3>تجهيز الأجزاء</h3>
+                    <p>المرحلة الثانية</p>
+                </button>
+
+                <button class="ship-stage" onclick="showShipStage(2)">
+                    <span>⚓</span>
+                    <h3>تجميع السفينة</h3>
+                    <p>المرحلة الثالثة</p>
+                </button>
+
+                <button class="ship-stage" onclick="showShipStage(3)">
+                    <span>⛵</span>
+                    <h3>الإبحار</h3>
+                    <p>المرحلة الرابعة</p>
+                </button>
+
+            </div>
+
+            <div class="ship-result" id="shipResult">
+                اختاري إحدى المراحل السابقة لتكتشفي كيف كانت تُصنع السفن العُمانية.
+            </div>
+
+        </section>
+
+        <!-- خططي رحلتك -->
+        <section class="sur-trip-planner">
+
+            <span class="sur-eyebrow">رحلتك تبدأ من هنا</span>
+
+            <h2>🧭 خططي رحلتك في صور</h2>
+
+            <p>ما نوع الرحلة التي تفضلينها؟ اختاري لتظهر لك خطة مقترحة.</p>
+
+            <div class="trip-options">
+
+                <button class="trip-option" onclick="chooseTrip('heritage', this)">
+                    🏛️ رحلة تراثية
+                </button>
+
+                <button class="trip-option" onclick="chooseTrip('sea', this)">
+                    🌊 رحلة بحرية
+                </button>
+
+                <button class="trip-option" onclick="chooseTrip('photography', this)">
+                    📸 رحلة تصوير
+                </button>
+
+            </div>
+
+            <div class="trip-result" id="tripResult"></div>
+
+        </section>
+
+        <!-- تحدي معلومات صور -->
+        <section class="sur-quiz">
+
+            <span class="sur-eyebrow">اختبري معلوماتك</span>
+
+            <h2>🧠 تحدي معلومات صور</h2>
+
+            <p>أجيبي عن الأسئلة واكتشفي مدى معرفتك بمدينة صور!</p>
+
+            <div class="quiz-box">
+
+                <div class="quiz-question" id="quizQuestion">
+                    اضغطي على زر ابدئي التحدي للبدء.
+                </div>
+
+                <div class="quiz-answers" id="quizAnswers"></div>
+
+                <div class="quiz-feedback" id="quizFeedback"></div>
+
+                <button class="quiz-next" id="quizNext" onclick="nextQuestion()">
+                    السؤال التالي ←
+                </button>
+
+                <button class="quiz-next" id="quizStart" onclick="startQuiz()" style="display:inline-block;">
+                    ابدئي التحدي ✨
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- العودة والتذييل -->
+        <section class="sur-bottom" id="tips">
+
+            <h2>هل أنتِ مستعدة لاكتشاف صور؟</h2>
+
+            <p>
+                خططي لزيارتك واستمتعي بجمال الساحل العُماني
+                وتاريخه العريق.
+            </p>
+
+            <a href="wilayat.html" class="sur-back">
+                ← العودة إلى الولايات والمناطق
+            </a>
+
+        </section>
+
+    </main>
+
+    <footer class="sur-footer">
+        <strong>رِحلة</strong>
+        دليلك السياحي في عُمان
+    </footer>
+
+    <script>
+
+        /* التبويبات العلوية */
+        const tabs = document.querySelectorAll(".sur-tab");
+
+        tabs.forEach(function (tab) {
+
+            tab.addEventListener("click", function () {
+
+                tabs.forEach(function (item) {
+                    item.classList.remove("active");
+                });
+
+                tab.classList.add("active");
+
+            });
+
+        });
+
+
+        /* رحلة صناعة السفن */
+        const shipStages = [
+
+            "كان صانع السفن يختار الأخشاب المناسبة بعناية لتكون قوية وقادرة على تحمل ظروف البحر.",
+
+            "تُجهّز الأخشاب وتُشكّل لتصبح أجزاء مناسبة لبناء هيكل السفينة.",
+
+            "تُجمع أجزاء السفينة بعناية حتى يتكوّن الهيكل، ثم تُستكمل التجهيزات اللازمة.",
+
+            "بعد اكتمال صناعة السفينة وتجهيزها، تصبح مستعدة للإبحار في رحلات الصيد والتجارة."
+        ];
+
+        function showShipStage(index) {
+
+            document.getElementById("shipResult").textContent = shipStages[index];
+
+            const stages = document.querySelectorAll(".ship-stage");
+
+            stages.forEach(function (stage) {
+                stage.classList.remove("selected");
+            });
+
+            stages[index].classList.add("selected");
+
+        }
+
+
+        /* خططي رحلتك في صور */
+        function chooseTrip(type, button) {
+
+            const result = document.getElementById("tripResult");
+
+            const options = document.querySelectorAll(".trip-option");
+
+            options.forEach(function (option) {
+                option.classList.remove("selected");
+            });
+
+            button.classList.add("selected");
+
+            if (type === "heritage") {
+
+                result.innerHTML = `
+                    <h3>🏛️ رحلتك التراثية</h3>
+                    <p>
+                        ابدئي رحلتك بالتعرف على تاريخ مدينة صور البحري،
+                        ثم اكتشفي صناعة السفن الخشبية والمعالم التراثية.
+                        واختمي جولتك بالتعرف على الحرف التقليدية.
+                    </p>
+                `;
+
+            }
+
+            else if (type === "sea") {
+
+                result.innerHTML = `
+                    <h3>🌊 رحلتك البحرية</h3>
+                    <p>
+                        استمتعي بالأجواء الساحلية ومشاهدة البحر،
+                        وتعرفي على الأنشطة البحرية التي تشتهر بها صور،
+                        واستمتعي بجمال الواجهة البحرية.
+                    </p>
+                `;
+
+            }
+
+            else if (type === "photography") {
+
+                result.innerHTML = `
+                    <h3>📸 رحلة التصوير</h3>
+                    <p>
+                        التقطي صورًا جميلة للبحر والسفن الخشبية
+                        والمشاهد الساحلية، واحتفظي بذكريات
+                        مميزة من مدينة صور.
+                    </p>
+                `;
+
+            }
+
+            result.style.display = "block";
+
+        }
+
+
+        /* تحدي معلومات صور */
+        const quizQuestions = [
+
+            {
+                question: "بماذا تشتهر مدينة صور العُمانية؟",
+                answers: [
+                    "صناعة السفن الخشبية",
+                    "زراعة القمح فقط",
+                    "صناعة السيارات",
+                    "تربية الدببة"
+                ],
+                correct: 0
+            },
+
+            {
+                question: "أين تقع مدينة صور؟",
+                answers: [
+                    "شمال السلطنة",
+                    "الساحل الشرقي لعُمان",
+                    "غرب السلطنة",
+                    "وسط الصحراء"
+                ],
+                correct: 1
+            },
+
+            {
+                question: "ما الحرفة التقليدية المرتبطة بتاريخ صور؟",
+                answers: [
+                    "صناعة السفن",
+                    "صناعة الورق",
+                    "صناعة الزجاج فقط",
+                    "حياكة السجاد فقط"
+                ],
+                correct: 0
+            },
+
+            {
+                question: "ما الذي ارتبط بتاريخ مدينة صور؟",
+                answers: [
+                    "التراث البحري والملاحة",
+                    "الطيران الفضائي",
+                    "التزلج على الجليد",
+                    "الغابات الاستوائية"
+                ],
+                correct: 0
+            }
+
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let answered = false;
+
+        function startQuiz() {
+
+            currentQuestion = 0;
+            score = 0;
+
+            document.getElementById("quizStart").style.display = "none";
+
+            showQuestion();
+
+        }
+
+        function showQuestion() {
+
+            answered = false;
+
+            const question = quizQuestions[currentQuestion];
+
+            document.getElementById("quizQuestion").textContent =
+                "السؤال " + (currentQuestion + 1) + " من " +
+                quizQuestions.length + ": " + question.question;
+
+            document.getElementById("quizFeedback").textContent = "";
+
+            document.getElementById("quizNext").style.display = "none";
+
+            const answersBox = document.getElementById("quizAnswers");
+
+            answersBox.innerHTML = "";
+
+            question.answers.forEach(function (answer, index) {
+
+                const button = document.createElement("button");
+
+                button.className = "quiz-answer";
+
+                button.textContent = answer;
+
+                button.onclick = function () {
+                    checkAnswer(index, button);
+                };
+
+                answersBox.appendChild(button);
+
+            });
+
+        }
+
+        function checkAnswer(selected, button) {
+
+            if (answered) {
+                return;
+            }
+
+            answered = true;
+
+            const question = quizQuestions[currentQuestion];
+
+            const buttons = document.querySelectorAll(".quiz-answer");
+
+            buttons.forEach(function (item) {
+                item.disabled = true;
+            });
+
+            if (selected === question.correct) {
+
+                score++;
+
+                document.getElementById("quizFeedback").textContent =
+                    "🌟 إجابة صحيحة! أحسنتِ.";
+
+            } else {
+
+                document.getElementById("quizFeedback").textContent =
+                    "💡 إجابة غير صحيحة. الإجابة الصحيحة هي: " +
+                    question.answers[question.correct];
+
+            }
+
+            document.getElementById("quizNext").style.display = "inline-block";
+
+            if (currentQuestion === quizQuestions.length - 1) {
+
+                document.getElementById("quizNext").textContent =
+                    "عرض النتيجة 🏆";
+
+            } else {
+
+                document.getElementById("quizNext").textContent =
+                    "السؤال التالي ←";
+
+            }
+
+        }
+
+        function nextQuestion() {
+
+            currentQuestion++;
+
+            if (currentQuestion < quizQuestions.length) {
+
+                showQuestion();
+
+            } else {
+
+                document.getElementById("quizQuestion").textContent =
+                    "🎉 انتهى التحدي!";
+
+                document.getElementById("quizAnswers").innerHTML = "";
+
+                document.getElementById("quizFeedback").textContent =
+                    "نتيجتك: " + score + " من " + quizQuestions.length +
+                    " أسئلة. " +
+                    (score === quizQuestions.length
+                        ? "ممتاز! أنتِ خبيرة بمدينة صور! 🌟"
+                        : "أحسنتِ! يمكنك إعادة المحاولة لتحسين نتيجتك.");
+
+                document.getElementById("quizNext").style.display = "none";
+
+                document.getElementById("quizStart").textContent =
+                    "إعادة التحدي 🔄";
+
+                document.getElementById("quizStart").style.display =
+                    "inline-block";
+
+            }
+
+        }
+
+    </script>
+
+</body>
+</html>

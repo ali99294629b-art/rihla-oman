@@ -1,0 +1,1678 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>وادي بني خالد | رِحلة</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Tahoma, Arial, sans-serif;
+            background: #f7f6ef;
+            color: #35433b;
+            line-height: 1.9;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* =========================
+           شريط التنقل
+        ========================= */
+
+        nav {
+            background: #fffdf8;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 18px;
+            flex-wrap: wrap;
+            box-shadow: 0 3px 15px #0000000b;
+            position: relative;
+            z-index: 5;
+        }
+
+        .logo {
+            color: #527568;
+            font-size: 29px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px 18px;
+        }
+
+        .nav-links a {
+            font-size: 14px;
+            color: #50483e;
+            padding: 8px 12px;
+            border-radius: 20px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            background: #527568;
+            color: white;
+        }
+
+        /* =========================
+           الواجهة الرئيسية
+        ========================= */
+
+        .hero {
+            height: 520px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 0 10%;
+            color: white;
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(20, 43, 36, 0.12),
+                    rgba(20, 43, 36, 0.75)
+                ),
+                url("../images/wadi-bani-khalid-hero.png (2).png")
+                center/cover no-repeat;
+        }
+
+        .hero-content {
+            max-width: 650px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-label {
+            display: inline-block;
+            padding: 7px 20px;
+            border: 1px solid #ffffffa8;
+            border-radius: 30px;
+            background: #ffffff18;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 7vw, 75px);
+            margin: 15px 0 5px;
+            line-height: 1.4;
+        }
+
+        .hero h2 {
+            font-size: 23px;
+            font-weight: normal;
+            margin: 0 0 15px;
+            color: #e3eadf;
+        }
+
+        .hero p {
+            font-size: 17px;
+            line-height: 2;
+            max-width: 570px;
+            color: #f2f4ed;
+        }
+
+        .hero-button {
+            display: inline-block;
+            background: #d1b58c;
+            color: #263d34;
+            padding: 12px 27px;
+            border-radius: 30px;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: 0.3s;
+        }
+
+        .hero-button:hover {
+            background: #fffdf8;
+            transform: translateY(-4px);
+        }
+
+        .hero-number {
+            position: absolute;
+            bottom: 28px;
+            left: 6%;
+            color: #ffffffbd;
+            font-size: 13px;
+            letter-spacing: 2px;
+        }
+
+        /* =========================
+           شريط المعلومات
+        ========================= */
+
+        .quick-info {
+            width: 88%;
+            max-width: 1000px;
+            margin: -35px auto 0;
+            position: relative;
+            z-index: 3;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            background: #fffdf8;
+            border-radius: 18px;
+            box-shadow: 0 8px 25px #00000012;
+            overflow: hidden;
+        }
+
+        .quick-item {
+            text-align: center;
+            padding: 22px 10px;
+            border-left: 1px solid #e9e5da;
+        }
+
+        .quick-item:last-child {
+            border-left: none;
+        }
+
+        .quick-item span {
+            display: block;
+            font-size: 27px;
+        }
+
+        .quick-item strong {
+            display: block;
+            color: #527568;
+            font-size: 16px;
+        }
+
+        .quick-item small {
+            color: #837f72;
+            font-size: 12px;
+        }
+
+        /* =========================
+           تنسيق الأقسام
+        ========================= */
+
+        .section {
+            width: 88%;
+            max-width: 1120px;
+            margin: 85px auto;
+        }
+
+        .heading {
+            margin-bottom: 35px;
+        }
+
+        .heading span {
+            color: #8b9d75;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .heading h2 {
+            color: #35584a;
+            font-size: 32px;
+            margin: 4px 0 8px;
+        }
+
+        .heading p {
+            color: #777c70;
+            max-width: 700px;
+            margin: 0;
+        }
+
+        .heading.center {
+            text-align: center;
+        }
+
+        .heading.center p {
+            margin: auto;
+        }
+
+        .heading.center::after {
+            content: "";
+            display: block;
+            width: 65px;
+            height: 4px;
+            border-radius: 5px;
+            background: #a7b895;
+            margin: 18px auto 0;
+        }
+
+        /* =========================
+           قصة الوادي
+        ========================= */
+
+        .story-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 45px;
+            align-items: center;
+        }
+
+        .story-text h3 {
+            font-size: 25px;
+            color: #527568;
+            margin-top: 0;
+        }
+
+        .story-text p {
+            color: #697166;
+            text-align: justify;
+            font-size: 15px;
+        }
+
+        .story-image {
+            height: 390px;
+            border-radius: 100px 18px 18px 18px;
+            background:
+                url("../images/wadi-bani-khalid-hero.png.png")
+                center/cover no-repeat;
+            box-shadow: 15px 15px 0 #e2e8dc;
+        }
+
+        /* =========================
+           قصة الماء
+        ========================= */
+
+        .water-story {
+            background: #e9f0e9;
+            padding: 75px 6%;
+            margin: 90px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .water-story::before {
+            content: "〰";
+            position: absolute;
+            font-size: 260px;
+            color: #ffffff60;
+            left: -40px;
+            top: -100px;
+            transform: rotate(-30deg);
+        }
+
+        .water-inner {
+            max-width: 1100px;
+            margin: auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .water-title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .water-title span {
+            color: #789a86;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .water-title h2 {
+            color: #35584a;
+            font-size: 32px;
+            margin: 5px 0;
+        }
+
+        .water-title p {
+            color: #6b7c70;
+        }
+
+        .water-flow {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .water-step {
+            text-align: center;
+            position: relative;
+            padding: 20px;
+        }
+
+        .water-step:not(:last-child)::after {
+            content: "←";
+            position: absolute;
+            left: -20px;
+            top: 45px;
+            font-size: 35px;
+            color: #8aa996;
+        }
+
+        .water-circle {
+            width: 100px;
+            height: 100px;
+            margin: auto;
+            border-radius: 50%;
+            background: #fffdf8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            box-shadow: 0 5px 18px #0000000c;
+            transition: 0.4s;
+        }
+
+        .water-step:hover .water-circle {
+            transform: rotate(-10deg) scale(1.1);
+            background: #d4e5d8;
+        }
+
+        .water-step h3 {
+            color: #527568;
+            margin: 18px 0 5px;
+        }
+
+        .water-step p {
+            color: #6d786e;
+            font-size: 14px;
+        }
+
+        /* =========================
+           خريطة الاستكشاف التفاعلية
+        ========================= */
+
+        .explore-area {
+            background: #fffdf8;
+            border-radius: 25px;
+            padding: 40px;
+            box-shadow: 0 7px 25px #00000008;
+        }
+
+        .explore-layout {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 35px;
+            align-items: center;
+        }
+
+        .map-panel {
+            min-height: 380px;
+            background:
+                radial-gradient(
+                    circle at 30% 30%,
+                    #dce8d7 0,
+                    #eaf0e4 35%,
+                    #dce8d7 70%,
+                    #d2e2d9 100%
+                );
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .map-panel::before,
+        .map-panel::after {
+            content: "";
+            position: absolute;
+            width: 500px;
+            height: 170px;
+            border: 22px solid #ffffff55;
+            border-radius: 50%;
+            transform: rotate(-35deg);
+        }
+
+        .map-panel::before {
+            top: -45px;
+            right: -150px;
+        }
+
+        .map-panel::after {
+            bottom: -70px;
+            left: -170px;
+        }
+
+        .map-caption {
+            position: absolute;
+            top: 18px;
+            right: 20px;
+            color: #527568;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .map-path {
+            position: absolute;
+            width: 5px;
+            height: 220px;
+            background: #91b6a4;
+            border-radius: 20px;
+            transform: rotate(38deg);
+        }
+
+        .map-point {
+            position: absolute;
+            width: 57px;
+            height: 57px;
+            border-radius: 50%;
+            border: 3px solid white;
+            background: #527568;
+            color: white;
+            font-size: 22px;
+            cursor: pointer;
+            z-index: 2;
+            box-shadow: 0 4px 12px #00000020;
+            transition: 0.3s;
+        }
+
+        .map-point:hover,
+        .map-point.active {
+            background: #c39a68;
+            transform: scale(1.2);
+        }
+
+        .point-one {
+            top: 55px;
+            right: 25%;
+        }
+
+        .point-two {
+            top: 155px;
+            right: 55%;
+        }
+
+        .point-three {
+            bottom: 45px;
+            right: 25%;
+        }
+
+        .map-hint {
+            position: absolute;
+            bottom: 12px;
+            color: #688073;
+            font-size: 12px;
+        }
+
+        .explore-info {
+            padding: 10px;
+        }
+
+        .explore-info .small-label {
+            color: #a18b6a;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .explore-info h3 {
+            color: #35584a;
+            font-size: 27px;
+            margin: 8px 0;
+        }
+
+        .explore-info p {
+            color: #6d766d;
+            line-height: 2.1;
+        }
+
+        .explore-info .tip {
+            background: #edf2e9;
+            padding: 14px 18px;
+            border-radius: 12px;
+            color: #557161;
+            font-size: 14px;
+            margin-top: 20px;
+        }
+
+        /* =========================
+           بطاقات المعالم
+        ========================= */
+
+        .landmark-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .landmark {
+            background: #fffdf8;
+            padding: 28px 23px;
+            border-radius: 18px;
+            border-top: 4px solid #9eb49f;
+            transition: 0.3s;
+        }
+
+        .landmark:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 10px 25px #0000000d;
+        }
+
+        .landmark .symbol {
+            font-size: 35px;
+        }
+
+        .landmark h3 {
+            color: #527568;
+            margin: 10px 0;
+        }
+
+        .landmark p {
+            color: #73786d;
+            font-size: 14px;
+            margin: 0;
+        }
+
+        /* =========================
+           ألوان الوادي
+        ========================= */
+
+        .colors-section {
+            background: #344f45;
+            padding: 70px 6%;
+            color: white;
+        }
+
+        .colors-inner {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .colors-heading {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .colors-heading h2 {
+            font-size: 31px;
+            margin: 0 0 8px;
+        }
+
+        .colors-heading p {
+            color: #d3dfd5;
+        }
+
+        .color-scenes {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+
+        .scene {
+            min-height: 210px;
+            border-radius: 15px;
+            display: flex;
+            align-items: flex-end;
+            padding: 18px;
+            transition: 0.4s;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .scene:hover {
+            transform: translateY(-8px);
+        }
+
+        .scene:nth-child(1) {
+            background: linear-gradient(160deg, #a7c6c1, #397b79);
+        }
+
+        .scene:nth-child(2) {
+            background: linear-gradient(160deg, #b6b39a, #6b7256);
+        }
+
+        .scene:nth-child(3) {
+            background: linear-gradient(160deg, #d5c5a3, #927b58);
+        }
+
+        .scene:nth-child(4) {
+            background: linear-gradient(160deg, #a8b7a2, #496b52);
+        }
+
+        .scene div {
+            position: relative;
+            z-index: 1;
+        }
+
+        .scene strong {
+            display: block;
+            font-size: 19px;
+        }
+
+        .scene span {
+            color: #f3f2e9;
+            font-size: 12px;
+        }
+
+        /* =========================
+           دليل المستكشفة
+        ========================= */
+
+        .field-guide {
+            background: #e9e1d2;
+            border-radius: 25px;
+            padding: 40px;
+            display: grid;
+            grid-template-columns: 0.7fr 1.3fr;
+            align-items: center;
+            gap: 35px;
+        }
+
+        .guide-stamp {
+            width: 180px;
+            height: 180px;
+            border: 3px dashed #9d8869;
+            border-radius: 50%;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: #6a765f;
+            transform: rotate(-8deg);
+        }
+
+        .guide-stamp span {
+            font-size: 50px;
+        }
+
+        .guide-stamp strong {
+            font-size: 17px;
+        }
+
+        .guide-text h2 {
+            color: #526b5b;
+            font-size: 27px;
+            margin: 0 0 10px;
+        }
+
+        .guide-text p {
+            color: #6e7167;
+        }
+
+        .guide-button {
+            border: none;
+            background: #527568;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-family: inherit;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .guide-button:hover {
+            background: #354f43;
+            transform: translateY(-3px);
+        }
+
+        .guide-result {
+            display: none;
+            background: #fffdf8;
+            padding: 18px;
+            margin-top: 18px;
+            border-radius: 12px;
+            color: #5d7060;
+            line-height: 2;
+        }
+
+        /* =========================
+           نصائح الزيارة
+        ========================= */
+
+        .visit-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .visit-card {
+            background: #fffdf8;
+            border-radius: 16px;
+            padding: 25px;
+            border-right: 4px solid #8da78e;
+        }
+
+        .visit-card h3 {
+            color: #527568;
+            margin-top: 0;
+        }
+
+        .visit-card p {
+            color: #74786e;
+            font-size: 14px;
+        }
+
+        .visit-card ul {
+            padding-right: 22px;
+            color: #74786e;
+            font-size: 14px;
+        }
+
+        .visit-card li {
+            margin-bottom: 8px;
+        }
+
+        /* =========================
+           الخاتمة
+        ========================= */
+
+        .closing {
+            text-align: center;
+            padding: 85px 20px;
+            background:
+                linear-gradient(
+                    rgba(30, 55, 45, 0.83),
+                    rgba(30, 55, 45, 0.83)
+                ),
+                url("../images/wadi-bani-khalid-hero.png (2).png")
+                center/cover no-repeat;
+            color: white;
+        }
+
+        .closing span {
+            font-size: 40px;
+        }
+
+        .closing h2 {
+            font-size: 32px;
+            margin: 10px 0;
+        }
+
+        .closing p {
+            max-width: 700px;
+            margin: auto;
+            color: #e1e9df;
+        }
+
+        /* =========================
+           التذييل
+        ========================= */
+
+        footer {
+            background: #263b32;
+            color: #e8e9dc;
+            text-align: center;
+            padding: 30px 15px;
+        }
+
+        footer strong {
+            font-size: 22px;
+            color: #d7c49f;
+        }
+
+        footer p {
+            font-size: 13px;
+            margin: 5px;
+        }
+
+        footer a {
+            color: #d7c49f;
+        }
+
+        /* =========================
+           الشاشات الصغيرة
+        ========================= */
+
+        @media (max-width: 800px) {
+
+            nav {
+                justify-content: center;
+            }
+
+            .nav-links {
+                width: 100%;
+            }
+
+            .hero {
+                height: 450px;
+                padding: 30px 7%;
+                justify-content: center;
+                text-align: center;
+                background-position: center;
+            }
+
+            .quick-info {
+                width: 94%;
+            }
+
+            .story-layout,
+            .explore-layout,
+            .field-guide {
+                grid-template-columns: 1fr;
+            }
+
+            .story-image {
+                height: 300px;
+            }
+
+            .landmark-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .color-scenes {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .water-step:not(:last-child)::after {
+                display: none;
+            }
+
+        }
+
+        @media (max-width: 520px) {
+
+            .hero {
+                height: 420px;
+            }
+
+            .hero h2 {
+                font-size: 19px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .quick-info {
+                grid-template-columns: 1fr;
+            }
+
+            .quick-item {
+                border-left: none;
+                border-bottom: 1px solid #e9e5da;
+            }
+
+            .quick-item:last-child {
+                border-bottom: none;
+            }
+
+            .section {
+                width: 91%;
+                margin: 55px auto;
+            }
+
+            .heading h2,
+            .water-title h2 {
+                font-size: 26px;
+            }
+
+            .water-flow {
+                grid-template-columns: 1fr;
+            }
+
+            .landmark-list,
+            .visit-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .color-scenes {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .scene {
+                min-height: 160px;
+            }
+
+            .explore-area {
+                padding: 20px;
+            }
+
+            .map-panel {
+                min-height: 330px;
+            }
+
+            .field-guide {
+                padding: 25px;
+            }
+
+            .closing h2 {
+                font-size: 25px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- شريط التنقل -->
+
+    <nav>
+
+        <a class="logo" href="../index.html">رِحلة</a>
+
+        <div class="nav-links">
+
+            <a href="../index.html">الرئيسية</a>
+
+            <a href="discover.html">اكتشف</a>
+
+            <a href="wilayat.html">الولايات والمناطق</a>
+
+            <a href="stay.html">التجارية والإقامة</a>
+
+            <a href="plan.html">خطة رحلتك</a>
+
+            <a href="contact.html">تواصل معنا</a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- الواجهة الرئيسية -->
+
+    <header class="hero">
+
+        <div class="hero-content">
+
+            <span class="hero-label">رحلة بين الماء والجبال</span>
+
+            <h1>وادي بني خالد</h1>
+
+            <h2>حين تصبح الطبيعة لوحة لا تُنسى</h2>
+
+            <p>
+                في قلب جبال الحجر الشرقي، تختبئ واحدة من أجمل
+                الوجهات الطبيعية في عُمان؛ مياه صافية، وصخور
+                شامخة، وخضرة تمنح المكان سحره الخاص.
+            </p>
+
+            <a href="#about" class="hero-button">
+                ابدئي الاستكشاف ←
+            </a>
+
+        </div>
+
+        <div class="hero-number">
+            OMAN · NATURE · DISCOVERY
+        </div>
+
+    </header>
+
+
+    <!-- معلومات سريعة -->
+
+    <div class="quick-info">
+
+        <div class="quick-item">
+
+            <span>📍</span>
+
+            <strong>شمال الشرقية</strong>
+
+            <small>الموقع الجغرافي</small>
+
+        </div>
+
+        <div class="quick-item">
+
+            <span>💧</span>
+
+            <strong>المياه الطبيعية</strong>
+
+            <small>من أبرز ملامح الوادي</small>
+
+        </div>
+
+        <div class="quick-item">
+
+            <span>⛰️</span>
+
+            <strong>جبال الحجر الشرقي</strong>
+
+            <small>الطبيعة المحيطة</small>
+
+        </div>
+
+    </div>
+
+
+    <!-- قصة الوادي -->
+
+    <section class="section" id="about">
+
+        <div class="heading">
+
+            <span>حكاية المكان</span>
+
+            <h2>ليس مجرد وادٍ...</h2>
+
+            <p>
+                إنه مزيج من الطبيعة والمياه والحياة العُمانية الأصيلة.
+            </p>
+
+        </div>
+
+
+        <div class="story-layout">
+
+            <div class="story-text">
+
+                <h3>واحة خضراء وسط الجبال 🌿</h3>
+
+                <p>
+                    يقع وادي بني خالد في محافظة شمال الشرقية بسلطنة
+                    عُمان، ويمتد عبر جبال الحجر الشرقي وصولًا إلى عدد
+                    من القرى، ومنها قرية بيدا. ويتميز الوادي بتنوع
+                    تضاريسه ووجود البرك المائية والعيون الطبيعية
+                    والنباتات التي تضفي على المكان منظرًا جميلًا.
+                </p>
+
+                <p>
+                    وتُعد البرك المائية من أبرز عناصر الجذب في الوادي،
+                    إذ تتجمع المياه بين الصخور الجبلية في مشهد طبيعي
+                    يجذب الزوار ومحبي التصوير والاستجمام.
+                </p>
+
+                <p>
+                    ولا تقتصر أهمية الوادي على جماله الطبيعي؛ فالمنطقة
+                    تضم أيضًا معالم تراثية وتاريخية، مما يجعل زيارتها
+                    فرصة للتعرف على جانب من طبيعة عُمان وثقافتها المحلية.
+                </p>
+
+            </div>
+
+
+            <div class="story-image"
+                role="img"
+                aria-label="منظر طبيعي لوادي بني خالد">
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- قصة الماء -->
+
+    <section class="water-story">
+
+        <div class="water-inner">
+
+            <div class="water-title">
+
+                <span>سر جمال الوادي</span>
+
+                <h2>قصة الماء بين الجبال</h2>
+
+                <p>
+                    ثلاثة عناصر تمنح الوادي ملامحه الطبيعية المميزة.
+                </p>
+
+            </div>
+
+
+            <div class="water-flow">
+
+                <div class="water-step">
+
+                    <div class="water-circle">⛰️</div>
+
+                    <h3>الجبال</h3>
+
+                    <p>
+                        تحتضن الجبال الوادي وتشكّل خلفية طبيعية
+                        رائعة لمشاهده المميزة.
+                    </p>
+
+                </div>
+
+
+                <div class="water-step">
+
+                    <div class="water-circle">💧</div>
+
+                    <h3>المياه</h3>
+
+                    <p>
+                        تتجمع المياه في البرك والعيون الطبيعية
+                        بين الصخور الجبلية.
+                    </p>
+
+                </div>
+
+
+                <div class="water-step">
+
+                    <div class="water-circle">🌱</div>
+
+                    <h3>الخضرة</h3>
+
+                    <p>
+                        تضيف النباتات وأشجار النخيل لمسة من
+                        الحياة والجمال إلى المكان.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- خريطة الاستكشاف -->
+
+    <section class="section">
+
+        <div class="heading center">
+
+            <span>اكتشفي بنفسك</span>
+
+            <h2>خريطة استكشاف الوادي</h2>
+
+            <p>
+                اختاري إحدى النقاط في الرسم، واكتشفي معلومة
+                جديدة عن معالم وادي بني خالد.
+            </p>
+
+        </div>
+
+
+        <div class="explore-area">
+
+            <div class="explore-layout">
+
+
+                <!-- الرسم التفاعلي -->
+
+                <div class="map-panel">
+
+                    <div class="map-caption">
+                        مسارات الاستكشاف
+                    </div>
+
+                    <div class="map-path"></div>
+
+
+                    <button class="map-point point-one active"
+                        onclick="showPlace(0, this)">
+                        💧
+                    </button>
+
+
+                    <button class="map-point point-two"
+                        onclick="showPlace(1, this)">
+                        🪨
+                    </button>
+
+
+                    <button class="map-point point-three"
+                        onclick="showPlace(2, this)">
+                        🌴
+                    </button>
+
+
+                    <div class="map-hint">
+                        اضغطي على إحدى العلامات
+                    </div>
+
+                </div>
+
+
+                <!-- المعلومات المتغيرة -->
+
+                <div class="explore-info">
+
+                    <span class="small-label">
+                        محطة الاستكشاف الأولى
+                    </span>
+
+                    <h3 id="placeTitle">
+                        البرك المائية
+                    </h3>
+
+                    <p id="placeDescription">
+                        تُعد البرك المائية في منطقة مقل من أشهر
+                        معالم الوادي، وتحيط بها الصخور والجبال
+                        والنباتات في مشهد طبيعي جميل.
+                    </p>
+
+                    <div class="tip" id="placeTip">
+                        ✨ تذكري: حافظي على نظافة المياه
+                        ولا تتركي أي مخلفات في المكان.
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <p style="text-align:center; color:#899083; font-size:12px; margin-top:15px;">
+            تنبيه: هذا رسم توضيحي تفاعلي للتعريف بالمعالم، وليس خريطة جغرافية للملاحة.
+        </p>
+
+    </section>
+
+
+    <!-- المعالم -->
+
+    <section class="section">
+
+        <div class="heading center">
+
+            <span>تفاصيل تستحق المعرفة</span>
+
+            <h2>معالم تحكي قصة الوادي</h2>
+
+            <p>
+                تتنوع معالم المنطقة بين المواقع الطبيعية
+                والتراثية التي تعكس جمال المكان وتاريخه.
+            </p>
+
+        </div>
+
+
+        <div class="landmark-list">
+
+            <article class="landmark">
+
+                <div class="symbol">💧</div>
+
+                <h3>البرك المائية</h3>
+
+                <p>
+                    تُعد البرك المائية في منطقة مقل من أشهر معالم
+                    الوادي، وتحيط بها الصخور والجبال والنباتات.
+                </p>
+
+            </article>
+
+
+            <article class="landmark">
+
+                <div class="symbol">🪨</div>
+
+                <h3>كهف مقل</h3>
+
+                <p>
+                    من المعالم الطبيعية التي تثير اهتمام محبي
+                    الاستكشاف، ويحتاج دخوله إلى الاستعداد
+                    والالتزام بتعليمات السلامة.
+                </p>
+
+            </article>
+
+
+            <article class="landmark">
+
+                <div class="symbol">🌿</div>
+
+                <h3>العيون الطبيعية</h3>
+
+                <p>
+                    تضم الولاية عددًا من العيون المائية،
+                    ومنها عين حمودة وعين الصاروج وعين دوة.
+                </p>
+
+            </article>
+
+
+            <article class="landmark">
+
+                <div class="symbol">🌾</div>
+
+                <h3>الأفلاج العُمانية</h3>
+
+                <p>
+                    أنظمة مائية تقليدية ارتبطت بالزراعة
+                    وتوزيع المياه بين المزارع.
+                </p>
+
+            </article>
+
+
+            <article class="landmark">
+
+                <div class="symbol">🏰</div>
+
+                <h3>حصن الموالك</h3>
+
+                <p>
+                    من المعالم التاريخية في الولاية،
+                    ويبرز أهمية الحصون في التراث المعماري العُماني.
+                </p>
+
+            </article>
+
+
+            <article class="landmark">
+
+                <div class="symbol">🌴</div>
+
+                <h3>القرى والمزارع</h3>
+
+                <p>
+                    ترتبط القرى المحيطة بالوادي بالمياه
+                    والأفلاج وأشجار النخيل والحياة المحلية.
+                </p>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- ألوان الوادي -->
+
+    <section class="colors-section">
+
+        <div class="colors-inner">
+
+            <div class="colors-heading">
+
+                <h2>أربعة ألوان... حكاية واحدة</h2>
+
+                <p>
+                    تأملي الألوان التي تمنح وادي بني خالد
+                    هويته الطبيعية.
+                </p>
+
+            </div>
+
+
+            <div class="color-scenes">
+
+                <div class="scene">
+
+                    <div>
+                        <strong>الأزرق</strong>
+                        <span>صفاء المياه</span>
+                    </div>
+
+                </div>
+
+
+                <div class="scene">
+
+                    <div>
+                        <strong>الأخضر</strong>
+                        <span>حياة النباتات</span>
+                    </div>
+
+                </div>
+
+
+                <div class="scene">
+
+                    <div>
+                        <strong>الذهبي</strong>
+                        <span>ألوان الصخور والرمال</span>
+                    </div>
+
+                </div>
+
+
+                <div class="scene">
+
+                    <div>
+                        <strong>الجبلي</strong>
+                        <span>عظمة الطبيعة</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- دليل المستكشفة -->
+
+    <section class="section">
+
+        <div class="field-guide">
+
+            <div class="guide-stamp">
+
+                <span>🧭</span>
+
+                <strong>دليل الوادي</strong>
+
+                <small>رِحلة 2026</small>
+
+            </div>
+
+
+            <div class="guide-text">
+
+                <h2>دليل المستكشفة 🌿</h2>
+
+                <p>
+                    لكل رحلة استعدادها الخاص. اضغطي على الزر
+                    لتحصلي على تذكير صغير يساعدك على الاستمتاع
+                    بزيارتك والمحافظة على جمال الوادي.
+                </p>
+
+                <button class="guide-button" onclick="showGuide()">
+                    اكتشفي نصيحة الرحلة
+                </button>
+
+                <div class="guide-result" id="guideResult"></div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- معلومات الزيارة -->
+
+    <section class="section">
+
+        <div class="heading center">
+
+            <span>قبل الانطلاق</span>
+
+            <h2>رحلة جميلة تبدأ بالتخطيط</h2>
+
+            <p>
+                بعض التفاصيل الصغيرة تجعل الزيارة أكثر راحة وأمانًا.
+            </p>
+
+        </div>
+
+
+        <div class="visit-grid">
+
+            <div class="visit-card">
+
+                <h3>🎒 حقيبة الرحلة</h3>
+
+                <ul>
+                    <li>ماء للشرب ووجبات خفيفة.</li>
+                    <li>حذاء مناسب للمشي.</li>
+                    <li>هاتف مشحون للتواصل والتصوير.</li>
+                    <li>ملابس مناسبة للمكان.</li>
+                </ul>
+
+            </div>
+
+
+            <div class="visit-card">
+
+                <h3>🌤️ الوقت المناسب</h3>
+
+                <ul>
+                    <li>اختاري وقتًا مناسبًا للطقس.</li>
+                    <li>تحققي من حالة الطريق قبل الانطلاق.</li>
+                    <li>اتركي وقتًا كافيًا للتنزه.</li>
+                </ul>
+
+            </div>
+
+
+            <div class="visit-card">
+
+                <h3>⚠️ سلامتك أولًا</h3>
+
+                <ul>
+                    <li>تجنبي زيارة الوادي أثناء الأمطار أو تحذيرات جريان الأودية.</li>
+                    <li>ابتعدي عن الأماكن العميقة غير المعروفة.</li>
+                    <li>التزمي باللوحات الإرشادية والتعليمات المحلية.</li>
+                    <li>لا تدخلي الكهوف أو المسارات الصعبة دون تجهيز وإشراف مناسبين.</li>
+                </ul>
+
+            </div>
+
+
+            <div class="visit-card">
+
+                <h3>🌱 صديقة للطبيعة</h3>
+
+                <ul>
+                    <li>ضعي النفايات في الأماكن المخصصة.</li>
+                    <li>لا تتلفي النباتات أو تكتبي على الصخور.</li>
+                    <li>حافظي على نظافة المياه.</li>
+                    <li>احترمي خصوصية سكان القرى المجاورة.</li>
+                </ul>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- الخاتمة -->
+
+    <section class="closing">
+
+        <span>🌿</span>
+
+        <h2>وادي بني خالد... حيث تنبض الطبيعة بالحياة</h2>
+
+        <p>
+            بين الجبال والمياه والخضرة، تبقى هذه الوجهة
+            واحدة من الصور الجميلة التي تروي حكاية عُمان.
+            اكتشفي جمالها، واستمتعي بها، وساهمي في الحفاظ عليها.
+        </p>
+
+    </section>
+
+
+    <!-- التذييل -->
+
+    <footer>
+
+        <strong>رِحلة</strong>
+
+        <p>دليلك السياحي في عُمان</p>
+
+        <p>اكتشفي عُمان... فكل مكان فيها يحكي حكاية.</p>
+
+        <p>
+            <a href="wilayat.html">العودة إلى الولايات والمناطق ↑</a>
+        </p>
+
+        <p>© رِحلة | جميع الحقوق محفوظة</p>
+
+    </footer>
+
+
+    <!-- التفاعلات -->
+
+    <script>
+
+        // تغيير معلومات نقاط الاستكشاف
+
+        function showPlace(number, button) {
+
+            let titles = [
+                "البرك المائية",
+                "كهف مقل",
+                "القرى والمزارع"
+            ];
+
+            let descriptions = [
+
+                "تُعد البرك المائية في منطقة مقل من أشهر معالم الوادي، وتحيط بها الصخور والجبال والنباتات في مشهد طبيعي جميل.",
+
+                "يقع كهف مقل في منطقة الوادي، ويُعد من المعالم الطبيعية التي تثير اهتمام محبي الاستكشاف. ويجب الالتزام بإرشادات السلامة وعدم دخوله دون استعداد مناسب.",
+
+                "ترتبط القرى والمزارع المحيطة بالوادي بالمياه والأفلاج وأشجار النخيل، وتعكس جانبًا من الحياة المحلية في شمال الشرقية."
+
+            ];
+
+            let tips = [
+
+                "✨ تذكري: حافظي على نظافة المياه ولا تتركي أي مخلفات في المكان.",
+
+                "🧭 تذكري: لا تدخلي الكهوف أو الممرات غير الآمنة دون تجهيز وإشراف مناسبين.",
+
+                "🌴 تذكري: احترمي خصوصية السكان وحافظي على المزارع والنباتات."
+
+            ];
+
+            document.getElementById("placeTitle").innerText =
+                titles[number];
+
+            document.getElementById("placeDescription").innerText =
+                descriptions[number];
+
+            document.getElementById("placeTip").innerText =
+                tips[number];
+
+            let points = document.querySelectorAll(".map-point");
+
+            points.forEach(function(point) {
+                point.classList.remove("active");
+            });
+
+            button.classList.add("active");
+
+        }
+
+
+        // نصائح دليل المستكشفة
+
+        let guideNumber = 0;
+
+        function showGuide() {
+
+            let tips = [
+
+                "🎒 جهزي حقيبة صغيرة تحتوي على الماء واحتياجاتك الأساسية.",
+
+                "📷 احتفظي بصور جميلة للرحلة، مع احترام خصوصية الآخرين.",
+
+                "🌱 اتركي المكان كما وجدته، ولا تتركي خلفك أي نفايات.",
+
+                "🌤️ تحققي من حالة الطقس قبل زيارة الوادي."
+
+            ];
+
+            let result = document.getElementById("guideResult");
+
+            result.style.display = "block";
+
+            result.innerText = tips[guideNumber];
+
+            guideNumber++;
+
+            if (guideNumber >= tips.length) {
+                guideNumber = 0;
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>

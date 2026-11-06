@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>الولايات والمناطق | رحلة</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+        /* إعدادات الصفحة */
+        body.wilayat-page {
+            margin: 0;
+            background: #f8f5ef;
+        }
+
+        /* الصورة الرئيسية */
+        .wilayat-banner {
+            width: 100%;
+            height: 330px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .wilayat-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .wilayat-banner::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.25);
+        }
+
+        .wilayat-banner-text {
+            position: absolute;
+            z-index: 2;
+            top: 50%;
+            right: 8%;
+            transform: translateY(-50%);
+            color: white;
+            text-align: right;
+        }
+
+        .wilayat-banner-text h1 {
+            color: white;
+            font-size: 45px;
+            margin-bottom: 10px;
+        }
+
+        .wilayat-banner-text p {
+            color: white;
+            font-size: 20px;
+        }
+
+        /* عنوان القسم */
+        .wilayat-heading {
+            text-align: center;
+            padding: 30px 15px 10px;
+        }
+
+        .wilayat-heading h2 {
+            color: #765633;
+            font-size: 29px;
+            margin-bottom: 8px;
+        }
+
+        .wilayat-heading p {
+            color: #81735f;
+            line-height: 1.8;
+        }
+
+        /* أدوات البحث والاختيار */
+        .wilayat-tools {
+            max-width: 1000px;
+            margin: 20px auto 35px;
+            padding: 0 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .wilayat-search {
+            flex: 1;
+            min-width: 230px;
+            max-width: 480px;
+            height: 52px;
+            background: white;
+            border: 1px solid #e5d9c5;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            padding: 5px 15px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.07);
+        }
+
+        .wilayat-search input {
+            width: 100%;
+            border: none;
+            outline: none;
+            background: transparent;
+            font-size: 15px;
+            text-align: right;
+            font-family: Arial, sans-serif;
+        }
+
+        .wilayat-search span {
+            color: #8b6f47;
+            font-size: 22px;
+        }
+
+        .wilayat-select {
+            min-width: 230px;
+            height: 52px;
+            padding: 0 15px;
+            border: 1px solid #e5d9c5;
+            border-radius: 25px;
+            background: white;
+            color: #765633;
+            font-family: Arial, sans-serif;
+            font-size: 15px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .wilayat-select:focus {
+            border-color: #8b6f47;
+        }
+
+        /* بطاقات المناطق */
+        .wilayat-content {
+            background: #f8f5ef;
+            padding: 10px 30px 40px;
+        }
+
+        .wilayat-cards {
+            max-width: 1100px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .wilayat-card {
+            background: white;
+            border-radius: 14px;
+            padding: 12px;
+            text-align: right;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+
+        .wilayat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 25px rgba(100,70,35,0.18);
+        }
+
+        .wilayat-link {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+        }
+
+        .wilayat-card img {
+            width: 100%;
+            height: 175px;
+            object-fit: cover;
+            display: block;
+            border-radius: 10px;
+            transition: transform 0.35s ease;
+        }
+
+        .wilayat-card:hover img {
+            transform: scale(1.025);
+        }
+
+        .wilayat-card h3 {
+            margin: 15px 8px 8px;
+            color: #8b6f47;
+            font-size: 21px;
+        }
+
+        .wilayat-card p {
+            margin: 0 8px 12px;
+            color: #666;
+            font-size: 14px;
+            line-height: 1.9;
+        }
+
+        .wilayat-details {
+            margin: 10px 8px 5px;
+            padding-top: 10px;
+            border-top: 1px solid #eee3d1;
+            color: #765633;
+            font-size: 13px;
+            line-height: 2;
+        }
+
+        .wilayat-details span {
+            display: inline-block;
+            margin-left: 8px;
+        }
+
+        .wilayat-more {
+            display: block;
+            margin: 12px 8px 5px;
+            padding: 9px;
+            background: #f4eddf;
+            color: #765633;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        /* قسم المعلومات العشوائية */
+        .oman-facts {
+            max-width: 950px;
+            margin: 30px auto;
+            padding: 25px;
+            background: #fffaf2;
+            border-right: 5px solid #a8875b;
+            border-radius: 12px;
+            text-align: right;
+            box-shadow: 0 3px 12px rgba(80,55,30,0.07);
+        }
+
+        .oman-facts h2 {
+            color: #765633;
+            margin-top: 0;
+        }
+
+        .oman-facts p {
+            color: #665b4c;
+            font-size: 16px;
+            line-height: 2;
+        }
+
+        .fact-button,
+        .random-button {
+            border: none;
+            background: #8b6f47;
+            color: white;
+            padding: 12px 23px;
+            border-radius: 25px;
+            font-size: 15px;
+            cursor: pointer;
+            font-family: Arial, sans-serif;
+            transition: 0.3s;
+        }
+
+        .fact-button:hover,
+        .random-button:hover {
+            background: #6f5230;
+            transform: translateY(-3px);
+        }
+
+        /* اقتراح الوجهة */
+        .random-destination {
+            max-width: 950px;
+            margin: 30px auto;
+            padding: 28px 20px;
+            background: #eee5d5;
+            border-radius: 14px;
+            text-align: center;
+        }
+
+        .random-destination h2 {
+            color: #765633;
+        }
+
+        .random-destination p {
+            color: #665b4c;
+            line-height: 1.8;
+        }
+
+        #destinationResult {
+            color: #8b6f47;
+            font-size: 20px;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        /* نهاية الصفحة */
+        .wilayat-footer {
+            background: #f8f5ef;
+            text-align: center;
+            padding: 30px 20px 50px;
+        }
+
+        .footer-icon {
+            font-size: 38px;
+        }
+
+        .wilayat-footer h2 {
+            color: #8b6f47;
+            font-size: 28px;
+        }
+
+        .wilayat-footer p {
+            color: #777;
+        }
+
+        /* الشاشات الصغيرة */
+        @media (max-width: 800px) {
+            .wilayat-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 550px) {
+            .wilayat-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .wilayat-banner {
+                height: 250px;
+            }
+
+            .wilayat-banner-text h1 {
+                font-size: 30px;
+            }
+
+            .wilayat-tools {
+                flex-direction: column;
+            }
+
+            .wilayat-search,
+            .wilayat-select {
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .oman-facts,
+            .random-destination {
+                margin: 20px 15px;
+            }
+        }
+    </style>
+</head>
+
+<body class="wilayat-page">
+
+    <!-- القائمة العلوية -->
+    <nav class="navbar">
+
+        <div class="logo">رحلة</div>
+
+        <ul>
+            <li><a href="../index.html">الرئيسية</a></li>
+            <li><a href="discover.html">اكتشف</a></li>
+            <li><a href="wilayat.html" class="active">الولايات والمناطق</a></li>
+            <li><a href="plan.html">خطط رحلتك</a></li>
+            <li><a href="stay.html">الإقامة والتجارة</a></li>
+            <li><a href="contact.html">تواصل معنا</a></li>
+        </ul>
+
+    </nav>
+
+
+    <!-- الصورة الرئيسية -->
+    <section class="wilayat-banner">
+
+        <img src="../images/hero_heritage.jpg" alt="الولايات والمناطق">
+
+        <div class="wilayat-banner-text">
+            <h1>الولايات والمناطق</h1>
+            <p>كل ولاية .. حكاية مختلفة</p>
+        </div>
+
+    </section>
+
+
+    <!-- عنوان القسم -->
+    <div class="wilayat-heading">
+
+        <h2>🗺️ اكتشف وجهتك القادمة</h2>
+
+        <p>
+            من المدن التاريخية إلى الجبال والشواطئ،
+            اختر المكان الذي يناسب رحلتك.
+        </p>
+
+    </div>
+
+
+    <!-- البحث والقائمة المنسدلة -->
+    <div class="wilayat-tools">
+
+        <div class="wilayat-search">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="ابحث عن ولاية أو منطقة ..."
+            >
+
+            <span>⌕</span>
+
+        </div>
+
+
+        <select
+            class="wilayat-select"
+            id="wilayatSelect"
+            onchange="goToWilayat()"
+        >
+
+            <option value="">اختر منطقة للانتقال إليها</option>
+
+            <option value="sur.html">🌊 مدينة صور</option>
+
+            <option value="jabal-al-hajar.html">⛰️ جبل الحجر</option>
+
+            <option value="nizwa.html">🏰 نزوى</option>
+
+            <option value="wadi-bani-khalid.html">💧 وادي بني خالد</option>
+
+            <option value="muscat.html">🏙️ مسقط</option>
+
+            <option value="salalah.html">🌴 صلالة</option>
+
+        </select>
+
+    </div>
+
+
+    <!-- بطاقات المناطق -->
+    <section class="wilayat-content">
+
+        <div class="wilayat-cards">
+
+
+            <!-- صور -->
+            <div class="wilayat-card">
+
+                <a href="sur.html" class="wilayat-link">
+
+                    <img src="../images/coast.jpg" alt="مدينة صور">
+
+                    <h3>🌊 مدينة صور</h3>
+
+                    <p>
+                        مدينة ساحلية عريقة تشتهر بتاريخها البحري
+                        وصناعة السفن التقليدية والشواطئ الجميلة.
+                    </p>
+
+                    <div class="wilayat-details">
+                        <span>⚓ صناعة السفن</span>
+                        <span>🏖️ الشواطئ</span>
+                        <span>🌅 المناظر البحرية</span>
+                    </div>
+
+                    <span class="wilayat-more">اكتشف مدينة صور ←</span>
+
+                </a>
+
+            </div>
+
+
+            <!-- جبل الحجر -->
+            <div class="wilayat-card">
+
+                <a href="jabal-al-hajar.html" class="wilayat-link">
+
+                    <img src="../images/hero_mountains.jpg" alt="جبال الحجر">
+
+                    <h3>⛰️ جبل الحجر</h3>
+
+                    <p>
+                        سلسلة جبلية مميزة تتمتع بالمرتفعات الشاهقة
+                        والأجواء اللطيفة والمناظر الطبيعية الرائعة.
+                    </p>
+
+                    <div class="wilayat-details">
+                        <span>🥾 المشي الجبلي</span>
+                        <span>🌄 القمم</span>
+                        <span>🌿 الطبيعة</span>
+                    </div>
+
+                    <span class="wilayat-more">اكتشف جبل الحجر ←</span>
+
+                </a>
+
+            </div>
+
+
+            <!-- نزوى -->
+            <div class="wilayat-card">
+
+                <a href="nizwa.html" class="wilayat-link">
+
+                    <img src="../images/nizwa.jpg" alt="ولاية نزوى">
+
+                    <h3>🏰 نزوى</h3>
+
+                    <p>
+                        مدينة تاريخية تشتهر بقلعتها العريقة
+                        وأسواقها التقليدية والحرف العُمانية الأصيلة.
+                    </p>
+
+                    <div class="wilayat-details">
+                        <span>🏰 قلعة نزوى</span>
+                        <span>🛍️ السوق القديم</span>
+                        <span>📜 التراث</span>
+                    </div>
+
+                    <span class="wilayat-more">اكتشف نزوى ←</span>
+
+                </a>
+
+            </div>
+
+
+            <!-- وادي بني خالد -->
+            <div class="wilayat-card">
+
+                <a href="wadi-bani-khalid.html" class="wilayat-link">
+
+                    <img src="../images/nature.jpg" alt="وادي بني خالد">
+
+                    <h3>💧 وادي بني خالد</h3>
+
+                    <p>
+                        وجهة طبيعية رائعة تتميز بالمياه الصافية
+                        والبرك المائية والمناظر الجبلية الجميلة.
+                    </p>
+
+                    <div class="wilayat-details">
+                        <span>💦 البرك المائية</span>
+                        <span>🪨 الكهوف</span>
+                        <span>🌴 الطبيعة</span>
+                    </div>
+
+                    <span class="wilayat-more">اكتشف وادي بني خالد ←</span>
+
+                </a>
+
+            </div>
+
+
+            <!-- مسقط -->
+            <div class="wilayat-card">
+
+                <a href="muscat.html" class="wilayat-link">
+
+                    <img src="../images/destinations.jpg" alt="مسقط">
+
+                    <h3>🏙️ مسقط</h3>
+
+                    <p>
+                        عاصمة سلطنة عُمان، تجمع بين التطور الحديث
+                        والمعالم الثقافية والتاريخية والمناظر البحرية.
+                    </p>
+
+                    <div class="wilayat-details">
+                        <span>🕌 جامع السلطان قابوس</span>
+                        <span>🏛️ المتاحف</span>
+                        <span>🌊 كورنيش مطرح</span>
+                    </div>
+
+                    <span class="wilayat-more">اكتشف مسقط ←</span>
+
+                </a>
+
+            </div>
+
+
+            <!-- صلالة -->
+            <div class="wilayat-card">
+
+                <a href="salalah.html" class="wilayat-link">
+
+                    <img src="../images/salalah.jpg" alt="مدينة صلالة">
+
+                    <h3>🌴 صلالة</h3>
+
+                    <p>
+                        مدينة تتميز بأجواء موسم الخريف والطبيعة الخضراء
+                        والشلالات والشواطئ الجميلة.
+                    </p>
+
+                    <div class="wilayat-details">
+                        <span>🌧️ موسم الخريف</span>
+                        <span>🌳 الجبال الخضراء</span>
+                        <span>🏖️ الشواطئ</span>
+                    </div>
+
+                    <span class="wilayat-more">اكتشف صلالة ←</span>
+
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- هل تعلم؟ -->
+    <section class="oman-facts">
+
+        <h2>✨ هل تعلم؟</h2>
+
+        <p id="factText">
+            تتميز سلطنة عُمان بتنوع تضاريسها بين الجبال
+            والسهول والصحاري والشواطئ.
+        </p>
+
+        <button class="fact-button" onclick="showFact()">
+            معلومة أخرى
+        </button>
+
+    </section>
+
+
+    <!-- اقتراح وجهة عشوائية -->
+    <section class="random-destination">
+
+        <h2>🎯 محتار أين تذهب؟</h2>
+
+        <p>
+            دع «رِحلة» تختار لك وجهة جديدة لاكتشافها!
+        </p>
+
+        <p id="destinationResult">
+            وجهتك القادمة بانتظارك
+        </p>
+
+        <button class="random-button" onclick="chooseDestination()">
+            اختر وجهتي القادمة
+        </button>
+
+    </section>
+
+
+    <!-- نهاية الصفحة -->
+    <footer class="wilayat-footer">
+
+        <div class="footer-icon">🗺️</div>
+
+        <h2>اختر ولايتك وابدأ رحلتك</h2>
+
+        <p>اكتشف جمال عُمان وعش تجربة لا تُنسى</p>
+
+    </footer>
+
+
+    <script>
+
+        // الانتقال من القائمة المنسدلة
+        function goToWilayat() {
+
+            const selected = document.getElementById("wilayatSelect").value;
+
+            if (selected !== "") {
+                window.location.href = selected;
+            }
+
+        }
+
+
+        // البحث عن المناطق
+        const searchInput = document.getElementById("searchInput");
+
+        const cards = document.querySelectorAll(".wilayat-card");
+
+        searchInput.addEventListener("input", function () {
+
+            const searchText = searchInput.value.trim().toLowerCase();
+
+            cards.forEach(function (card) {
+
+                const cardText = card.textContent.toLowerCase();
+
+                if (cardText.includes(searchText)) {
+                    card.style.display = "";
+                } else {
+                    card.style.display = "none";
+                }
+
+            });
+
+        });
+
+
+        // معلومات متنوعة عن عُمان
+        const facts = [
+
+            "تتميز سلطنة عُمان بتنوع تضاريسها بين الجبال والسهول والصحاري والشواطئ.",
+
+            "تشتهر مدينة صور بتاريخها البحري وصناعة السفن التقليدية.",
+
+            "تعد نزوى من المدن العُمانية التاريخية المعروفة بقلعتها وسوقها التقليدي.",
+
+            "تشتهر صلالة بموسم الخريف الذي يمنحها أجواء طبيعية مميزة.",
+
+            "تضم جبال الحجر مناظر جبلية ومرتفعات تجذب محبي الطبيعة.",
+
+            "يتميز وادي بني خالد ببركه المائية ومناظره الطبيعية الجميلة."
+
+        ];
+
+        function showFact() {
+
+            const randomIndex = Math.floor(Math.random() * facts.length);
+
+            document.getElementById("factText").textContent = facts[randomIndex];
+
+        }
+
+
+        // اختيار وجهة عشوائية
+        const destinations = [
+
+            { name: "مدينة صور 🌊", link: "sur.html" },
+
+            { name: "جبل الحجر ⛰️", link: "jabal-al-hajar.html" },
+
+            { name: "نزوى 🏰", link: "nizwa.html" },
+
+            { name: "وادي بني خالد 💧", link: "wadi-bani-khalid.html" },
+
+            { name: "مسقط 🏙️", link: "muscat.html" },
+
+            { name: "صلالة 🌴", link: "salalah.html" }
+
+        ];
+
+        function chooseDestination() {
+
+            const randomIndex = Math.floor(Math.random() * destinations.length);
+
+            const destination = destinations[randomIndex];
+
+            document.getElementById("destinationResult").innerHTML =
+                destination.name;
+
+            document.getElementById("destinationResult").style.cursor = "pointer";
+
+            document.getElementById("destinationResult").onclick = function () {
+                window.location.href = destination.link;
+            };
+
+        }
+
+    </script>
+
+</body>
+</html>

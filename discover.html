@@ -1,0 +1,1959 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>اكتشف عُمان | رِحلة</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #f8f5ef;
+            color: #4b3a29;
+            font-family: Arial, sans-serif;
+            line-height: 1.8;
+        }
+
+        /* شريط التنقل */
+
+        .navbar {
+            background: #fffaf2;
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .site-logo {
+            color: #6f5230;
+            font-size: 28px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .navbar ul {
+            display: flex;
+            list-style: none;
+            gap: 10px;
+            flex-wrap: wrap;
+            padding: 0;
+            margin: 0;
+        }
+
+        .navbar ul li a {
+            display: block;
+            text-decoration: none;
+            color: #4b3a29;
+            padding: 9px 13px;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .navbar ul li a:hover {
+            background-color: #80603a;
+            color: white;
+        }
+
+        /* مقدمة الصفحة */
+
+        .discover-banner {
+            min-height: 300px;
+            background:
+                linear-gradient(rgba(40, 30, 20, 0.35), rgba(40, 30, 20, 0.35)),
+                url("../images/discover-banner.png") center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 35px 20px;
+        }
+
+        .discover-banner h1 {
+            font-size: 42px;
+            margin-bottom: 5px;
+        }
+
+        .discover-banner p {
+            font-size: 19px;
+        }
+
+        /* أزرار الأقسام */
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            padding: 30px 15px;
+        }
+
+        .tab-button {
+            border: none;
+            background: #fffaf2;
+            color: #6f5230;
+            padding: 13px 24px;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+        }
+
+        .tab-button:hover,
+        .tab-button.active {
+            background: #80603a;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* الأقسام */
+
+        .tab-content {
+            display: none;
+            max-width: 1150px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: appear 0.5s ease;
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-title {
+            text-align: center;
+            color: #6f5230;
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .section-intro {
+            text-align: center;
+            max-width: 750px;
+            margin: 0 auto 30px;
+            color: #75634e;
+        }
+
+        /* الفيديو */
+
+        .video-box {
+            max-width: 850px;
+            margin: 25px auto;
+            background: white;
+            padding: 12px;
+            border-radius: 18px;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+        }
+
+        .video-box video {
+            width: 100%;
+            display: block;
+            border-radius: 12px;
+        }
+
+        /* بطاقات الطبيعة */
+
+        .nature-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 35px 0;
+        }
+
+        .nature-card {
+            background: #fffaf2;
+            text-align: center;
+            padding: 25px 18px;
+            border-radius: 18px;
+            border: 1px solid #eadcc8;
+            transition: 0.3s;
+        }
+
+        .nature-card:hover {
+            background: #80603a;
+            color: white;
+            transform: translateY(-8px);
+            box-shadow: 0 10px 22px rgba(80, 55, 25, 0.18);
+        }
+
+        .nature-emoji {
+            font-size: 48px;
+        }
+
+        .nature-card h3 {
+            margin: 8px 0;
+        }
+
+        /* الآراء */
+
+        .reviews-area {
+            margin: 45px 0;
+            padding: 30px 20px;
+            background: #eee5d8;
+            border-radius: 25px;
+        }
+
+        .reviews-area h2 {
+            text-align: center;
+            color: #6f5230;
+        }
+
+        .review-note {
+            text-align: center;
+            color: #78664f;
+            font-size: 13px;
+        }
+
+        .review-card {
+            background: #fffaf2;
+            max-width: 850px;
+            min-height: 300px;
+            margin: 25px auto;
+            padding: 30px;
+            border-radius: 20px;
+            border-right: 7px solid #8b6f47;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+            transition: opacity 0.35s, transform 0.35s;
+        }
+
+        .review-card.changing {
+            opacity: 0;
+            transform: translateY(8px);
+        }
+
+        .review-person {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .review-avatar {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            background: #eee5d8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 36px;
+        }
+
+        .review-person h3 {
+            margin: 0;
+            color: #6f5230;
+        }
+
+        .review-stars {
+            color: #c18b35;
+            letter-spacing: 3px;
+        }
+
+        .review-text {
+            font-size: 17px;
+            line-height: 2;
+            color: #5b4a37;
+        }
+
+        .review-number {
+            text-align: center;
+            color: #8b6f47;
+            font-size: 14px;
+        }
+
+        /* نموذج الرأي */
+
+        .review-form {
+            max-width: 850px;
+            margin: 30px auto 0;
+            background: #fffaf2;
+            padding: 25px;
+            border-radius: 18px;
+        }
+
+        .review-form h3 {
+            color: #6f5230;
+            margin-top: 0;
+        }
+
+        .review-form input,
+        .review-form textarea,
+        .review-form select {
+            width: 100%;
+            padding: 13px;
+            margin: 8px 0 15px;
+            border: 1px solid #d9c7ad;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 15px;
+            background: white;
+        }
+
+        .review-form textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .main-button {
+            background: #80603a;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .main-button:hover {
+            background: #5d4226;
+            transform: translateY(-2px);
+        }
+
+        #reviewMessage {
+            color: #55734c;
+            font-weight: bold;
+        }
+
+        /* التراث */
+
+        .heritage-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .heritage-card {
+            background: #fffaf2;
+            padding: 25px;
+            border-radius: 18px;
+            border: 1px solid #eadcc8;
+            transition: 0.3s;
+        }
+
+        .heritage-card:hover {
+            background: #80603a;
+            color: white;
+            transform: translateY(-7px);
+        }
+
+        .heritage-card .big-emoji {
+            font-size: 42px;
+        }
+
+        .heritage-card h3 {
+            color: #80603a;
+        }
+
+        .heritage-card:hover h3 {
+            color: white;
+        }
+
+        /* اكتشف معلومة */
+
+        .heritage-fact {
+            background: #eee5d8;
+            padding: 25px;
+            border-radius: 20px;
+            text-align: center;
+            margin: 35px 0;
+        }
+
+        .heritage-fact h3 {
+            color: #6f5230;
+        }
+
+        #factText {
+            font-size: 18px;
+            min-height: 60px;
+        }
+
+        /* المغامرات */
+
+        .adventure-intro {
+            background: linear-gradient(135deg, #e8ddca, #fffaf2);
+            padding: 30px;
+            border-radius: 22px;
+            text-align: center;
+            margin: 25px 0;
+        }
+
+        .adventure-choices {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .adventure-choice {
+            background: #fffaf2;
+            border: 2px solid #eadcc8;
+            padding: 22px;
+            border-radius: 16px;
+            cursor: pointer;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .adventure-choice:hover {
+            background: #80603a;
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        .adventure-choice.selected {
+            background: #80603a;
+            color: white;
+            border-color: #80603a;
+        }
+
+        .adventure-choice span {
+            font-size: 40px;
+        }
+
+        #adventureResult {
+            display: none;
+            background: #eee5d8;
+            padding: 25px;
+            border-radius: 18px;
+            margin: 25px 0;
+        }
+
+        .challenge-box {
+            background: #fffaf2;
+            padding: 25px;
+            border-radius: 20px;
+            margin: 35px 0;
+            text-align: center;
+        }
+
+        .challenge-box h3 {
+            color: #6f5230;
+        }
+
+        #challengeQuestion {
+            font-size: 19px;
+        }
+
+        .challenge-options {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .challenge-options button {
+            background: #eee5d8;
+            border: 1px solid #d8c5a9;
+            padding: 12px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .challenge-options button:hover {
+            background: #80603a;
+            color: white;
+        }
+
+        #challengeAnswer {
+            font-weight: bold;
+            color: #6f5230;
+        }
+
+        /* الاسترخاء */
+
+        .relax-hero {
+            background: linear-gradient(135deg, #e8ddca, #fdfaf4);
+            border-radius: 25px;
+            padding: 35px 20px;
+            text-align: center;
+            margin: 25px 0;
+        }
+
+        .relax-hero .relax-emoji {
+            font-size: 65px;
+        }
+
+        .relax-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin: 30px 0;
+        }
+
+        .relax-card {
+            background: #fffaf2;
+            padding: 22px;
+            text-align: center;
+            border-radius: 18px;
+            transition: 0.3s;
+        }
+
+        .relax-card:hover {
+            background: #80603a;
+            color: white;
+            transform: translateY(-6px);
+        }
+
+        .relax-card span {
+            font-size: 40px;
+        }
+
+        .rain-box {
+            background: #e9e2d7;
+            padding: 35px 20px;
+            text-align: center;
+            border-radius: 22px;
+            margin: 35px 0;
+        }
+
+        .rain-icon {
+            font-size: 65px;
+        }
+
+        #rainStatus {
+            color: #6f5230;
+            font-weight: bold;
+        }
+
+        .breathing-box {
+            background: #fffaf2;
+            border-radius: 22px;
+            padding: 30px;
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .breathing-circle {
+            width: 145px;
+            height: 145px;
+            margin: 25px auto;
+            border-radius: 50%;
+            background: #d9c7ad;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: #5d4226;
+        }
+
+        .breathing-circle.active {
+            animation: breathe 8s ease-in-out infinite;
+        }
+
+        @keyframes breathe {
+            0%, 100% {
+                transform: scale(0.85);
+            }
+
+            50% {
+                transform: scale(1.15);
+            }
+        }
+
+        /* الفوتر */
+
+        footer {
+            background: #6f5230;
+            color: white;
+            text-align: center;
+            padding: 22px;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 800px) {
+            .nature-cards,
+            .relax-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .heritage-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .navbar {
+                justify-content: center;
+            }
+
+            .navbar ul {
+                justify-content: center;
+            }
+
+            .discover-banner h1 {
+                font-size: 30px;
+            }
+
+            .nature-cards,
+            .relax-grid,
+            .adventure-choices {
+                grid-template-columns: 1fr;
+            }
+
+            .review-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- شريط التنقل -->
+
+    <nav class="navbar">
+
+        <a href="../index.html" class="site-logo">رِحلة</a>
+
+        <ul>
+            <li><a href="../index.html">الرئيسية</a></li>
+            <li><a href="discover.html">اكتشف</a></li>
+            <li><a href="wilayat.html">الولايات والمناطق</a></li>
+            <li><a href="plan.html">خطط رحلتك</a></li>
+            <li><a href="stay.html">الإقامة والتجارة</a></li>
+            <li><a href="contact.html">تواصل معنا</a></li>
+        </ul>
+
+    </nav>
+
+
+    <!-- مقدمة الصفحة -->
+
+    <header class="discover-banner">
+
+        <div>
+            <h1>اكتشف عُمان 🇴🇲</h1>
+            <p>رحلة بين الطبيعة والتراث والمغامرة والهدوء</p>
+        </div>
+
+    </header>
+
+
+    <!-- أزرار الأقسام -->
+
+    <div class="tabs">
+
+        <button class="tab-button active" data-tab="nature">
+            🌿 الطبيعة
+        </button>
+
+        <button class="tab-button" data-tab="heritage">
+            🏛️ التراث العُماني
+        </button>
+
+        <button class="tab-button" data-tab="adventure">
+            🥾 المغامرات
+        </button>
+
+        <button class="tab-button" data-tab="relax">
+            🌴 الاسترخاء
+        </button>
+
+    </div>
+
+
+    <!-- ================= الطبيعة ================= -->
+
+    <section id="nature" class="tab-content active">
+
+        <h2 class="section-title">🌿 سحر الطبيعة العُمانية</h2>
+
+        <p class="section-intro">
+            تتميز سلطنة عُمان بتنوع طبيعي رائع؛ من الجبال الشاهقة
+            والشواطئ الهادئة إلى الأودية الخضراء والصحاري الواسعة.
+            وكل مكان فيها يحمل جمالًا مختلفًا يستحق الاكتشاف.
+        </p>
+
+
+        <div class="video-box">
+
+            <video controls>
+                <source src="../images/nature.mp4.mp4" type="video/mp4">
+                المتصفح لا يدعم تشغيل الفيديو.
+            </video>
+
+        </div>
+
+
+        <!-- بطاقات الطبيعة بالإيموجي فقط -->
+
+        <div class="nature-cards">
+
+            <div class="nature-card">
+                <div class="nature-emoji">🏔️</div>
+                <h3>الجبال</h3>
+                <p>
+                    تتميز جبال عُمان بارتفاعاتها الشاهقة ومناظرها
+                    الخلابة، وتمنح الزائر فرصة للاستمتاع بالهواء
+                    العليل ومشاهدة الطبيعة من أماكن مرتفعة.
+                </p>
+            </div>
+
+            <div class="nature-card">
+                <div class="nature-emoji">🏖️</div>
+                <h3>الشواطئ</h3>
+                <p>
+                    تمتد الشواطئ العُمانية على مساحات واسعة،
+                    وتتميز برمالها الجميلة ومياهها الزرقاء،
+                    كما توفر أجواء مناسبة للتنزه والاستمتاع بالبحر.
+                </p>
+            </div>
+
+            <div class="nature-card">
+                <div class="nature-emoji">🌴</div>
+                <h3>الأودية</h3>
+                <p>
+                    تجمع الأودية بين المياه والصخور والمناظر
+                    الطبيعية الجميلة، وتصبح بعض مناطقها أكثر
+                    خضرة وجمالًا بعد هطول الأمطار.
+                </p>
+            </div>
+
+            <div class="nature-card">
+                <div class="nature-emoji">🏜️</div>
+                <h3>الصحراء</h3>
+                <p>
+                    تتميز الصحاري العُمانية بالكثبان الرملية
+                    الذهبية واتساع الأفق، وتبدو جميلة بصورة
+                    خاصة عند شروق الشمس وغروبها.
+                </p>
+            </div>
+
+            <div class="nature-card">
+                <div class="nature-emoji">🌳</div>
+                <h3>الأشجار والواحات</h3>
+                <p>
+                    تمنح الواحات والمساحات الخضراء شعورًا
+                    بالراحة والجمال، وتبرز تنوع البيئة
+                    الطبيعية في مختلف مناطق السلطنة.
+                </p>
+            </div>
+
+            <div class="nature-card">
+                <div class="nature-emoji">🌧️</div>
+                <h3>الأجواء الممطرة</h3>
+                <p>
+                    تضفي الأمطار أجواء مميزة على الجبال
+                    والأودية، وتمنح الطبيعة مظهرًا متجددًا
+                    ورائحة جميلة بعد هطول المطر.
+                </p>
+            </div>
+
+        </div>
+
+
+        <!-- آراء الزوار -->
+
+        <div class="reviews-area">
+
+            <h2>🌷 حكايات وانطباعات عن طبيعة عُمان</h2>
+
+            <p class="review-note">
+                آراء نموذجية توضيحية، والأسماء الواردة فيها خيالية.
+            </p>
+
+            <div class="review-card" id="reviewCard">
+
+                <div class="review-person">
+
+                    <div class="review-avatar" id="reviewAvatar">🌸</div>
+
+                    <div>
+                        <h3 id="reviewName">سارة</h3>
+                        <div class="review-stars" id="reviewStars">★★★★★</div>
+                    </div>
+
+                </div>
+
+                <p class="review-text" id="reviewText"></p>
+
+            </div>
+
+            <div class="review-number" id="reviewNumber"></div>
+
+
+            <!-- نموذج إضافة رأي -->
+
+            <div class="review-form">
+
+                <h3>💌 شاركنا تجربتك ورأيك</h3>
+
+                <p>
+                    هل زرت مكانًا طبيعيًا جميلًا في عُمان؟
+                    اكتب انطباعك ليظهر مع الآراء الأخرى.
+                </p>
+
+                <form id="reviewForm">
+
+                    <label for="visitorName">اسمك:</label>
+
+                    <input
+                        type="text"
+                        id="visitorName"
+                        placeholder="اكتب اسمك هنا"
+                        maxlength="30"
+                        required
+                    >
+
+                    <label for="visitorRating">تقييمك:</label>
+
+                    <select id="visitorRating" required>
+                        <option value="5">★★★★★ ممتاز</option>
+                        <option value="4">★★★★☆ جميل جدًا</option>
+                        <option value="3">★★★☆☆ جميل</option>
+                        <option value="2">★★☆☆☆ جيد</option>
+                        <option value="1">★☆☆☆☆ مقبول</option>
+                    </select>
+
+                    <label for="visitorReview">رأيك وتجربتك:</label>
+
+                    <textarea
+                        id="visitorReview"
+                        placeholder="اكتب رأيك وتجربتك..."
+                        maxlength="1000"
+                        required
+                    ></textarea>
+
+                    <button type="submit" class="main-button">
+                        ✨ أضف رأيي
+                    </button>
+
+                    <p id="reviewMessage" aria-live="polite"></p>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= التراث ================= -->
+
+    <section id="heritage" class="tab-content">
+
+        <h2 class="section-title">🏛️ حكاية التراث العُماني</h2>
+
+        <p class="section-intro">
+            التراث العُماني حكاية أصيلة تجمع بين التاريخ
+            والحرف التقليدية والعادات الجميلة، وهو جزء مهم
+            من هوية المجتمع العُماني.
+        </p>
+
+
+        <div class="video-box">
+
+            <video controls>
+                <source src="../images/heritage.mp4.mp4" type="video/mp4">
+                المتصفح لا يدعم تشغيل الفيديو.
+            </video>
+
+        </div>
+
+
+        <!-- بطاقات تراثية بالإيموجي -->
+
+        <div class="heritage-grid">
+
+            <div class="heritage-card">
+                <div class="big-emoji">🏰</div>
+                <h3>القلاع والحصون</h3>
+                <p>
+                    تنتشر القلاع والحصون في مختلف أنحاء السلطنة،
+                    وتحكي قصصًا عن تاريخ عُمان ودورها في حماية
+                    المدن والقرى عبر العصور.
+                </p>
+            </div>
+
+            <div class="heritage-card">
+                <div class="big-emoji">🛍️</div>
+                <h3>الأسواق التقليدية</h3>
+                <p>
+                    تتميز الأسواق العُمانية بأجوائها الشعبية
+                    وروائح اللبان والبخور، وتضم منتجات تقليدية
+                    مثل الفضيات والمنسوجات والهدايا التراثية.
+                </p>
+            </div>
+
+            <div class="heritage-card">
+                <div class="big-emoji">🏺</div>
+                <h3>الحرف اليدوية</h3>
+                <p>
+                    تشمل الحرف التقليدية صناعة الفخار والسعفيات
+                    والفضيات، وتعكس مهارة الحرفيين وحرصهم
+                    على المحافظة على الموروث الشعبي.
+                </p>
+            </div>
+
+            <div class="heritage-card">
+                <div class="big-emoji">💧</div>
+                <h3>الأفلاج العُمانية</h3>
+                <p>
+                    تمثل الأفلاج نظامًا تقليديًا مميزًا لتوزيع
+                    المياه، وقد ارتبطت بالزراعة والحياة اليومية
+                    في كثير من القرى العُمانية.
+                </p>
+            </div>
+
+            <div class="heritage-card">
+                <div class="big-emoji">🎭</div>
+                <h3>الفنون الشعبية</h3>
+                <p>
+                    تتميز الفنون الشعبية بالأهازيج والإيقاعات
+                    والحركات الجماعية التي تعبر عن المناسبات
+                    والفرح والهوية الثقافية.
+                </p>
+            </div>
+
+            <div class="heritage-card">
+                <div class="big-emoji">👘</div>
+                <h3>الزي العُماني</h3>
+                <p>
+                    يعكس الزي التقليدي العُماني الذوق الأصيل
+                    والهوية الوطنية، وتتميز الملابس بالتفاصيل
+                    والتطريزات الجميلة التي تختلف من منطقة لأخرى.
+                </p>
+            </div>
+
+        </div>
+
+
+        <!-- معلومة عشوائية مبتكرة -->
+
+        <div class="heritage-fact">
+
+            <h3>💡 صندوق أسرار التراث</h3>
+
+            <p id="factText">
+                اضغط على الزر لاكتشاف معلومة جديدة من تراث عُمان.
+            </p>
+
+            <button class="main-button" id="factButton">
+                🔍 اكتشف معلومة
+            </button>
+
+        </div>
+
+
+        <!-- تسلسل زمني -->
+
+        <div class="heritage-fact">
+
+            <h3>⏳ رحلة عبر الزمن</h3>
+
+            <p>
+                🏺 الماضي: الحرف التقليدية والأسواق القديمة.
+            </p>
+
+            <p>
+                🏰 التاريخ: القلاع والحصون والطرق التجارية.
+            </p>
+
+            <p>
+                🌟 الحاضر: المحافظة على التراث وتقديمه للأجيال الجديدة.
+            </p>
+
+            <p>
+                🌱 المستقبل: نقل الموروث العُماني وتطويره دون فقدان أصالته.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= المغامرات ================= -->
+
+    <section id="adventure" class="tab-content">
+
+        <h2 class="section-title">🥾 عالم المغامرات والاستكشاف</h2>
+
+        <p class="section-intro">
+            لكل مغامرة بداية، ولكل مكان قصة جديدة.
+            اكتشف نوع الرحلة التي تناسب اهتماماتك.
+        </p>
+
+
+        <div class="video-box">
+
+            <video controls>
+                <source src="../images/adventure.mp4.mp4" type="video/mp4">
+                المتصفح لا يدعم تشغيل الفيديو.
+            </video>
+
+        </div>
+
+
+        <div class="adventure-intro">
+
+            <div style="font-size:55px;">🧭</div>
+
+            <h3>اصنع مغامرتك الخاصة!</h3>
+
+            <p>
+                اختر نوع الاستكشاف الذي يعجبك،
+                وسنقترح عليك فكرة مناسبة لرحلتك.
+            </p>
+
+        </div>
+
+
+        <h3 style="text-align:center; color:#6f5230;">
+            ✨ اختر مغامرتك المفضلة
+        </h3>
+
+
+        <div class="adventure-choices">
+
+            <div class="adventure-choice" data-adventure="mountain">
+                <span>🏔️</span>
+                <h3>مغامرة الجبال</h3>
+                <p>اكتشف المناظر الجبلية والقرى المرتفعة.</p>
+            </div>
+
+            <div class="adventure-choice" data-adventure="sea">
+                <span>⛵</span>
+                <h3>مغامرة البحر</h3>
+                <p>استمتع بجمال السواحل والمناظر البحرية.</p>
+            </div>
+
+            <div class="adventure-choice" data-adventure="valley">
+                <span>🌿</span>
+                <h3>مغامرة الأودية</h3>
+                <p>تعرّف على الأودية والطبيعة الخضراء.</p>
+            </div>
+
+            <div class="adventure-choice" data-adventure="desert">
+                <span>🏜️</span>
+                <h3>مغامرة الصحراء</h3>
+                <p>تأمل الكثبان الرملية واتساع الأفق.</p>
+            </div>
+
+        </div>
+
+
+        <div style="text-align:center;">
+            <button class="main-button" id="showAdventure">
+                🎯 اعرض اقتراحي
+            </button>
+        </div>
+
+
+        <div id="adventureResult">
+
+            <h3 id="adventureTitle"></h3>
+
+            <p id="adventureDescription"></p>
+
+            <p id="adventureTip"></p>
+
+        </div>
+
+
+        <!-- تحدي المستكشف -->
+
+        <div class="challenge-box">
+
+            <div style="font-size:50px;">🧠</div>
+
+            <h3>تحدي المستكشف الصغير</h3>
+
+            <p>
+                اختبر معلوماتك عن عُمان من خلال أسئلة ممتعة!
+            </p>
+
+            <p id="challengeQuestion"></p>
+
+            <div class="challenge-options" id="challengeOptions"></div>
+
+            <p id="challengeAnswer"></p>
+
+            <p>
+                ⭐ نقاطك: <span id="challengeScore">0</span>
+            </p>
+
+            <button class="main-button" id="nextQuestion">
+                السؤال التالي
+            </button>
+
+        </div>
+
+
+        <div class="adventure-intro">
+
+            <h3>🛡️ المستكشف الذكي</h3>
+
+            <p>
+                المغامرة الجميلة تبدأ بالتخطيط الجيد:
+                اختر الأماكن المناسبة، ورافق أسرتك أو مجموعة موثوقة،
+                وتحقق من حالة الطقس، واتبع إرشادات السلامة،
+                واحرص على شرب الماء وعدم ترك المخلفات في الطبيعة.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= الاسترخاء ================= -->
+
+    <section id="relax" class="tab-content">
+
+        <h2 class="section-title">🌴 استمتع بلحظات من الهدوء</h2>
+
+        <p class="section-intro">
+            خصص وقتًا للراحة والاستمتاع بجمال الطبيعة،
+            فالأوقات الهادئة تساعد على تجديد النشاط
+            وتحسين التركيز والاستمتاع باللحظة.
+        </p>
+
+
+        <div class="relax-hero">
+
+            <div class="relax-emoji">🌧️</div>
+
+            <h2>دع الهدوء يرافق رحلتك</h2>
+
+            <p>
+                تخيل قطرات المطر وهي تتساقط بهدوء،
+                وصوت الأمواج وهي تلامس الشاطئ،
+                والنسيم اللطيف بين الأشجار.
+            </p>
+
+        </div>
+
+
+        <!-- فوائد الاسترخاء -->
+
+        <h3 style="text-align:center; color:#6f5230;">
+            🌼 لماذا نحتاج إلى لحظات من الهدوء؟
+        </h3>
+
+
+        <div class="relax-grid">
+
+            <div class="relax-card">
+                <span>🧘</span>
+                <h3>راحة الذهن</h3>
+                <p>تمنحنا استراحة من الانشغال وتساعدنا على الشعور بالهدوء.</p>
+            </div>
+
+            <div class="relax-card">
+                <span>🎯</span>
+                <h3>تحسين التركيز</h3>
+                <p>تساعد فترات الراحة على العودة إلى المهام بنشاط أكبر.</p>
+            </div>
+
+            <div class="relax-card">
+                <span>🌿</span>
+                <h3>التأمل في الطبيعة</h3>
+                <p>الاستمتاع بالمناظر الطبيعية يجعل اللحظات أكثر جمالًا.</p>
+            </div>
+
+            <div class="relax-card">
+                <span>💤</span>
+                <h3>الاستعداد للنوم</h3>
+                <p>قد تساعد الأجواء الهادئة على الاستعداد لوقت النوم.</p>
+            </div>
+
+            <div class="relax-card">
+                <span>🌸</span>
+                <h3>تجديد النشاط</h3>
+                <p>الاستراحة القصيرة تمنح الجسم والعقل فرصة لاستعادة النشاط.</p>
+            </div>
+
+            <div class="relax-card">
+                <span>☁️</span>
+                <h3>لحظة لنفسك</h3>
+                <p>خصص وقتًا بسيطًا للقراءة أو التأمل أو الاستمتاع بالهدوء.</p>
+            </div>
+
+        </div>
+
+
+        <!-- صوت المطر -->
+
+        <div class="rain-box">
+
+            <div class="rain-icon">🌧️</div>
+
+            <h2>صوت المطر الهادئ</h2>
+
+            <p>
+                اضغط على الزر للاستماع إلى صوت قطرات المطر.
+                يمكنك إيقاف الصوت متى أردت.
+            </p>
+
+            <button class="main-button" id="rainButton">
+                ▶️ تشغيل صوت المطر
+            </button>
+
+            <p id="rainStatus" aria-live="polite">
+                الصوت متوقف
+            </p>
+
+        </div>
+
+
+        <!-- تمرين التنفس -->
+
+        <div class="breathing-box">
+
+            <h2 style="color:#6f5230;">🌬️ لحظة تنفس وهدوء</h2>
+
+            <p>
+                خصص لحظات قصيرة للتنفس بهدوء.
+                اتبع الدائرة أثناء التمرين.
+            </p>
+
+            <div class="breathing-circle" id="breathingCircle">
+                ابدأ
+            </div>
+
+            <p id="breathingText">
+                اضغط على بدء التمرين.
+            </p>
+
+            <button class="main-button" id="breathingButton">
+                ابدأ التمرين
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <footer>
+        <p>رِحلة | دليلك السياحي في عُمان 🇴🇲</p>
+        <p>اكتشف الجمال، وعش التجربة.</p>
+    </footer>
+
+
+
+    <script>
+
+        /* ================= التنقل بين الأقسام ================= */
+
+        const tabButtons = document.querySelectorAll(".tab-button");
+        const tabContents = document.querySelectorAll(".tab-content");
+
+        tabButtons.forEach(button => {
+
+            button.addEventListener("click", function () {
+
+                tabButtons.forEach(btn => btn.classList.remove("active"));
+
+                tabContents.forEach(section => section.classList.remove("active"));
+
+                this.classList.add("active");
+
+                document.getElementById(this.dataset.tab).classList.add("active");
+
+            });
+
+        });
+
+
+
+        /* ================= آراء الطبيعة ================= */
+
+        const defaultReviews = [
+
+            {
+                name: "سارة",
+                emoji: "🌸",
+                stars: 5,
+                text: "كانت زيارتي للطبيعة العُمانية من أجمل التجارب التي أتمنى تكرارها. أعجبني التنوع الكبير بين الجبال والشواطئ والأودية، فكل مكان له طابعه الخاص وجماله المختلف. أكثر ما أحببته هو الهدوء الذي أشعر به عندما أبتعد قليلًا عن ضجيج الحياة اليومية وأتأمل المناظر الطبيعية. كما أن الهواء النقي والمناظر المفتوحة يجعلان الرحلة مميزة، ويمنحان الزائر فرصة للتعرف على جمال عُمان بطريقة مختلفة. أدركت خلال هذه التجربة أن الطبيعة ليست مجرد أماكن نزورها، بل هي مساحة جميلة نستمتع بها ونتعلم منها أهمية المحافظة على البيئة."
+            },
+
+            {
+                name: "محمد",
+                emoji: "🏔️",
+                stars: 5,
+                text: "أكثر ما لفت انتباهي في عُمان هو جمال الجبال وتنوع أشكالها. عندما أشاهد الجبال الممتدة في الأفق أشعر بعظمة الطبيعة وروعتها، وأحب التأمل في ألوان الصخور وتدرجاتها، خاصة في أوقات الصباح والمساء. كما أعجبتني القرى الجبلية التي تجمع بين الطبيعة والحياة التقليدية، فهي تقدم صورة جميلة عن ارتباط الإنسان بالمكان. أرى أن الرحلات الجبلية فرصة للتعرف على مناطق جديدة والتقاط الذكريات الجميلة، ولكن من المهم دائمًا التخطيط للزيارة واتباع الإرشادات المناسبة للمحافظة على سلامة الجميع."
+            },
+
+            {
+                name: "ليان",
+                emoji: "🌊",
+                stars: 5,
+                text: "أحب الشواطئ العُمانية كثيرًا، لأنها تمنحني شعورًا بالراحة والهدوء. منظر البحر الواسع وصوت الأمواج وحركة الماء من الأشياء التي تجعلني أستمتع بالوقت وأتأمل جمال المكان. كما أن الشواطئ تختلف من منطقة إلى أخرى، فبعضها يتميز بالرمال الناعمة وبعضها تحيط به الصخور والمناظر الطبيعية الجميلة. أكثر ما يعجبني هو مشاهدة تغير ألوان البحر مع ضوء الشمس، فهي لوحة طبيعية متجددة لا تتشابه تفاصيلها في كل لحظة. أتمنى أن يحرص الجميع على نظافة الشواطئ وعدم ترك المخلفات فيها."
+            },
+
+            {
+                name: "أحمد",
+                emoji: "🌴",
+                stars: 4,
+                text: "كانت الأودية من الأماكن التي أثارت إعجابي، فهي تجمع بين الصخور والمياه والمساحات الطبيعية في مشهد جميل. أحببت التعرف على النباتات التي تنمو في بعض المناطق ومشاهدة اختلاف طبيعة المكان من منطقة إلى أخرى. كما أن زيارة الأودية تجعل الإنسان أكثر تقديرًا للمياه وأهميتها في الحياة، وتذكرنا بضرورة المحافظة على الموارد الطبيعية. أعتقد أن أجمل ما في هذه الرحلات هو اكتشاف تفاصيل لم نكن نلاحظها من قبل، مثل أصوات الطيور وأشكال الصخور وانعكاس الضوء على الماء."
+            },
+
+            {
+                name: "مريم",
+                emoji: "🌺",
+                stars: 5,
+                text: "أحببت الأجواء الطبيعية في عُمان لأنها تجمع بين البساطة والجمال. من أكثر اللحظات التي أستمتع بها مشاهدة الغروب بين الجبال أو بالقرب من البحر، عندما تتغير ألوان السماء تدريجيًا وتصبح المناظر أكثر هدوءًا. أشعر أن هذه اللحظات تجعلنا نتوقف قليلًا عن الانشغال ونلاحظ الأشياء الجميلة من حولنا. كما أن تنوع الطبيعة في السلطنة يجعل كل رحلة مختلفة عن الأخرى، فلا يحتاج الإنسان إلى زيارة المكان نفسه في كل مرة حتى يستمتع بتجربة جديدة."
+            },
+
+            {
+                name: "خالد",
+                emoji: "🏜️",
+                stars: 5,
+                text: "أحببت الصحراء العُمانية لما تتميز به من مساحات واسعة وكثبان رملية جميلة. منظر الرمال عندما تعكس أشعة الشمس ألوانًا ذهبية يمنح المكان طابعًا مميزًا يصعب نسيانه. كما أن هدوء الصحراء واتساع السماء يجعلانها مكانًا مناسبًا للتأمل والتعرف على البيئة الصحراوية. تعلمت من هذه التجربة أن لكل بيئة طبيعية جمالها الخاص، وأن المحافظة عليها مسؤولية مشتركة. وأرى أن زيارة الصحراء تكون أجمل عندما تكون مخططة وبصحبة الأسرة أو مرشدين موثوقين."
+            },
+
+            {
+                name: "نور",
+                emoji: "🦋",
+                stars: 5,
+                text: "من الأشياء التي أعجبتني في الطبيعة العُمانية تنوع الكائنات والنباتات والمناظر التي يمكن مشاهدتها في مناطق مختلفة. أحب مراقبة الطيور والفراشات والنباتات الصغيرة التي تضيف للمكان حياة وجمالًا. كما أن التعرف على البيئة الطبيعية يجعل الرحلة أكثر فائدة، لأننا لا نكتفي بمشاهدة المناظر فقط، بل نتعلم معلومات جديدة عن المكان وأهميته. أصبحت ألاحظ التفاصيل الصغيرة التي كنت أتجاهلها سابقًا، وأدركت أن المحافظة على الطبيعة تبدأ من تصرفات بسيطة مثل عدم إزعاج الكائنات وعدم رمي النفايات."
+            },
+
+            {
+                name: "ريم",
+                emoji: "🌧️",
+                stars: 5,
+                text: "أحب الأجواء التي تأتي بعد هطول المطر، فهي تمنح الطبيعة مظهرًا مختلفًا ورائحة جميلة. تصبح بعض المناطق أكثر خضرة، وتبدو الجبال والطرق والأشجار وكأنها اكتست بحلة جديدة. كما أن صوت المطر يجعلني أشعر بالهدوء ويذكرني بجمال التغيرات الطبيعية. أرى أن عُمان تتميز بتنوع مناظرها، وأن لكل فصل وأجواء تفاصيل تستحق الملاحظة والتأمل. أتمنى أن تتاح لي فرصة زيارة المزيد من المناطق الطبيعية والتعرف على جمالها عن قرب."
+            },
+
+            {
+                name: "يوسف",
+                emoji: "🌄",
+                stars: 4,
+                text: "كانت مشاهدة شروق الشمس في الطبيعة تجربة جميلة بالنسبة لي. أحببت كيف تبدأ الألوان بالظهور تدريجيًا في السماء، وكيف تتغير ملامح الجبال والأرض مع دخول الضوء. هذه اللحظات تجعل الرحلة مختلفة وتمنحنا فرصة للاستمتاع بالطبيعة بعيدًا عن الانشغال بالشاشات. كما تعلمت أن اختيار الوقت المناسب للزيارة يجعل التجربة أكثر راحة ومتعة. عُمان مليئة بالمواقع التي تستحق الاكتشاف، وأتمنى أن أتعرف على المزيد من المناطق التي تجمع بين الجمال الطبيعي والهدوء."
+            },
+
+            {
+                name: "جود",
+                emoji: "🌷",
+                stars: 5,
+                text: "أكثر ما يعجبني في الطبيعة العُمانية هو أنها متنوعة وقريبة من حياتنا اليومية، فهناك الجبال والبحار والواحات والأودية. أحب الأماكن التي تجمع بين اللون الأخضر والماء والصخور، لأنها تمنحني فرصة للتأمل والتقاط صور للمناظر الجميلة. كما أن زيارة الأماكن الطبيعية تجعلني أفكر في أهمية المحافظة على البيئة وعدم الإضرار بها. أشعر أن كل مكان نزوره يمكن أن يعلمنا شيئًا جديدًا، سواء عن الطبيعة أو عن تاريخ المنطقة أو عن أسلوب حياة سكانها."
+            },
+
+            {
+                name: "راشد",
+                emoji: "⛰️",
+                stars: 5,
+                text: "أحببت مشاهدة الجبال العُمانية بسبب اختلاف أشكالها وارتفاعاتها والمناظر التي تظهر من حولها. بعض المناطق تمنح الزائر فرصة لمشاهدة القرى والوديان من مسافات بعيدة، وهذا يجعل المشهد واسعًا ومليئًا بالتفاصيل. كما أعجبني ارتباط بعض القرى بالزراعة والطرق القديمة، مما يجعل الزيارة تجمع بين الطبيعة والثقافة. أرى أن السياحة الطبيعية ليست مجرد ترفيه، بل فرصة للتعلم والتعرف على جمال الوطن وتنوعه، مع ضرورة احترام المكان والمحافظة على نظافته."
+            },
+
+            {
+                name: "هيا",
+                emoji: "🐚",
+                stars: 5,
+                text: "البحر من أكثر الأماكن التي أحب زيارتها، وأستمتع بمراقبة الأمواج وهي تقترب من الشاطئ ثم تعود بهدوء. أحب أيضًا ملاحظة الأصداف والصخور وألوان الماء المختلفة. أشعر أن الجلوس بالقرب من البحر يمنحني وقتًا للتفكير والراحة، ويجعلني أقدّر جمال الطبيعة أكثر. من الجميل أن تكون لدينا شواطئ متنوعة في السلطنة، وأن نستطيع التعرف على بيئات بحرية مختلفة. وأتمنى أن يهتم الزوار بنظافة الشواطئ ويحافظوا على الكائنات البحرية."
+            },
+
+            {
+                name: "عمر",
+                emoji: "🌿",
+                stars: 4,
+                text: "أعجبتني المناطق الخضراء والواحات لأنها تقدم منظرًا مختلفًا عن المناطق الجبلية والصحراوية. أحب مشاهدة الأشجار والنباتات وكيف تنمو في بيئات مختلفة، وأستمتع بالتعرف على علاقتها بالمياه والتربة والمناخ. كما أن هذه الأماكن تذكرنا بأهمية الموارد الطبيعية وضرورة استخدامها بطريقة مسؤولة. أرى أن الرحلات التعليمية إلى الطبيعة يمكن أن تكون ممتعة ومفيدة في الوقت نفسه، خاصة عندما نشارك المعلومات ونتعلم من المكان بدلًا من الاكتفاء بزيارته."
+            },
+
+            {
+                name: "دانة",
+                emoji: "🌻",
+                stars: 5,
+                text: "أحببت الطبيعة في عُمان لأنها تمنح كل زائر تجربة مختلفة. قد يستمتع شخص بالجبال، بينما يفضل آخر الشواطئ أو الأودية أو الصحراء، وكل هذه الخيارات موجودة في السلطنة. بالنسبة لي، أجمل ما في الرحلة هو مشاركة الوقت مع الأسرة ومشاهدة المناظر الطبيعية والتعرف على معلومات جديدة عن المناطق التي نزورها. كما أحب الاحتفاظ بالذكريات من خلال الصور، لكن الأجمل هو أن نستمتع بالمكان دون أن ننسى احترام البيئة والمحافظة عليها."
+            },
+
+            {
+                name: "مازن",
+                emoji: "🌅",
+                stars: 5,
+                text: "أكثر اللحظات التي أتذكرها هي أوقات الغروب، عندما تصبح السماء بألوان جميلة وتنعكس أشعة الشمس على الجبال أو البحر. أحب هذه اللحظات لأنها تجعلني ألاحظ جمال التفاصيل الصغيرة، مثل تغير لون الصخور وحركة السحب وهدوء المكان. كما أن الطبيعة العُمانية تقدم مشاهد متنوعة تجعل كل زيارة فرصة لاكتشاف شيء جديد. أشجع الجميع على التعرف على مناطق السلطنة والاستمتاع بجمالها بطريقة مسؤولة تحافظ على البيئة للأجيال القادمة."
+            }
+
+        ];
+
+
+        let reviews = [...defaultReviews];
+
+        const savedReviews = localStorage.getItem("omanNatureReviews");
+
+        if (savedReviews) {
+
+            try {
+
+                const parsedReviews = JSON.parse(savedReviews);
+
+                if (Array.isArray(parsedReviews)) {
+                    reviews = [...defaultReviews, ...parsedReviews];
+                }
+
+            } catch (error) {
+                console.log("تعذر قراءة الآراء المحفوظة.");
+            }
+
+        }
+
+
+        let currentReview = 0;
+
+        const reviewCard = document.getElementById("reviewCard");
+
+
+        function showReview() {
+
+            const review = reviews[currentReview];
+
+            reviewCard.classList.add("changing");
+
+            setTimeout(() => {
+
+                document.getElementById("reviewAvatar").textContent = review.emoji;
+
+                document.getElementById("reviewName").textContent = review.name;
+
+                document.getElementById("reviewStars").textContent =
+                    "★".repeat(review.stars) + "☆".repeat(5 - review.stars);
+
+                document.getElementById("reviewText").textContent = review.text;
+
+                document.getElementById("reviewNumber").textContent =
+                    "الرأي " + (currentReview + 1) + " من " + reviews.length;
+
+                reviewCard.classList.remove("changing");
+
+            }, 250);
+
+        }
+
+
+        showReview();
+
+        setInterval(() => {
+
+            currentReview = (currentReview + 1) % reviews.length;
+
+            showReview();
+
+        }, 1000);
+
+
+        /* إضافة رأي المستخدم */
+
+        document.getElementById("reviewForm").addEventListener("submit", function (event) {
+
+            event.preventDefault();
+
+            const name = document.getElementById("visitorName").value.trim();
+
+            const rating = Number(document.getElementById("visitorRating").value);
+
+            const text = document.getElementById("visitorReview").value.trim();
+
+            if (!name || !text) {
+                return;
+            }
+
+            const newReview = {
+                name: name,
+                emoji: "💬",
+                stars: rating,
+                text: text
+            };
+
+            reviews.push(newReview);
+
+            const userReviews = reviews.slice(defaultReviews.length);
+
+            localStorage.setItem("omanNatureReviews", JSON.stringify(userReviews));
+
+            currentReview = reviews.length - 1;
+
+            showReview();
+
+            document.getElementById("reviewMessage").textContent =
+                "✨ تمت إضافة رأيك بنجاح! سيظهر مع بقية الآراء.";
+
+            this.reset();
+
+        });
+
+
+
+        /* ================= معلومات التراث ================= */
+
+        const heritageFacts = [
+
+            "🏰 قلعة نزوى من المعالم التاريخية البارزة في سلطنة عُمان.",
+
+            "💧 نظام الأفلاج العُمانية يعكس خبرة الإنسان في إدارة المياه وتوزيعها.",
+
+            "🛍️ تشتهر الأسواق التقليدية ببيع المنتجات المحلية والفضيات والبخور.",
+
+            "🏺 تعد صناعة الفخار من الحرف التقليدية التي ارتبطت بالحياة اليومية.",
+
+            "🌿 يرتبط اللبان العُماني بتاريخ التجارة والعلاقات الحضارية.",
+
+            "🎭 تعبر الفنون الشعبية عن العادات والمناسبات والهوية العُمانية.",
+
+            "🧺 تعد صناعة السعفيات من الحرف التي تستفيد من سعف النخيل."
+
+        ];
+
+
+        document.getElementById("factButton").addEventListener("click", function () {
+
+            const randomIndex = Math.floor(Math.random() * heritageFacts.length);
+
+            document.getElementById("factText").textContent = heritageFacts[randomIndex];
+
+        });
+
+
+
+        /* ================= المغامرات ================= */
+
+        let selectedAdventure = "";
+
+        const adventureChoices = document.querySelectorAll(".adventure-choice");
+
+        adventureChoices.forEach(choice => {
+
+            choice.addEventListener("click", function () {
+
+                adventureChoices.forEach(item => item.classList.remove("selected"));
+
+                this.classList.add("selected");
+
+                selectedAdventure = this.dataset.adventure;
+
+            });
+
+        });
+
+
+        const adventureData = {
+
+            mountain: {
+                title: "🏔️ اقتراحك: رحلة جبلية",
+                description: "استمتع بمشاهدة الجبال والقرى المرتفعة، وتعرف على طبيعة المنطقة وتاريخها.",
+                tip: "💡 نصيحة: اختر مسارًا مناسبًا، وتحقق من حالة الطقس، واذهب برفقة الأسرة أو مرشد موثوق."
+            },
+
+            sea: {
+                title: "⛵ اقتراحك: رحلة بحرية",
+                description: "اكتشف جمال الساحل العُماني واستمتع بمشاهدة البحر والمناظر البحرية.",
+                tip: "💡 نصيحة: التزم بتعليمات السلامة البحرية، ولا تذهب إلى البحر دون إشراف مناسب."
+            },
+
+            valley: {
+                title: "🌿 اقتراحك: جولة في وادٍ",
+                description: "تعرف على الصخور والنباتات والمياه، واكتشف كيف تتنوع البيئات الطبيعية في عُمان.",
+                tip: "💡 نصيحة: تجنب الأودية أثناء الأمطار أو عند توقع جريان المياه، واتبع الإرشادات المحلية."
+            },
+
+            desert: {
+                title: "🏜️ اقتراحك: استكشاف الصحراء",
+                description: "تعرف على الكثبان الرملية والحياة الصحراوية واستمتع بمشاهدة الأفق الواسع.",
+                tip: "💡 نصيحة: خطط للزيارة مع الأسرة أو مرشد مختص، واحرص على الماء ووسائل التواصل."
+            }
+
+        };
+
+
+        document.getElementById("showAdventure").addEventListener("click", function () {
+
+            const result = document.getElementById("adventureResult");
+
+            if (!selectedAdventure) {
+
+                alert("يرجى اختيار نوع المغامرة أولًا.");
+
+                return;
+
+            }
+
+            const adventure = adventureData[selectedAdventure];
+
+            document.getElementById("adventureTitle").textContent = adventure.title;
+
+            document.getElementById("adventureDescription").textContent =
+                adventure.description;
+
+            document.getElementById("adventureTip").textContent =
+                adventure.tip;
+
+            result.style.display = "block";
+
+            result.scrollIntoView({
+                behavior: "smooth",
+                block: "nearest"
+            });
+
+        });
+
+
+
+        /* تحدي المستكشف */
+
+        const questions = [
+
+            {
+                question: "ما اسم المحافظة التي تشتهر بقلعة نزوى؟",
+                answers: ["الداخلية", "ظفار", "مسندم"],
+                correct: "الداخلية"
+            },
+
+            {
+                question: "بماذا تشتهر محافظة ظفار في موسم الخريف؟",
+                answers: ["الثلوج", "الأجواء الخريفية", "الكثبان الجليدية"],
+                correct: "الأجواء الخريفية"
+            },
+
+            {
+                question: "ما النظام التقليدي الذي يستخدم لتوزيع المياه في عُمان؟",
+                answers: ["الأفلاج", "الموانئ", "الأبراج"],
+                correct: "الأفلاج"
+            },
+
+            {
+                question: "أي مما يأتي يعد من الحرف التقليدية؟",
+                answers: ["صناعة الفخار", "صناعة الهواتف", "البرمجة"],
+                correct: "صناعة الفخار"
+            },
+
+            {
+                question: "أي بيئة تتميز بالكثبان الرملية؟",
+                answers: ["الصحراء", "الشاطئ", "الغابة"],
+                correct: "الصحراء"
+            }
+
+        ];
+
+
+        let questionIndex = 0;
+
+        let score = 0;
+
+        let answered = false;
+
+
+        function showQuestion() {
+
+            answered = false;
+
+            const question = questions[questionIndex];
+
+            document.getElementById("challengeQuestion").textContent = question.question;
+
+            document.getElementById("challengeAnswer").textContent = "";
+
+            const options = document.getElementById("challengeOptions");
+
+            options.textContent = "";
+
+            question.answers.forEach(answer => {
+
+                const button = document.createElement("button");
+
+                button.textContent = answer;
+
+                button.addEventListener("click", function () {
+
+                    if (answered) {
+                        return;
+                    }
+
+                    answered = true;
+
+                    if (answer === question.correct) {
+
+                        score++;
+
+                        document.getElementById("challengeAnswer").textContent =
+                            "🎉 إجابة صحيحة! أحسنت.";
+
+                    } else {
+
+                        document.getElementById("challengeAnswer").textContent =
+                            "🌷 إجابة غير صحيحة. الإجابة الصحيحة هي: " + question.correct;
+
+                    }
+
+                    document.getElementById("challengeScore").textContent = score;
+
+                });
+
+                options.appendChild(button);
+
+            });
+
+        }
+
+
+        document.getElementById("nextQuestion").addEventListener("click", function () {
+
+            questionIndex++;
+
+            if (questionIndex >= questions.length) {
+
+                questionIndex = 0;
+
+                score = 0;
+
+                document.getElementById("challengeScore").textContent = score;
+
+                document.getElementById("challengeAnswer").textContent =
+                    "✨ انتهى التحدي! يمكنك البدء من جديد.";
+
+            }
+
+            showQuestion();
+
+        });
+
+
+        showQuestion();
+
+
+
+        /* ================= صوت المطر ================= */
+
+        let audioContext = null;
+
+        let rainSource = null;
+
+        let rainGain = null;
+
+        let rainFilter = null;
+
+        let rainPlaying = false;
+
+
+        async function startRain() {
+
+            const AudioContextClass =
+                window.AudioContext || window.webkitAudioContext;
+
+            if (!AudioContextClass) {
+
+                document.getElementById("rainStatus").textContent =
+                    "متصفحك لا يدعم تشغيل الصوت.";
+
+                return;
+
+            }
+
+            if (!audioContext) {
+
+                audioContext = new AudioContextClass();
+
+            }
+
+            if (audioContext.state === "suspended") {
+
+                await audioContext.resume();
+
+            }
+
+
+            /* إنشاء صوت مطر باستخدام ضوضاء صوتية منخفضة */
+
+            const bufferSize = audioContext.sampleRate * 4;
+
+            const buffer = audioContext.createBuffer(
+                1,
+                bufferSize,
+                audioContext.sampleRate
+            );
+
+            const data = buffer.getChannelData(0);
+
+            for (let i = 0; i < bufferSize; i++) {
+
+                data[i] = Math.random() * 2 - 1;
+
+            }
+
+
+            rainSource = audioContext.createBufferSource();
+
+            rainSource.buffer = buffer;
+
+            rainSource.loop = true;
+
+
+            rainFilter = audioContext.createBiquadFilter();
+
+            rainFilter.type = "lowpass";
+
+            rainFilter.frequency.value = 3500;
+
+
+            rainGain = audioContext.createGain();
+
+            rainGain.gain.value = 0.12;
+
+
+            rainSource.connect(rainFilter);
+
+            rainFilter.connect(rainGain);
+
+            rainGain.connect(audioContext.destination);
+
+            rainSource.start();
+
+            rainPlaying = true;
+
+            document.getElementById("rainButton").textContent =
+                "⏸️ إيقاف صوت المطر";
+
+            document.getElementById("rainStatus").textContent =
+                "🌧️ صوت المطر يعمل الآن...";
+
+        }
+
+
+        function stopRain() {
+
+            if (rainSource) {
+
+                try {
+                    rainSource.stop();
+                } catch (error) {
+                    // مصدر الصوت متوقف بالفعل.
+                }
+
+                rainSource.disconnect();
+
+                rainSource = null;
+
+            }
+
+            rainPlaying = false;
+
+            document.getElementById("rainButton").textContent =
+                "▶️ تشغيل صوت المطر";
+
+            document.getElementById("rainStatus").textContent =
+                "الصوت متوقف";
+
+        }
+
+
+        document.getElementById("rainButton").addEventListener("click", async function () {
+
+            if (rainPlaying) {
+
+                stopRain();
+
+            } else {
+
+                await startRain();
+
+            }
+
+        });
+
+
+
+        /* ================= تمرين التنفس ================= */
+
+        let breathingTimer = null;
+
+        let breathingRunning = false;
+
+        let breathingStep = 0;
+
+        const breathingPhases = [
+
+            {
+                text: "🌬️ خذ شهيقًا بهدوء",
+                duration: 4
+            },
+
+            {
+                text: "🍃 أخرج الزفير بهدوء",
+                duration: 4
+            }
+
+        ];
+
+
+        function breathingTick() {
+
+            const phase = breathingPhases[breathingStep];
+
+            document.getElementById("breathingText").textContent =
+                phase.text;
+
+            breathingStep = (breathingStep + 1) % breathingPhases.length;
+
+        }
+
+
+        document.getElementById("breathingButton").addEventListener("click", function () {
+
+            const circle = document.getElementById("breathingCircle");
+
+            if (!breathingRunning) {
+
+                breathingRunning = true;
+
+                breathingStep = 0;
+
+                circle.classList.add("active");
+
+                breathingTick();
+
+                breathingTimer = setInterval(breathingTick, 4000);
+
+                this.textContent = "إيقاف التمرين";
+
+            } else {
+
+                breathingRunning = false;
+
+                clearInterval(breathingTimer);
+
+                circle.classList.remove("active");
+
+                circle.textContent = "ابدأ";
+
+                document.getElementById("breathingText").textContent =
+                    "انتهى التمرين، أحسنت!";
+
+                this.textContent = "ابدأ التمرين";
+
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>

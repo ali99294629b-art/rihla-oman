@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>الإقامة والتجارة | رحلة</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #f8f5ef;
+            color: #514332;
+            font-family: Arial, sans-serif;
+        }
+
+        /* شريط التنقل العلوي */
+        .stay-navbar {
+            min-height: 75px;
+            padding: 12px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            background: #fffaf1;
+        }
+
+        .stay-logo {
+            color: #795b35;
+            text-decoration: none;
+            font-size: 26px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .stay-nav-links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .stay-nav-links a {
+            display: block;
+            padding: 11px 14px;
+            color: #554938;
+            text-decoration: none;
+            font-size: 14px;
+            border-radius: 8px;
+            white-space: nowrap;
+            transition: 0.3s;
+        }
+
+        .stay-nav-links a:hover,
+        .stay-nav-links a.active {
+            background-color: #80603a;
+            color: white;
+        }
+
+        /* الصورة الرئيسية */
+        .stay-hero {
+            height: 300px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stay-hero img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        .stay-hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to left,
+                rgba(31, 39, 29, 0.65),
+                rgba(31, 39, 29, 0.05)
+            );
+        }
+
+        .stay-hero-text {
+            position: absolute;
+            z-index: 2;
+            right: 8%;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+        }
+
+        .stay-hero-text h1 {
+            color: white;
+            font-size: 42px;
+            margin: 0 0 8px;
+        }
+
+        .stay-hero-text p {
+            color: white;
+            font-size: 17px;
+            margin: 0;
+        }
+
+        /* التبويبات الداخلية */
+        .stay-tabs {
+            width: 88%;
+            max-width: 1050px;
+            margin: -25px auto 25px;
+            padding: 9px;
+            position: relative;
+            z-index: 3;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            background: #fffaf1;
+            border-radius: 18px;
+            box-shadow: 0 4px 15px rgba(70, 51, 30, 0.10);
+        }
+
+        .stay-tab {
+            min-width: 170px;
+            padding: 12px 20px;
+            text-align: center;
+            text-decoration: none;
+            color: #725b3b;
+            background: #f1e8d9;
+            border-radius: 12px;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        .stay-tab.active,
+        .stay-tab:hover {
+            background: #80613b;
+            color: white;
+        }
+
+        /* مقدمة القسم */
+        .stay-intro {
+            max-width: 1100px;
+            margin: 0 auto 25px;
+            padding: 0 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .stay-intro h2 {
+            color: #795b35;
+            font-size: 25px;
+            margin: 0 0 5px;
+        }
+
+        .stay-intro p {
+            color: #807365;
+            font-size: 14px;
+            margin: 0;
+        }
+
+        .stay-count {
+            color: #8b6f47;
+            background: #eee4d3;
+            padding: 9px 17px;
+            border-radius: 22px;
+            font-size: 13px;
+        }
+
+        /* جدول الإقامة */
+        .stay-table-wrap {
+            max-width: 1150px;
+            margin: 0 auto 40px;
+            padding: 0 25px;
+            overflow-x: auto;
+        }
+
+        .stay-table {
+            width: 100%;
+            min-width: 850px;
+            border-collapse: collapse;
+            background: #fffaf2;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(70, 51, 30, 0.07);
+        }
+
+        .stay-table th {
+            background: #e9decb;
+            color: #715536;
+            padding: 17px 12px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .stay-table td {
+            padding: 13px 12px;
+            text-align: center;
+            border-bottom: 1px solid #eee6da;
+            color: #625748;
+            font-size: 13px;
+        }
+
+        .stay-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .stay-table tbody tr {
+            transition: 0.3s;
+        }
+
+        .stay-table tbody tr:hover {
+            background: #f5eee2;
+        }
+
+        .stay-place {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-align: right;
+        }
+
+        .stay-place img {
+            width: 95px;
+            height: 68px;
+            object-fit: cover;
+            border-radius: 9px;
+            transition: 0.3s;
+        }
+
+        .stay-place img:hover {
+            transform: scale(1.08);
+        }
+
+        .stay-place strong {
+            display: block;
+            color: #795b35;
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .stay-place span {
+            color: #8b8174;
+            font-size: 12px;
+        }
+
+        .stay-rating,
+        .stay-price {
+            white-space: nowrap;
+        }
+
+        /* أزرار الروابط */
+        .hotel-button,
+        .destination-button {
+            display: inline-block;
+            margin-top: 8px;
+            padding: 8px 13px;
+            background-color: #8b6848;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 12px;
+            transition: 0.3s;
+        }
+
+        .hotel-button:hover,
+        .destination-button:hover {
+            background-color: #60452f;
+            transform: translateY(-2px);
+        }
+
+        /* قسم التجارب المحلية */
+        .stay-note {
+            max-width: 1050px;
+            margin: 0 auto 40px;
+            padding: 0 25px;
+        }
+
+        .stay-note-inner {
+            padding: 22px;
+            border-right: 4px solid #a17a45;
+            border-radius: 10px;
+            background: #eee4d3;
+            color: #6d604e;
+            font-size: 14px;
+            line-height: 1.9;
+        }
+
+        .experience-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 18px;
+        }
+
+        .experience-links a {
+            display: inline-block;
+            padding: 11px 20px;
+            background: #80613b;
+            color: white;
+            text-decoration: none;
+            border-radius: 9px;
+            transition: 0.3s;
+        }
+
+        .experience-links a:hover {
+            background: #60452f;
+            transform: translateY(-3px);
+        }
+
+        /* التذييل */
+        .stay-footer {
+            background: #e9dfcf;
+            text-align: center;
+            padding: 25px 20px;
+            color: #796b59;
+            font-size: 13px;
+        }
+
+        .stay-footer strong {
+            display: block;
+            color: #795b35;
+            font-size: 24px;
+        }
+
+        .footer-links {
+            margin-top: 15px;
+        }
+
+        .footer-links a {
+            display: inline-block;
+            color: #795b35;
+            text-decoration: none;
+            margin: 5px 10px;
+            transition: 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #a17a45;
+            text-decoration: underline;
+        }
+
+        /* الشاشات الصغيرة */
+        @media (max-width: 900px) {
+            .stay-navbar {
+                justify-content: center;
+            }
+
+            .stay-nav-links {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .stay-nav-links {
+                gap: 5px;
+            }
+
+            .stay-nav-links a {
+                padding: 9px 10px;
+                font-size: 13px;
+            }
+
+            .stay-hero {
+                height: 250px;
+            }
+
+            .stay-hero-text h1 {
+                font-size: 32px;
+            }
+
+            .stay-tabs {
+                width: 94%;
+                flex-wrap: wrap;
+            }
+
+            .stay-tab {
+                min-width: 120px;
+                flex: 1;
+            }
+
+            .stay-intro {
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- شريط التنقل العلوي -->
+    <nav class="stay-navbar">
+
+        <a href="../index.html" class="stay-logo">رِحلة</a>
+
+        <div class="stay-nav-links">
+            <a href="../index.html">الرئيسية</a>
+            <a href="discover.html">اكتشف</a>
+            <a href="wilayat.html">الولايات والمناطق</a>
+            <a href="plan.html">خطط رحلتك</a>
+            <a href="stay.html" class="active">الإقامة والتجارة</a>
+            <a href="contact.html">تواصل معنا</a>
+        </div>
+
+    </nav>
+
+    <!-- الصورة الرئيسية -->
+    <header class="stay-hero">
+
+        <img src="../images/accommodation-banner.jpg"
+             alt="الإقامة والتجارة في عُمان">
+
+        <div class="stay-hero-text">
+            <h1>الإقامة والتجارة</h1>
+            <p>أماكن مميزة لإقامة تليق برحلتك</p>
+        </div>
+
+    </header>
+
+    <!-- التبويبات الداخلية -->
+    <nav class="stay-tabs">
+        <a href="#accommodation" class="stay-tab active">أماكن الإقامة</a>
+        <a href="#experiences" class="stay-tab">التجارب المحلية</a>
+    </nav>
+
+    <main>
+
+        <!-- مقدمة القسم -->
+        <section class="stay-intro" id="accommodation">
+
+            <div>
+                <h2>اختاري إقامتك القادمة</h2>
+                <p>خيارات متنوعة تساعدك على التخطيط لرحلة جميلة في عُمان.</p>
+            </div>
+
+            <span class="stay-count">دليلك إلى أماكن الإقامة</span>
+
+        </section>
+
+        <!-- جدول الإقامة -->
+        <section class="stay-table-wrap">
+
+            <table class="stay-table">
+
+                <thead>
+                    <tr>
+                        <th>مكان الإقامة</th>
+                        <th>المنطقة</th>
+                        <th>النوع</th>
+                        <th>التقييم</th>
+                        <th>السعر التقريبي</th>
+                        <th>استكشاف المنطقة</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <!-- مسقط -->
+                    <tr>
+                        <td>
+                            <div class="stay-place">
+                                <img src="../images/destinations.jpg"
+                                     alt="فندق موفنبيك مسقط">
+
+                                <div>
+                                    <strong>فندق موفنبيك مسقط</strong>
+                                    <span>فندق في مسقط</span>
+                                    <br>
+                                    <a href="https://movenpick.accor.com/en/middle-east/oman/muscat/hotel-and-apartments-ghala-muscat.html"
+                                       target="_blank"
+                                       rel="noopener noreferrer"
+                                       class="hotel-button">
+                                        الموقع الرسمي
+                                    </a>
+                                </div>
+                            </div>
+                        </td>
+
+                        <td>مسقط</td>
+                        <td>فندق</td>
+                        <td>تحققي من التقييم الحالي</td>
+                        <td class="stay-price">يُحدد عند الحجز</td>
+
+                        <td>
+                            <a href="muscat.html" class="destination-button">
+                                اكتشفي مسقط
+                            </a>
+                        </td>
+                    </tr>
+
+                    <!-- نزوى -->
+                    <tr>
+                        <td>
+                            <div class="stay-place">
+                                <img src="../images/nizwa.jpg"
+                                     alt="فندق إنترسيتي نزوى">
+
+                                <div>
+                                    <strong>فندق إنترسيتي نزوى</strong>
+                                    <span>فندق في نزوى</span>
+                                </div>
+                            </div>
+                        </td>
+
+                        <td>نزوى</td>
+                        <td>فندق</td>
+                        <td>تحققي من التقييم الحالي</td>
+                        <td class="stay-price">يُحدد عند الحجز</td>
+
+                        <td>
+                            <a href="nizwa.html" class="destination-button">
+                                اكتشفي نزوى
+                            </a>
+                        </td>
+                    </tr>
+
+                    <!-- صلالة -->
+                    <tr>
+                        <td>
+                            <div class="stay-place">
+                                <img src="../images/salalah.jpg"
+                                     alt="منتجع البليد صلالة">
+
+                                <div>
+                                    <strong>منتجع البليد صلالة بإدارة أنانتارا</strong>
+                                    <span>منتجع في صلالة</span>
+                                    <br>
+                                    <a href="https://www.anantara.com/en/al-baleed-salalah"
+                                       target="_blank"
+                                       rel="noopener noreferrer"
+                                       class="hotel-button">
+                                        الموقع الرسمي
+                                    </a>
+                                </div>
+                            </div>
+                        </td>
+
+                        <td>صلالة</td>
+                        <td>منتجع</td>
+                        <td>تحققي من التقييم الحالي</td>
+                        <td class="stay-price">يُحدد عند الحجز</td>
+
+                        <td>
+                            <a href="salalah.html" class="destination-button">
+                                اكتشفي صلالة
+                            </a>
+                        </td>
+                    </tr>
+
+                    <!-- صور -->
+                    <tr>
+                        <td>
+                            <div class="stay-place">
+                                <img src="../images/coast.jpg"
+                                     alt="فندق بست ويسترن صور">
+
+                                <div>
+                                    <strong>فندق بست ويسترن صور</strong>
+                                    <span>فندق في صور</span>
+                                </div>
+                            </div>
+                        </td>
+
+                        <td>صور</td>
+                        <td>فندق</td>
+                        <td>تحققي من التقييم الحالي</td>
+                        <td class="stay-price">يُحدد عند الحجز</td>
+
+                        <td>
+                            <a href="sur.html" class="destination-button">
+                                اكتشفي صور
+                            </a>
+                        </td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+        <!-- التجارب المحلية -->
+        <section class="stay-note" id="experiences">
+
+            <div class="stay-note-inner">
+
+                <strong>✨ التجارب المحلية:</strong>
+
+                <p>
+                    يمكنكِ استكشاف الأسواق التقليدية والحرف العُمانية
+                    والمأكولات المحلية خلال رحلتكِ. عيشي تجربة مختلفة
+                    وتعرّفي على جمال الثقافة العُمانية وتقاليدها الأصيلة.
+                </p>
+
+                <div class="experience-links">
+
+                    <a href="discover.html">
+                        🌿 اكتشفي التجارب والأنشطة
+                    </a>
+
+                    <a href="plan.html">
+                        🧭 خططي لرحلتك القادمة
+                    </a>
+
+                    <a href="wilayat.html">
+                        🇴🇲 استكشفي الولايات العُمانية
+                    </a>
+
+                </div>
+
+                <p>
+                    ملاحظة: تحققي من الأسعار والتوافر مباشرةً قبل الحجز؛
+                    فالمعلومات المعروضة هنا نموذج توضيحي لمشروعكِ
+                    وليست عروض حجز فعلية.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- التذييل -->
+    <footer class="stay-footer">
+
+        <strong>رِحلة</strong>
+
+        دليلك السياحي في عُمان
+
+        <div class="footer-links">
+            <a href="../index.html">الرئيسية</a>
+            <a href="discover.html">اكتشف عُمان</a>
+            <a href="plan.html">خطط رحلتك</a>
+            <a href="contact.html">تواصل معنا</a>
+        </div>
+
+    </footer>
+
+</body>
+</html>

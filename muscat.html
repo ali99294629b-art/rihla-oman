@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>مسقط | عاصمة عُمان - رِحلة</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f8f3e9;
+            color: #4d4033;
+            line-height: 1.9;
+        }
+
+        /* شريط التنقل */
+
+        nav {
+            background-color: #fffdf8;
+            padding: 17px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 12px #00000010;
+            position: relative;
+            z-index: 5;
+        }
+
+        .logo {
+            font-size: 27px;
+            font-weight: bold;
+            color: #806443;
+            text-decoration: none;
+        }
+
+        nav div {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        nav div a {
+            color: #4d4033;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        nav div a:hover {
+            background-color: #80603a;
+            color: white;
+        }
+
+        /* الواجهة الرئيسية */
+
+        .hero {
+            min-height: 480px;
+            background:
+                linear-gradient(90deg, #00000025, #00000075),
+                url("../images/muscat-hero.png") center/cover no-repeat;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 35px 20px;
+        }
+
+        .hero-label {
+            background-color: #ffffff25;
+            border: 1px solid #ffffff80;
+            padding: 7px 22px;
+            border-radius: 30px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .hero h1 {
+            font-size: 55px;
+            margin: 5px 0;
+            text-shadow: 2px 3px 10px #00000070;
+        }
+
+        .hero p {
+            font-size: 21px;
+            margin: 5px 0;
+        }
+
+        .hero-line {
+            width: 75px;
+            height: 4px;
+            background-color: #d6b47e;
+            margin-top: 18px;
+            border-radius: 10px;
+        }
+
+        /* شريط هوية العاصمة */
+
+        .capital-strip {
+            width: 88%;
+            max-width: 1100px;
+            margin: -35px auto 45px;
+            background-color: #fffdf8;
+            box-shadow: 0 7px 25px #00000012;
+            border-radius: 15px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            position: relative;
+            z-index: 2;
+            overflow: hidden;
+        }
+
+        .capital-item {
+            text-align: center;
+            padding: 20px 10px;
+            border-left: 1px solid #eee2d0;
+        }
+
+        .capital-item:last-child {
+            border-left: none;
+        }
+
+        .capital-item span {
+            font-size: 27px;
+            display: block;
+        }
+
+        .capital-item h3 {
+            color: #806443;
+            margin: 3px 0;
+            font-size: 18px;
+        }
+
+        .capital-item p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        /* المحتوى */
+
+        .content {
+            max-width: 1120px;
+            margin: auto;
+            padding: 0 22px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .section-title h2 {
+            color: #806443;
+            font-size: 30px;
+            margin-bottom: 5px;
+        }
+
+        .section-title p {
+            color: #827462;
+            margin-top: 0;
+        }
+
+        /* مقدمة مسقط */
+
+        .intro-section {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 30px;
+            align-items: center;
+            margin-bottom: 65px;
+        }
+
+        .intro-text {
+            background-color: #fffdf8;
+            padding: 30px;
+            border-radius: 16px;
+            border-right: 5px solid #b89a70;
+            box-shadow: 0 5px 18px #00000008;
+        }
+
+        .intro-text h2 {
+            color: #806443;
+            font-size: 27px;
+            margin-top: 0;
+        }
+
+        .intro-text p {
+            font-size: 17px;
+            text-align: justify;
+        }
+
+        .intro-note {
+            background-color: #eee3d2;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 18px;
+        }
+
+        .intro-note strong {
+            color: #806443;
+        }
+
+        .intro-symbol {
+            background: linear-gradient(145deg, #9b805c, #604a31);
+            color: white;
+            min-height: 280px;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 25px;
+        }
+
+        .intro-symbol .big-icon {
+            font-size: 75px;
+        }
+
+        .intro-symbol h3 {
+            font-size: 25px;
+            margin: 5px 0;
+        }
+
+        .intro-symbol p {
+            margin: 0;
+            color: #f4e9d8;
+        }
+
+        /* المعالم السياحية */
+
+        .landmarks-section {
+            margin-bottom: 65px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background-color: #fffdf8;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 18px #00000010;
+            transition: transform 0.35s, box-shadow 0.35s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px #00000018;
+        }
+
+        .card img {
+            width: 100%;
+            height: 245px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s;
+        }
+
+        .card:hover img {
+            transform: scale(1.04);
+        }
+
+        .card-image {
+            overflow: hidden;
+        }
+
+        .card-text {
+            padding: 20px 23px;
+        }
+
+        .card h3 {
+            color: #806443;
+            font-size: 21px;
+            margin: 0 0 8px;
+        }
+
+        .card p {
+            margin: 0;
+            color: #65594c;
+        }
+
+        .card-tag {
+            display: inline-block;
+            background-color: #eee3d2;
+            color: #806443;
+            padding: 3px 13px;
+            border-radius: 20px;
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+
+        /* وجها مسقط */
+
+        .muscat-faces {
+            background-color: #eee5d8;
+            padding: 35px;
+            border-radius: 18px;
+            margin-bottom: 65px;
+        }
+
+        .faces-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 22px;
+        }
+
+        .face {
+            background-color: #fffdf8;
+            padding: 25px;
+            border-radius: 13px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .face:hover {
+            transform: translateY(-6px);
+        }
+
+        .face span {
+            font-size: 42px;
+        }
+
+        .face h3 {
+            color: #806443;
+            margin: 5px 0;
+        }
+
+        .face p {
+            margin: 0;
+        }
+
+        /* مخطط الرحلة */
+
+        .trip-planner {
+            background: #fffdf8;
+            padding: 35px;
+            border-radius: 20px;
+            margin: 65px 0;
+            box-shadow: 0 5px 20px #0000000c;
+        }
+
+        .planner-heading {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .planner-heading h2 {
+            color: #806443;
+            font-size: 29px;
+        }
+
+        .planner-options {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 25px 0;
+        }
+
+        .planner-options button {
+            background: #eee3d2;
+            color: #604a31;
+            border: 2px solid transparent;
+            padding: 13px 22px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .planner-options button:hover,
+        .planner-options button.selected {
+            background: #806443;
+            color: white;
+            border-color: #d6b47e;
+        }
+
+        #trip-result {
+            display: none;
+            background: #f8f3e9;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 25px;
+            border-right: 5px solid #b89a70;
+        }
+
+        #trip-result h3 {
+            color: #806443;
+        }
+
+        .trip-stop {
+            background: white;
+            padding: 13px;
+            margin: 12px 0;
+            border-radius: 10px;
+        }
+
+        .trip-stop strong {
+            color: #806443;
+        }
+
+        /* اكتشف أحياء مسقط */
+
+        .district-explorer {
+            margin: 65px 0;
+            text-align: center;
+        }
+
+        .district-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin: 25px 0;
+        }
+
+        .district-buttons button {
+            background: #806443;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .district-buttons button:hover {
+            background: #4d4033;
+            transform: translateY(-4px);
+        }
+
+        .district-info {
+            background: #fffdf8;
+            padding: 30px;
+            border-radius: 17px;
+            max-width: 750px;
+            margin: auto;
+            box-shadow: 0 5px 20px #00000010;
+            min-height: 170px;
+        }
+
+        .district-info h3 {
+            color: #806443;
+            font-size: 24px;
+        }
+
+        /* جواز مستكشف مسقط */
+
+        .muscat-passport {
+            background: #eee5d8;
+            padding: 35px;
+            border-radius: 20px;
+            margin: 65px 0;
+        }
+
+        .passport-title {
+            text-align: center;
+            color: #806443;
+        }
+
+        .passport-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 13px;
+            margin-top: 25px;
+        }
+
+        .passport-item {
+            background: #fffdf8;
+            padding: 15px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+
+        .passport-item input {
+            width: 19px;
+            height: 19px;
+            accent-color: #806443;
+            cursor: pointer;
+        }
+
+        .progress-area {
+            margin-top: 25px;
+            text-align: center;
+        }
+
+        .progress-track {
+            height: 15px;
+            background: #d8cbb8;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-top: 12px;
+        }
+
+        .progress-fill {
+            width: 0%;
+            height: 100%;
+            background: #806443;
+            transition: width 0.4s;
+        }
+
+        /* دعوة الزيارة */
+
+        .visit-section {
+            background: linear-gradient(120deg, #806443, #5e4933);
+            color: white;
+            padding: 35px;
+            text-align: center;
+            border-radius: 17px;
+            margin-bottom: 50px;
+        }
+
+        .visit-section h2 {
+            font-size: 27px;
+            margin: 0 0 8px;
+        }
+
+        .visit-section p {
+            margin: 0 auto 20px;
+            max-width: 700px;
+        }
+
+        .back-link {
+            display: inline-block;
+            background-color: #fffdf8;
+            color: #806443;
+            padding: 10px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: 0.3s;
+            font-weight: bold;
+        }
+
+        .back-link:hover {
+            background-color: #e8d6bb;
+            transform: translateY(-3px);
+        }
+
+        /* التذييل */
+
+        footer {
+            background-color: #4d4033;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 35px;
+        }
+
+        footer p {
+            margin: 3px;
+        }
+
+        /* الهواتف */
+
+        @media (max-width: 750px) {
+
+            nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            nav div {
+                gap: 3px;
+            }
+
+            nav div a {
+                font-size: 13px;
+                padding: 6px;
+            }
+
+            .hero {
+                min-height: 350px;
+            }
+
+            .hero h1 {
+                font-size: 37px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            .capital-strip {
+                width: 94%;
+            }
+
+            .capital-item {
+                padding: 14px 5px;
+            }
+
+            .capital-item h3 {
+                font-size: 14px;
+            }
+
+            .capital-item p {
+                font-size: 11px;
+            }
+
+            .intro-section {
+                grid-template-columns: 1fr;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .faces-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .muscat-faces {
+                padding: 20px;
+            }
+
+            .section-title h2 {
+                font-size: 25px;
+            }
+
+            .trip-planner,
+            .muscat-passport {
+                padding: 20px;
+            }
+
+            .passport-list {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- شريط التنقل -->
+
+    <nav>
+
+        <a class="logo" href="../index.html">رِحلة</a>
+
+        <div>
+            <a href="../index.html">الرئيسية</a>
+            <a href="discover.html">اكتشف</a>
+            <a href="wilayat.html">الولايات والمناطق</a>
+            <a href="stay.html">الإقامة والتجارة</a>
+            <a href="plan.html">خطط رحلتك</a>
+            <a href="contact.html">تواصل معنا</a>
+        </div>
+
+    </nav>
+
+
+    <!-- الواجهة الرئيسية -->
+
+    <header class="hero">
+
+        <div class="hero-label">🏛️ عاصمة سلطنة عُمان</div>
+
+        <h1>مسقط... قلب عُمان النابض</h1>
+
+        <p>مدينة تجمع بين هيبة العاصمة وسحر البحر وأصالة التاريخ</p>
+
+        <div class="hero-line"></div>
+
+    </header>
+
+
+    <main class="content">
+
+
+        <!-- هوية العاصمة -->
+
+        <section class="capital-strip">
+
+            <div class="capital-item">
+                <span>🏛️</span>
+                <h3>عاصمة السلطنة</h3>
+                <p>المركز الإداري للبلاد</p>
+            </div>
+
+            <div class="capital-item">
+                <span>🌊</span>
+                <h3>مدينة ساحلية</h3>
+                <p>تطل على بحر عُمان</p>
+            </div>
+
+            <div class="capital-item">
+                <span>🏰</span>
+                <h3>تاريخ عريق</h3>
+                <p>تراث وحضارة ممتدة</p>
+            </div>
+
+        </section>
+
+
+        <!-- نبذة عن مسقط -->
+
+        <section class="intro-section">
+
+            <div class="intro-text">
+
+                <h2>مسقط... عنوان الحضارة العُمانية</h2>
+
+                <p>
+                    تُعد محافظة مسقط عاصمة سلطنة عُمان وأهم مراكزها
+                    السياسية والإدارية والاقتصادية والثقافية.
+                    وتمتد على ساحل بحر عُمان، وتحيط بها الجبال
+                    الشامخة التي تمنحها مشهدًا طبيعيًا مميزًا.
+                </p>
+
+                <p>
+                    تجمع مسقط بين المباني الحديثة والأسواق القديمة
+                    والحصون التاريخية والمساجد ذات العمارة الرائعة.
+                    كما تمثل نافذة يتعرف من خلالها الزائر على أصالة
+                    المجتمع العُماني وتطوره.
+                </p>
+
+                <div class="intro-note">
+                    <strong>✨ ما يميز مسقط:</strong>
+                    التناغم الجميل بين البحر والجبال والتاريخ
+                    والحياة العصرية.
+                </div>
+
+            </div>
+
+
+            <div class="intro-symbol">
+
+                <span class="big-icon">🇴🇲</span>
+
+                <h3>هنا عاصمة عُمان</h3>
+
+                <p>
+                    مركز يجمع مؤسسات الدولة،
+                    والثقافة، والتاريخ، والحياة الحديثة.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- المعالم السياحية -->
+
+        <section class="landmarks-section">
+
+            <div class="section-title">
+
+                <h2>معالم تحكي قصة مسقط</h2>
+
+                <p>
+                    من الواجهات البحرية إلى الصروح الثقافية والتاريخية
+                </p>
+
+            </div>
+
+
+            <div class="cards">
+
+
+                <article class="card">
+
+                    <div class="card-image">
+
+                        <img src="../images/destinations.jpg"
+                             alt="كورنيش مطرح">
+
+                    </div>
+
+                    <div class="card-text">
+
+                        <span class="card-tag">🌊 معلم بحري</span>
+
+                        <h3>كورنيش مطرح</h3>
+
+                        <p>
+                            يمتد كورنيش مطرح بمحاذاة البحر،
+                            ويمنح الزوار إطلالة جميلة على الميناء
+                            والجبال المحيطة. وبالقرب منه يقع سوق مطرح
+                            التقليدي الذي يعكس روح التجارة والتراث العُماني.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="card">
+
+                    <div class="card-image">
+
+                        <img src="../images/heritage.jpg"
+                             alt="دار الأوبرا السلطانية">
+
+                    </div>
+
+                    <div class="card-text">
+
+                        <span class="card-tag">🎭 معلم ثقافي</span>
+
+                        <h3>دار الأوبرا السلطانية مسقط</h3>
+
+                        <p>
+                            صرح ثقافي بارز يستضيف عروضًا موسيقية
+                            وفنية متنوعة، ويتميز بتصميم معماري
+                            يجمع بين الجمال والفخامة.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="card">
+
+                    <div class="card-image">
+
+                        <img src="../images/destinations.jpg"
+                             alt="جامع السلطان قابوس الأكبر">
+
+                    </div>
+
+                    <div class="card-text">
+
+                        <span class="card-tag">🕌 معلم معماري</span>
+
+                        <h3>جامع السلطان قابوس الأكبر</h3>
+
+                        <p>
+                            من أبرز المعالم الدينية والمعمارية
+                            في السلطنة، ويتميز بتصميمه الإسلامي
+                            الجميل وزخارفه الفنية وساحاته الواسعة.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="card">
+
+                    <div class="card-image">
+
+                        <img src="../images/heritage.jpg"
+                             alt="قصر العلم في مسقط">
+
+                    </div>
+
+                    <div class="card-text">
+
+                        <span class="card-tag">🏛️ معلم تاريخي</span>
+
+                        <h3>قصر العلم</h3>
+
+                        <p>
+                            يتميز قصر العلم بطرازه المعماري الفريد
+                            وأعمدته الملونة، ويقع في قلب مسقط القديمة
+                            بالقرب من الحصون التاريخية.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- وجها مسقط -->
+
+        <section class="muscat-faces">
+
+            <div class="section-title">
+
+                <h2>وجهان لمدينة واحدة</h2>
+
+                <p>
+                    سر جمال مسقط هو قدرتها على الجمع بين الماضي والحاضر
+                </p>
+
+            </div>
+
+
+            <div class="faces-grid">
+
+
+                <div class="face">
+
+                    <span>🏰</span>
+
+                    <h3>مسقط الأصيلة</h3>
+
+                    <p>
+                        الأسواق التقليدية، والحصون، والأزقة القديمة،
+                        والحرف العُمانية التي تحافظ على ذاكرة المكان.
+                    </p>
+
+                </div>
+
+
+                <div class="face">
+
+                    <span>🌆</span>
+
+                    <h3>مسقط الحديثة</h3>
+
+                    <p>
+                        المباني العصرية، والمؤسسات الثقافية،
+                        والطرق الحديثة، والمراكز التي تعكس تطور السلطنة.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- صمم يومك في مسقط -->
+
+        <section class="trip-planner">
+
+            <div class="planner-heading">
+
+                <h2>🧭 صمّم يومك في مسقط</h2>
+
+                <p>
+                    لكل زائر اهتمام مختلف! اختر نوع رحلتك
+                    ودعنا نقترح عليك برنامجًا سياحيًا.
+                </p>
+
+            </div>
+
+            <div class="planner-options">
+
+                <button onclick="makeTrip('heritage', this)">
+                    🏰 رحلة تراثية
+                </button>
+
+                <button onclick="makeTrip('sea', this)">
+                    🌊 رحلة بحرية
+                </button>
+
+                <button onclick="makeTrip('culture', this)">
+                    🎭 رحلة ثقافية
+                </button>
+
+            </div>
+
+            <div id="trip-result"></div>
+
+        </section>
+
+
+        <!-- اكتشف أحياء مسقط -->
+
+        <section class="district-explorer">
+
+            <div class="section-title">
+
+                <h2>🗺️ اكتشف أحياء مسقط</h2>
+
+                <p>
+                    اختر منطقة من مناطق العاصمة لتتعرف على طابعها
+                    وما يميزها.
+                </p>
+
+            </div>
+
+            <div class="district-buttons">
+
+                <button onclick="showDistrict('muttrah')">
+                    مطرح
+                </button>
+
+                <button onclick="showDistrict('old')">
+                    مسقط القديمة
+                </button>
+
+                <button onclick="showDistrict('qurum')">
+                    القرم
+                </button>
+
+                <button onclick="showDistrict('seeb')">
+                    السيب
+                </button>
+
+                <button onclick="showDistrict('alhail')">
+                    الحيل
+                </button>
+
+            </div>
+
+            <div class="district-info" id="district-info">
+
+                <h3>🌟 مرحبًا بك في أحياء مسقط</h3>
+
+                <p>
+                    اضغط على إحدى المناطق أعلاه لتكتشف
+                    معلومات عنها ومعالمها المميزة.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- جواز مستكشف مسقط -->
+
+        <section class="muscat-passport">
+
+            <div class="passport-title">
+
+                <h2>🎫 جواز مستكشف مسقط</h2>
+
+                <p>
+                    تخيّل أنك في جولة بالعاصمة!
+                    ضع علامة أمام كل معلم ترغب في زيارته،
+                    وتابع تقدمك في اكتشاف مسقط.
+                </p>
+
+            </div>
+
+            <div class="passport-list">
+
+                <label class="passport-item">
+                    <input type="checkbox" class="place-check">
+                    كورنيش مطرح 🌊
+                </label>
+
+                <label class="passport-item">
+                    <input type="checkbox" class="place-check">
+                    سوق مطرح 🛍️
+                </label>
+
+                <label class="passport-item">
+                    <input type="checkbox" class="place-check">
+                    دار الأوبرا السلطانية 🎭
+                </label>
+
+                <label class="passport-item">
+                    <input type="checkbox" class="place-check">
+                    جامع السلطان قابوس الأكبر 🕌
+                </label>
+
+                <label class="passport-item">
+                    <input type="checkbox" class="place-check">
+                    قصر العلم 🏛️
+                </label>
+
+                <label class="passport-item">
+                    <input type="checkbox" class="place-check">
+                    شاطئ القرم 🏖️
+                </label>
+
+            </div>
+
+            <div class="progress-area">
+
+                <strong id="progress-text">
+                    أنجزت 0 من 6 أماكن
+                </strong>
+
+                <div class="progress-track">
+
+                    <div class="progress-fill" id="progress-fill"></div>
+
+                </div>
+
+                <p id="progress-message">
+                    رحلتك في مسقط تبدأ الآن!
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ختام الصفحة -->
+
+        <section class="visit-section">
+
+            <h2>اكتشف عاصمة عُمان بنفسك 🇴🇲</h2>
+
+            <p>
+                في مسقط ستجد البحر والتاريخ والثقافة والعمارة
+                في تجربة واحدة؛ فهي ليست مجرد مدينة تزورها،
+                بل نافذة تتعرف من خلالها على عُمان.
+            </p>
+
+            <a class="back-link" href="wilayat.html">
+                العودة إلى الولايات والمناطق
+            </a>
+
+        </section>
+
+
+    </main>
+
+
+    <footer>
+
+        <p>رِحلة | دليلك السياحي في عُمان 🇴🇲</p>
+
+        <p>مسقط... عاصمة الأصالة والتطور</p>
+
+    </footer>
+
+
+    <!-- أكواد التفاعل -->
+
+    <script>
+
+        /* إنشاء برنامج سياحي */
+
+        function makeTrip(type, button) {
+
+            document.querySelectorAll(".planner-options button")
+                .forEach(btn => btn.classList.remove("selected"));
+
+            button.classList.add("selected");
+
+            let result = document.getElementById("trip-result");
+
+            let trips = {
+
+                heritage: {
+                    title: "🏰 يوم بين تاريخ مسقط وتراثها",
+                    places: [
+                        ["الصباح", "زيارة قصر العلم والتعرف على معالم مسقط القديمة."],
+                        ["منتصف اليوم", "مشاهدة حصني الجلالي والميراني من الخارج."],
+                        ["المساء", "زيارة سوق مطرح والتعرف على الحرف والمنتجات التقليدية."]
+                    ]
+                },
+
+                sea: {
+                    title: "🌊 يوم على سواحل مسقط",
+                    places: [
+                        ["الصباح", "الاستمتاع بأجواء شاطئ القرم."],
+                        ["منتصف اليوم", "التوقف للاستراحة وتناول وجبة."],
+                        ["المساء", "التنزه على كورنيش مطرح والاستمتاع بإطلالة البحر."]
+                    ]
+                },
+
+                culture: {
+                    title: "🎭 يوم ثقافي في العاصمة",
+                    places: [
+                        ["الصباح", "زيارة جامع السلطان قابوس الأكبر."],
+                        ["منتصف اليوم", "التعرف على الفنون والعمارة العُمانية."],
+                        ["المساء", "زيارة دار الأوبرا السلطانية والتعرف على أنشطتها."]
+                    ]
+                }
+
+            };
+
+            let selectedTrip = trips[type];
+
+            let html = `<h3>${selectedTrip.title}</h3>`;
+
+            selectedTrip.places.forEach(place => {
+
+                html += `
+                    <div class="trip-stop">
+                        <strong>⏰ ${place[0]}</strong>
+                        <p>${place[1]}</p>
+                    </div>
+                `;
+
+            });
+
+            html += `
+                <p>✨ يمكنك تعديل ترتيب محطات رحلتك حسب وقتك واهتماماتك.</p>
+            `;
+
+            result.innerHTML = html;
+
+            result.style.display = "block";
+
+        }
+
+
+        /* معلومات أحياء مسقط */
+
+        function showDistrict(name) {
+
+            let info = document.getElementById("district-info");
+
+            let districts = {
+
+                muttrah: {
+                    title: "🌊 مطرح",
+                    text: "من أشهر المناطق التاريخية في مسقط، وتشتهر بكورنيشها الجميل وسوق مطرح التقليدي ومينائها."
+                },
+
+                old: {
+                    title: "🏰 مسقط القديمة",
+                    text: "تحتضن معالم تاريخية مهمة، منها قصر العلم والحصون التاريخية، وتتميز بأجوائها التراثية."
+                },
+
+                qurum: {
+                    title: "🌳 القرم",
+                    text: "من المناطق المعروفة بمساحاتها الخضراء وشاطئها الجميل، وتضم مرافق ترفيهية ومناطق للتنزه."
+                },
+
+                seeb: {
+                    title: "🏖️ السيب",
+                    text: "من المناطق الساحلية في محافظة مسقط، وتتميز بأسواقها وشواطئها وحيويتها السكانية والتجارية."
+                },
+
+                alhail: {
+                    title: "🏘️ الحيل",
+                    text: "من المناطق السكنية في ولاية السيب، وتضم مرافق وخدمات متنوعة وتجمع بين الحياة السكنية والحركة التجارية."
+                }
+
+            };
+
+            info.innerHTML = `
+                <h3>${districts[name].title}</h3>
+                <p>${districts[name].text}</p>
+            `;
+
+        }
+
+
+        /* جواز مستكشف مسقط */
+
+        let checks = document.querySelectorAll(".place-check");
+
+        function updateProgress() {
+
+            let completed = document.querySelectorAll(
+                ".place-check:checked"
+            ).length;
+
+            let total = checks.length;
+
+            let percentage = (completed / total) * 100;
+
+            document.getElementById("progress-fill").style.width =
+                percentage + "%";
+
+            document.getElementById("progress-text").textContent =
+                `أنجزت ${completed} من ${total} أماكن`;
+
+            let message = document.getElementById("progress-message");
+
+            if (completed === 0) {
+
+                message.textContent =
+                    "رحلتك في مسقط تبدأ الآن! 🇴🇲";
+
+            }
+
+            else if (completed < total) {
+
+                message.textContent =
+                    "رائع! واصل اكتشاف عاصمة عُمان ✨";
+
+            }
+
+            else {
+
+                message.textContent =
+                    "🎉 تهانينا! لقد أكملت جولة مستكشف مسقط!";
+
+            }
+
+        }
+
+        checks.forEach(check => {
+            check.addEventListener("change", updateProgress);
+        });
+
+    </script>
+
+</body>
+</html>

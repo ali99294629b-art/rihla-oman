@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>خطة رحلتك | رِحلة</title>
+
+<style>
+:root{--cream:#f8f4ec;--paper:#fffdf8;--brown:#80613d;--dark:#30271f;--muted:#74695d;--line:#e7ddcf;--gold:#b89155}
+*{box-sizing:border-box}
+body{margin:0;font-family:Tahoma,Arial,sans-serif;background:var(--cream);color:var(--dark);line-height:1.8}
+header{background:var(--paper);border-bottom:1px solid var(--line);padding:14px 5%;display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
+.logo{font-size:27px;font-weight:bold;color:var(--brown);text-decoration:none}
+nav{display:flex;gap:17px;flex-wrap:wrap}
+nav a{color:var(--dark);text-decoration:none;font-size:14px}
+nav a:hover{color:var(--gold)}
+.hero{background:linear-gradient(90deg,rgba(25,20,15,.66),rgba(25,20,15,.25)),url("../images/hero_home.jpg") center/cover no-repeat;min-height:185px;display:flex;align-items:center;padding:25px 7%;color:white}
+.hero h1{font-size:clamp(27px,4vw,38px);margin:0 0 5px}
+.hero p{margin:0}
+main{max-width:1050px;margin:25px auto;padding:0 16px 42px}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 18px}
+.btn{display:inline-block;padding:10px 20px;border-radius:25px;text-decoration:none;background:var(--brown);color:white;border:0;cursor:pointer;font-family:Tahoma,Arial}
+.btn.secondary{background:var(--paper);border:1px solid var(--line);color:var(--brown)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:12px;margin-bottom:18px}
+.stat,.panel,.day{background:var(--paper);border:1px solid var(--line);border-radius:15px;padding:17px}
+.stat span{display:block;color:var(--muted);font-size:13px}
+.stat strong{font-size:20px;color:var(--brown)}
+.panel{margin-bottom:18px}
+.panel h2{margin:0 0 10px;color:var(--brown);font-size:22px}
+.tags{display:flex;gap:8px;flex-wrap:wrap}
+.tag{background:#f1e7d7;color:#60472c;padding:5px 12px;border-radius:20px;font-size:13px}
+.days{display:grid;gap:15px}
+.day{padding:0;overflow:hidden}
+.day-head{background:#eee3d2;padding:13px 18px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.day-head h3{margin:0;color:#503a25}
+.day-body{padding:17px}
+.schedule{display:grid;grid-template-columns:95px 1fr;gap:8px 13px}
+.time{font-weight:bold;color:var(--brown)}
+.schedule div{padding:3px 0;border-bottom:1px dashed var(--line)}
+.budget-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:9px;margin-top:12px}
+.budget-item{background:#f7f1e7;border-radius:10px;padding:10px}
+.budget-item small{display:block;color:var(--muted)}
+.budget-item strong{color:var(--brown)}
+.total{margin-top:12px;padding:12px;border-radius:10px;background:#e9dfce;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-weight:bold}
+.note{font-size:13px;color:var(--muted)}
+.empty{background:var(--paper);border:1px solid var(--line);border-radius:15px;padding:25px;text-align:center}
+footer{text-align:center;padding:20px;color:var(--muted);font-size:13px}
+@media(max-width:550px){
+    header{align-items:flex-start}
+    nav{gap:10px}
+    .schedule{grid-template-columns:75px 1fr}
+    .day-head{display:block}
+}
+
+/* تنسيق التبويبات العلوية */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.navbar ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.navbar ul li a {
+    display: block;
+    padding: 8px 12px;
+    border-radius: 7px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar ul li a:hover {
+    background-color: #80603a;
+    color: white;
+}
+
+.navbar ul li a.active {
+    background-color: #80603a;
+    color: white;
+}
+
+
+/* إضافات جواز الرحلة */
+.passport {
+    background: var(--paper);
+    border: 1px dashed var(--gold);
+    border-radius: 15px;
+    padding: 22px;
+    margin-bottom: 18px;
+}
+
+.passport-title {
+    color: var(--brown);
+    margin: 0 0 8px;
+}
+
+.passport-destinations {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 12px 0;
+}
+
+.passport-details {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+
+/* نصيحة المسافر */
+.travel-tip {
+    background: #eee3d2;
+    border-radius: 15px;
+    padding: 18px;
+    margin-bottom: 18px;
+}
+
+.travel-tip h2 {
+    color: var(--brown);
+    margin: 0 0 7px;
+    font-size: 20px;
+}
+
+
+/* قائمة الاستعداد */
+.ready-panel {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 18px;
+}
+
+.ready-panel h2 {
+    color: var(--brown);
+    margin-top: 0;
+}
+
+.ready-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+    gap: 10px;
+}
+
+.ready-item {
+    background: #f7f1e7;
+    padding: 10px 13px;
+    border-radius: 9px;
+    cursor: pointer;
+}
+
+.ready-item input {
+    accent-color: var(--brown);
+    margin-left: 7px;
+}
+
+.ready-progress {
+    height: 10px;
+    background: #e7ddcf;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-top: 15px;
+}
+
+.ready-progress-fill {
+    height: 100%;
+    width: 0%;
+    background: var(--brown);
+    transition: width .3s;
+}
+
+.ready-count {
+    color: var(--brown);
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: 8px;
+}
+
+
+/* أزرار الحفظ والنسخ */
+.extra-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 18px 0;
+}
+
+.save-message {
+    color: var(--brown);
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: 8px;
+    min-height: 25px;
+}
+
+
+/* الطباعة */
+@media print {
+    header,
+    footer,
+    .actions,
+    .extra-actions,
+    .ready-panel {
+        display: none !important;
+    }
+
+    body {
+        background: white;
+    }
+
+    .panel,
+    .day,
+    .stat {
+        break-inside: avoid;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<a class="logo" href="../index.html">رِحلة</a>
+
+<nav>
+<a href="../index.html">الرئيسية</a>
+<a href="discover.html">اكتشف</a>
+<a href="wilayat.html">الولايات والمناطق</a>
+<a href="plan.html">خطط رحلتك</a>
+<a href="stay.html">الإقامة والتجارة</a>
+<a href="contact.html">تواصل معنا</a>
+</nav>
+</header>
+
+<section class="hero">
+<div>
+<h1>برنامج رحلتك اليومي</h1>
+<p>خطة مرتبة بالتواريخ والأنشطة والميزانية التقديرية لكل يوم.</p>
+</div>
+</section>
+
+<main id="content">
+<div class="empty">جارٍ تجهيز خطتك...</div>
+</main>
+
+<footer>رِحلة — دليلك السياحي في عُمان</footer>
+
+<script>
+
+let p=new URLSearchParams(location.search);
+
+// تعتمد الخطة على البيانات المرسلة من صفحة التخطيط، ولا تستبدلها ببيانات تجريبية.
+const keys=p.getAll('destination');
+
+const data={
+muscat:{name:'مسقط',places:{nature:['حديقة القرم الطبيعية','ممشى الواجهة البحرية'],heritage:['جامع السلطان قابوس الأكبر','سوق مطرح','المتحف الوطني'],sea:['شاطئ القرم','كورنيش مطرح'],family:['حديقة القرم','سوق مطرح'],culture:['المتحف الوطني','دار الأوبرا السلطانية'],relax:['شاطئ القرم','جلسة على كورنيش مطرح']},food:5,transport:5,activities:4},
+
+nizwa:{name:'نزوى والداخلية',places:{nature:['مناظر الجبل الأخضر','قرى جبلية مطلة'],heritage:['قلعة نزوى','سوق نزوى','قلعة بهلاء'],sea:['سوق نزوى','قلعة نزوى'],family:['قلعة نزوى','سوق نزوى'],culture:['سوق نزوى','قلعة نزوى','حصن جبرين'],relax:['جولة في أزقة نزوى','جلسة مطلة في الجبل الأخضر']},food:5,transport:8,activities:5},
+
+salalah:{name:'صلالة وظفار',places:{nature:['وادي دربات','عين رزات','شاطئ المغسيل'],heritage:['متحف أرض اللبان','موقع البليد الأثري'],sea:['شاطئ المغسيل','شاطئ الدهاريز'],family:['وادي دربات','شاطئ المغسيل'],culture:['متحف أرض اللبان','موقع البليد الأثري'],relax:['شاطئ الدهاريز','عين رزات']},food:5,transport:8,activities:6},
+
+sur:{name:'صور والساحل الشرقي',places:{nature:['رأس الجنز أو محيطه حسب أوقات الزيارة','شاطئ صور'],heritage:['حوض السفن التقليدية','منارة العيجة','أزقة صور القديمة'],sea:['شاطئ صور','منطقة العيجة'],family:['شاطئ صور','جولة في الواجهة البحرية'],culture:['حوض السفن التقليدية','منارة العيجة'],relax:['الواجهة البحرية في صور','شاطئ هادئ مناسب للزيارة']},food:5,transport:7,activities:5},
+
+jabal:{name:'الجبل الأخضر وجبال الحجر',places:{nature:['مسارات المشي المسموح بها','إطلالات الجبل الأخضر'],heritage:['القرى الجبلية القديمة','قرى المدرجات الزراعية'],sea:['إطلالات جبلية بديلة عن الشاطئ','زيارة قرية جبلية'],family:['نقاط الإطلالة','جولة في القرى الجبلية'],culture:['القرى الجبلية القديمة','المدرجات الزراعية'],relax:['جلسة في نقطة إطلالة','جولة قصيرة في قرية جبلية']},food:6,transport:10,activities:7},
+
+wadi:{name:'وادي بني خالد',places:{nature:['برك الوادي الطبيعية','مسار المشي حول الوادي'],heritage:['زيارة القرى القريبة','التعرف على نمط الحياة المحلي'],sea:['استبدال نشاط البحر بزيارة برك الوادي','جلسة في الطبيعة'],family:['برك الوادي مع الالتزام بإرشادات السلامة','نزهة في المنطقة'],culture:['القرى القريبة','التعرف على البيئة المحلية'],relax:['جلسة هادئة قرب الوادي','نزهة قصيرة في الطبيعة']},food:4,transport:8,activities:4},
+
+musandam:{name:'مسندم',places:{nature:['إطلالات الخلجان','نقاط مشاهدة الجبال والبحر'],heritage:['جولة في خصب القديمة','قلعة خصب'],sea:['رحلة بحرية مرخصة في الخلجان','الواجهة البحرية'],family:['قلعة خصب','الواجهة البحرية'],culture:['قلعة خصب','جولة في خصب'],relax:['الواجهة البحرية','إطلالات الخلجان']},food:5,transport:8,activities:8}
+};
+
+const typeNames={nature:'طبيعة',heritage:'تراث وتاريخ',sea:'بحر وشواطئ',family:'عائلية',culture:'ثقافة',relax:'استرخاء'};
+const budgetNames={low:'اقتصادية',medium:'متوسطة',high:'مرتفعة'};
+const budgetRanges={low:[10,20],medium:[21,45],high:[46,80]};
+
+const money=n=>n.toLocaleString('ar-OM',{maximumFractionDigits:1});
+
+function fmtDate(s){
+    if(!s)return 'غير محدد';
+    const d=new Date(s+'T12:00:00');
+    return new Intl.DateTimeFormat('ar-OM',{day:'numeric',month:'long',year:'numeric'}).format(d);
+}
+
+const duration=Math.max(1,Math.min(30,Number(p.get('duration'))||1));
+const start=p.get('start');
+const end=p.get('end');
+const type=p.get('type')||'nature';
+const budget=p.get('budget')||'medium';
+const people=Math.max(1,Number(p.get('people'))||1);
+
+const chosen=keys.map(k=>({key:k,...data[k]})).filter(x=>x.name);
+
+const main=document.getElementById('content');
+
+if(!chosen.length||!start||!p.get('duration')||!p.get('end')||!p.get('type')||!p.get('budget')){
+
+    main.innerHTML='<div class="empty"><h2>لم تُرسل اختيارات الرحلة بعد</h2><p>اختاري الوجهات والمدة وتاريخ البداية ونوع الرحلة والميزانية في الصفحة الأولى، ثم اضغطي زر إظهار الرحلة.</p><a class="btn" href="plan.html">العودة إلى التخطيط</a></div>';
+
+}else{
+
+    const [min,max]=budgetRanges[budget]||budgetRanges.medium;
+    const perPerson=(min+max)/2;
+    const totalDaysBudget=perPerson*duration*people;
+
+    const dateAt=i=>{
+        const d=new Date(start+'T12:00:00');
+        d.setDate(d.getDate()+i);
+        return d;
+    };
+
+    const fmt=d=>new Intl.DateTimeFormat('ar-OM',{day:'numeric',month:'short'}).format(d);
+
+    const placeChips=chosen.map(x=>'<span class="tag">'+x.name+'</span>').join('');
+
+    let html='<div class="actions"><a class="btn secondary" href="plan.html">تعديل اختياراتي</a><button class="btn" onclick="window.print()">طباعة الخطة</button></div>';
+
+    html+='<section class="stats"><div class="stat"><span>بداية الرحلة</span><strong>'+fmtDate(start)+'</strong></div><div class="stat"><span>نهاية الرحلة</span><strong>'+fmtDate(end||start)+'</strong></div><div class="stat"><span>المدة</span><strong>'+duration+' '+(duration===1?'يوم':duration===2?'يومان':'أيام')+'</strong></div><div class="stat"><span>عدد المسافرين</span><strong>'+people+' '+(people===1?'شخص':'أشخاص')+'</strong></div></section>';
+
+    html+='<section class="panel"><h2>ملخص رحلتك</h2><p>نوع الرحلة: <strong>'+typeNames[type]+'</strong> — الميزانية المختارة: <strong>'+budgetNames[budget]+'</strong></p><div class="tags">'+placeChips+'</div><p class="note">الميزانيات تقديرية للشخص الواحد بالريال العُماني، وليست أسعارًا مؤكدة. لا تشمل تذاكر السفر بين المحافظات أو المبيت إلا إذا أُدرجت ضمن مصروفك الفعلي.</p></section>';
+
+    html+='<section class="panel"><h2>الميزانية الإجمالية التقديرية</h2><div class="budget-grid"><div class="budget-item"><small>المتوسط للشخص يوميًا</small><strong>'+money(perPerson)+' ر.ع</strong></div><div class="budget-item"><small>المتوسط لجميع المسافرين يوميًا</small><strong>'+money(perPerson*people)+' ر.ع</strong></div><div class="budget-item"><small>متوسط الرحلة كاملة</small><strong>'+money(totalDaysBudget)+' ر.ع</strong></div></div><p class="note">نطاق ميزانيتك المختار: '+min+'–'+max+' ر.ع للشخص في اليوم. قد تزيد أو تنقص المصروفات حسب المواصلات والإقامة والمطاعم ورسوم الأنشطة.</p></section>';
+
+    html+='<h2 style="color:var(--brown)">الجدول اليومي</h2><div class="days">';
+
+    const usedActivities = new Set();
+
+    const activityPools = {
+        muscat: ['جامع السلطان قابوس الأكبر','المتحف الوطني','سوق مطرح','دار الأوبرا السلطانية','كورنيش مطرح','شاطئ القرم','حديقة القرم الطبيعية'],
+        nizwa: ['قلعة نزوى','سوق نزوى','حصن جبرين','قلعة بهلاء','جولة في البلدة القديمة','مناظر الجبل الأخضر'],
+        salalah: ['وادي دربات','عين رزات','شاطئ المغسيل','موقع البليد الأثري','متحف أرض اللبان','شاطئ الدهاريز'],
+        sur: ['حوض السفن التقليدية في صور','منارة العيجة','الواجهة البحرية في صور','شاطئ صور','جولة في البلدة القديمة','رأس الجنز وفق أوقات الزيارة'],
+        jabal: ['إطلالات الجبل الأخضر','القرى الجبلية القديمة','المدرجات الزراعية','مسار مشي مناسب ومفتوح','نقاط مشاهدة جبال الحجر'],
+        wadi: ['برك وادي بني خالد','مسار المشي حول الوادي','القرى القريبة','جلسة طبيعية في المنطقة'],
+        musandam: ['قلعة خصب','الواجهة البحرية في خصب','إطلالات الخلجان','رحلة بحرية مرخصة حسب الطقس','جولة في خصب القديمة']
+    };
+
+    const typeExtras = {
+        nature:['نزهة في الطبيعة','جلسة تصوير للمناظر الطبيعية','مسار مشي قصير مناسب'],
+        heritage:['التعرف على تاريخ المكان','زيارة سوق أو حي قديم','جولة ثقافية قصيرة'],
+        sea:['جلسة على الواجهة البحرية','زيارة شاطئ مناسب','مشاهدة الغروب من موقع عام'],
+        family:['استراحة عائلية في مكان عام','نشاط خفيف مناسب للعائلة','زيارة حديقة أو واجهة عامة'],
+        culture:['التعرف على الحرف المحلية','زيارة معرض أو متحف مفتوح','تجربة مأكولات محلية'],
+        relax:['وقت حر للاستراحة','جلسة هادئة في مكان عام','نزهة قصيرة دون استعجال']
+    };
+
+    function uniqueActivity(destKey, index) {
+
+        const pool = (activityPools[destKey] || []).concat(typeExtras[type] || typeExtras.nature);
+
+        for (let j=0;j<pool.length;j++) {
+
+            const candidate=pool[(index+j)%pool.length];
+            const key=destKey+'|'+candidate;
+
+            if (!usedActivities.has(key)) {
+                usedActivities.add(key);
+                return candidate;
+            }
+        }
+
+        return (typeExtras[type] || typeExtras.nature)[index%(typeExtras[type] || typeExtras.nature).length];
+    }
+
+    for(let i=0;i<duration;i++){
+
+        const dest=chosen[i%chosen.length];
+
+        const dayActivities=[
+            uniqueActivity(dest.key,i),
+            uniqueActivity(dest.key,i+2),
+            uniqueActivity(dest.key,i+4)
+        ];
+
+        const factor=(budget==='low'?0.75:budget==='high'?1.35:1);
+
+        const meal=Math.round(dest.food*factor*10)/10;
+        const move=Math.round(dest.transport*factor*10)/10;
+        const act=Math.round(dest.activities*factor*10)/10;
+        const daily=meal+move+act;
+
+        const date=dateAt(i);
+
+        html+='<article class="day"><div class="day-head"><h3>اليوم '+(i+1)+' — '+dest.name+'</h3><strong>'+fmt(date)+'</strong></div><div class="day-body"><div class="schedule"><div class="time">٨:٠٠ صباحًا</div><div><strong>بداية اليوم والإفطار</strong> — الإفطار والاستعداد للجولة.</div><div class="time">٩:٠٠ صباحًا</div><div><strong>النشاط الأول:</strong> '+dayActivities[0]+'.</div><div class="time">١٢:٣٠ ظهرًا</div><div><strong>الغداء والاستراحة</strong> — اختاري مكانًا يناسب ميزانيتك.</div><div class="time">٢:٠٠ ظهرًا</div><div><strong>النشاط الثاني:</strong> '+dayActivities[1]+'.</div><div class="time">٥:٠٠ مساءً</div><div><strong>النشاط المسائي:</strong> '+dayActivities[2]+'.</div><div class="time">٧:٠٠ مساءً</div><div><strong>العشاء والعودة</strong> — تحققي من أوقات الإغلاق والطريق قبل الانطلاق.</div></div><h4>مصروف اليوم التقديري للشخص الواحد</h4><div class="budget-grid"><div class="budget-item"><small>الطعام والشراب</small><strong>'+money(meal)+' ر.ع</strong></div><div class="budget-item"><small>المواصلات والوقود</small><strong>'+money(move)+' ر.ع</strong></div><div class="budget-item"><small>الأنشطة والرسوم</small><strong>'+money(act)+' ر.ع</strong></div></div><div class="total"><span>إجمالي اليوم التقديري</span><span>'+money(daily)+' ر.ع للشخص · '+money(daily*people)+' ر.ع للمجموعة</span></div></div></article>';
+    }
+
+    const grandTotal = chosen.reduce((sum,d)=>sum+(d.food+d.transport+d.activities),0)/chosen.length * duration * (budget==='low'?0.75:budget==='high'?1.35:1);
+
+    html+='<section class="panel"><h2>الإجمالي المتوقع للرحلة</h2><div class="budget-grid"><div class="budget-item"><small>التكلفة التقديرية للشخص</small><strong>'+money(grandTotal)+' ر.ع</strong></div><div class="budget-item"><small>التكلفة التقديرية لجميع المسافرين</small><strong>'+money(grandTotal*people)+' ر.ع</strong></div></div><p class="note">تتغير التقديرات مع نوع الميزانية وعدد الأيام والوجهات. هذه تقديرات مبسطة للطعام والمواصلات والأنشطة، ولا تمثل أسعارًا رسمية أو حجوزات.</p></section>';
+
+    html+='</div><section class="panel" style="margin-top:18px"><h2>قبل الانطلاق</h2><ul><li>تأكدي من أوقات الزيارة والرسوم وحالة الطقس والطرق.</li><li>احجزي الإقامة مسبقًا إذا كانت الرحلة تتطلب المبيت.</li><li>احتفظي بمبلغ إضافي للطوارئ، واتبعي تعليمات السلامة في الأودية والجبال والبحر.</li><li>قد تحتاج بعض الوجهات إلى وقت انتقال طويل؛ عدّلي ترتيب الأيام وفق المسافات الفعلية.</li></ul><p class="note">هذه خطة مقترحة لتنظيم الوقت والمصروف وليست حجزًا أو تسعيرة رسمية.</p></section>';
+
+    main.innerHTML=html;
+
+
+    /* ===================================
+       الإضافات الجديدة دون تغيير الخطة
+    =================================== */
+
+
+    // جواز الرحلة
+
+    const passportHTML = `
+        <section class="passport">
+            <h2 class="passport-title">🎫 جواز رحلتي العُمانية</h2>
+            <p>هذه وجهاتك المختارة في رحلتك القادمة:</p>
+            <div class="passport-destinations">
+                ${chosen.map(x => `<span class="tag">📍 ${x.name}</span>`).join('')}
+            </div>
+            <div class="passport-details">
+                مدة الرحلة: ${duration} يوم |
+                عدد المسافرين: ${people} |
+                نوع الرحلة: ${typeNames[type]}
+            </div>
+        </section>
+    `;
+
+    main.insertAdjacentHTML('afterbegin', passportHTML);
+
+
+    // نصيحة للمسافر حسب نوع الرحلة
+
+    const tips = {
+        nature: '🌿 احرصي على ارتداء حذاء مريح، وخذي معك الماء عند زيارة الأماكن الطبيعية.',
+        heritage: '🏛️ خصصي وقتًا للتعرف على تاريخ المعالم، واحترمي خصوصية الأماكن التراثية.',
+        sea: '🌊 تحققي من حالة الطقس وتعليمات السلامة قبل الأنشطة البحرية.',
+        family: '👨‍👩‍👧‍👦 رتبي أوقات الاستراحة واختاري أنشطة مناسبة لجميع أفراد العائلة.',
+        culture: '🎨 استكشفي الحرف والأسواق المحلية، وتعرفي على العادات العُمانية.',
+        relax: '☁️ لا تجعلي جدولك مزدحمًا؛ اتركي وقتًا للاستمتاع والراحة.'
+    };
+
+    main.insertAdjacentHTML('afterbegin', `
+        <section class="travel-tip">
+            <h2>💡 نصيحة خاصة برحلتك</h2>
+            <p>${tips[type] || tips.nature}</p>
+        </section>
+    `);
+
+
+    // قائمة الاستعداد للسفر
+
+    const checklistHTML = `
+        <section class="ready-panel">
+            <h2>🧳 هل أنت مستعدة للانطلاق؟</h2>
+            <p>حددي الأشياء التي جهزتها قبل الرحلة:</p>
+
+            <div class="ready-list">
+                <label class="ready-item">
+                    <input type="checkbox" class="ready-check">
+                    تجهيز الملابس المناسبة
+                </label>
+
+                <label class="ready-item">
+                    <input type="checkbox" class="ready-check">
+                    تجهيز حقيبة السفر
+                </label>
+
+                <label class="ready-item">
+                    <input type="checkbox" class="ready-check">
+                    التأكد من وسائل النقل
+                </label>
+
+                <label class="ready-item">
+                    <input type="checkbox" class="ready-check">
+                    تجهيز المستلزمات الشخصية
+                </label>
+
+                <label class="ready-item">
+                    <input type="checkbox" class="ready-check">
+                    التأكد من حجوزات الإقامة
+                </label>
+
+                <label class="ready-item">
+                    <input type="checkbox" class="ready-check">
+                    حفظ تفاصيل الرحلة
+                </label>
+            </div>
+
+            <div class="ready-progress">
+                <div class="ready-progress-fill" id="readyFill"></div>
+            </div>
+
+            <div class="ready-count" id="readyCount">
+                أنجزتِ 0 من 6 مهام
+            </div>
+        </section>
+    `;
+
+    main.insertAdjacentHTML('beforeend', checklistHTML);
+
+
+    // أزرار الحفظ والنسخ
+
+    const extraActions = `
+        <div class="extra-actions">
+            <button class="btn" id="saveTrip">💾 حفظ خطتي</button>
+            <button class="btn secondary" id="copyTrip">📋 نسخ تفاصيل الرحلة</button>
+        </div>
+
+        <div class="save-message" id="saveMessage"></div>
+    `;
+
+    main.insertAdjacentHTML('beforeend', extraActions);
+
+
+    // تحديث شريط الاستعداد
+
+    const checks = document.querySelectorAll('.ready-check');
+    const readyFill = document.getElementById('readyFill');
+    const readyCount = document.getElementById('readyCount');
+
+    function updateChecklist() {
+
+        const completed = document.querySelectorAll('.ready-check:checked').length;
+        const percentage = (completed / checks.length) * 100;
+
+        readyFill.style.width = percentage + '%';
+
+        readyCount.textContent =
+            'أنجزتِ ' + completed + ' من ' + checks.length + ' مهام';
+
+        if (completed === checks.length) {
+            readyCount.textContent = '🎉 رائع! أصبحتِ مستعدة للانطلاق!';
+        }
+    }
+
+    checks.forEach(check => {
+        check.addEventListener('change', updateChecklist);
+    });
+
+
+    // حفظ الخطة في المتصفح
+
+    document.getElementById('saveTrip').addEventListener('click', function() {
+
+        const tripDetails = {
+            destinations: chosen.map(x => x.name),
+            start: fmtDate(start),
+            end: fmtDate(end),
+            duration: duration,
+            people: people,
+            type: typeNames[type],
+            budget: budgetNames[budget],
+            savedAt: new Date().toLocaleString('ar-OM')
+        };
+
+        localStorage.setItem('myOmanTrip', JSON.stringify(tripDetails));
+
+        document.getElementById('saveMessage').textContent =
+            '✓ تم حفظ تفاصيل رحلتك في هذا المتصفح بنجاح.';
+
+    });
+
+
+    // نسخ تفاصيل الرحلة
+
+    document.getElementById('copyTrip').addEventListener('click', async function() {
+
+        const details = `
+رِحلة | دليلك السياحي في عُمان
+
+الوجهات: ${chosen.map(x => x.name).join('، ')}
+تاريخ البداية: ${fmtDate(start)}
+تاريخ النهاية: ${fmtDate(end)}
+مدة الرحلة: ${duration} يوم
+عدد المسافرين: ${people}
+نوع الرحلة: ${typeNames[type]}
+الميزانية: ${budgetNames[budget]}
+التكلفة التقديرية للمجموعة: ${money(grandTotal*people)} ريال عُماني
+
+نتمنى لك رحلة سعيدة!
+        `;
+
+        try {
+
+            await navigator.clipboard.writeText(details);
+
+            document.getElementById('saveMessage').textContent =
+                '✓ تم نسخ تفاصيل رحلتك بنجاح.';
+
+        } catch (error) {
+
+            document.getElementById('saveMessage').textContent =
+                'تعذر النسخ تلقائيًا. يمكنك استخدام زر الطباعة لحفظ خطتك.';
+
+        }
+
+    });
+
+}
+
+</script>
+
+</body>
+</html>

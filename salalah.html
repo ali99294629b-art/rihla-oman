@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>صلالة | رحلة</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f8f3e9;
+            color: #4d4033;
+            line-height: 1.8;
+        }
+
+        /* شريط التنقل */
+        nav {
+            background-color: #fffdf8;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            box-shadow: 0 2px 12px #00000008;
+        }
+
+        .logo {
+            font-size: 27px;
+            font-weight: bold;
+            color: #806443;
+            text-decoration: none;
+        }
+
+        nav div {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        nav div a {
+            color: #4d4033;
+            text-decoration: none;
+            margin: 4px;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        nav div a:hover {
+            background-color: #80603a;
+            color: white;
+        }
+
+        /* الواجهة الرئيسية */
+        .hero {
+            min-height: 420px;
+            background:
+                linear-gradient(#00000030, #00000065),
+                url("../images/salalah-hero.png.png") center/cover no-repeat;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 30px;
+        }
+
+        .hero h1 {
+            font-size: 46px;
+            margin-bottom: 5px;
+            animation: appear 1.2s ease;
+        }
+
+        .hero p {
+            font-size: 19px;
+        }
+
+        .hero-label {
+            border: 1px solid #ffffffaa;
+            padding: 6px 22px;
+            border-radius: 30px;
+            font-size: 14px;
+            background-color: #ffffff20;
+        }
+
+        /* العناوين */
+        .section-title {
+            text-align: center;
+            margin-bottom: 8px;
+            color: #806443;
+            font-size: 29px;
+        }
+
+        .section-intro {
+            text-align: center;
+            color: #817363;
+            margin-bottom: 30px;
+        }
+
+        /* المقدمة */
+        .intro {
+            max-width: 1000px;
+            margin: 45px auto;
+            padding: 0 20px;
+        }
+
+        .intro-box {
+            background-color: #fffdf8;
+            padding: 30px;
+            border-radius: 16px;
+            border-right: 6px solid #a88a61;
+            box-shadow: 0 5px 18px #00000009;
+        }
+
+        .intro-box h2 {
+            color: #806443;
+            margin-top: 0;
+        }
+
+        /* أرقام ومميزات صلالة */
+        .features {
+            max-width: 1050px;
+            margin: 45px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .feature {
+            background-color: #eae1d2;
+            text-align: center;
+            padding: 25px 15px;
+            border-radius: 15px;
+            transition: 0.3s;
+        }
+
+        .feature:hover {
+            transform: translateY(-7px);
+            background-color: #dfd0b9;
+        }
+
+        .feature span {
+            font-size: 38px;
+        }
+
+        .feature h3 {
+            color: #765b3d;
+            margin: 5px 0;
+        }
+
+        /* تجارب صلالة */
+        .experiences {
+            padding: 45px 7%;
+            background-color: #eee6d8;
+            margin-top: 55px;
+        }
+
+        .experience-grid {
+            max-width: 1050px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .experience-card {
+            background-color: #fffdf8;
+            padding: 25px;
+            text-align: center;
+            border-radius: 16px;
+            box-shadow: 0 5px 15px #00000009;
+            transition: 0.3s;
+        }
+
+        .experience-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .experience-card .icon {
+            font-size: 45px;
+        }
+
+        .experience-card h3 {
+            color: #806443;
+        }
+
+        /* الأماكن السياحية */
+        .places {
+            max-width: 1100px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .place-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 22px;
+        }
+
+        .place-card {
+            background-color: #fffdf8;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 16px #00000010;
+            transition: 0.3s;
+        }
+
+        .place-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 9px 20px #00000018;
+        }
+
+        .place-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .place-text {
+            padding: 18px 22px;
+        }
+
+        .place-text h3 {
+            color: #806443;
+            margin-top: 0;
+        }
+
+        /* برنامج الرحلة */
+        .journey {
+            background-color: #fffdf8;
+            padding: 45px 20px;
+            margin-top: 55px;
+        }
+
+        .journey-list {
+            max-width: 750px;
+            margin: 30px auto;
+        }
+
+        .journey-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 18px;
+            margin-bottom: 15px;
+            background-color: #f4eee3;
+            border-radius: 13px;
+            border-right: 5px solid #a88a61;
+        }
+
+        .journey-icon {
+            font-size: 32px;
+            min-width: 45px;
+            text-align: center;
+        }
+
+        .journey-item h3 {
+            margin: 0;
+            color: #806443;
+        }
+
+        .journey-item p {
+            margin: 3px 0 0;
+        }
+
+        /* معلومة متغيرة */
+        .did-you-know {
+            max-width: 900px;
+            margin: 55px auto;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .fact-box {
+            background-color: #e8dece;
+            padding: 30px;
+            border-radius: 18px;
+        }
+
+        .fact-box h2 {
+            color: #806443;
+        }
+
+        #factText {
+            font-size: 18px;
+            min-height: 55px;
+        }
+
+        .fact-button {
+            background-color: #806443;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 15px;
+            cursor: pointer;
+            font-family: Arial, sans-serif;
+            transition: 0.3s;
+        }
+
+        .fact-button:hover {
+            background-color: #604a31;
+            transform: scale(1.04);
+        }
+
+        /* الختام */
+        .visit {
+            text-align: center;
+            padding: 45px 20px;
+            background-color: #eae1d2;
+        }
+
+        .visit h2 {
+            color: #806443;
+        }
+
+        .back {
+            display: inline-block;
+            background-color: #806443;
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            margin-top: 15px;
+            transition: 0.3s;
+        }
+
+        .back:hover {
+            background-color: #604a31;
+            transform: translateY(-3px);
+        }
+
+        /* التذييل */
+        footer {
+            background-color: #4d4033;
+            color: white;
+            text-align: center;
+            padding: 18px;
+        }
+
+        /* الحركة */
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* الشاشات الصغيرة */
+        @media (max-width: 750px) {
+
+            nav {
+                flex-direction: column;
+            }
+
+            nav div {
+                justify-content: center;
+            }
+
+            .hero {
+                min-height: 300px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .features,
+            .experience-grid,
+            .place-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .journey-item {
+                align-items: flex-start;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- شريط التنقل -->
+    <nav>
+
+        <a class="logo" href="../index.html">رِحلة</a>
+
+        <div>
+            <a href="../index.html">الرئيسية</a>
+            <a href="discover.html">اكتشف</a>
+            <a href="wilayat.html">الولايات والمناطق</a>
+            <a href="stay.html">التجارية والإقامة</a>
+            <a href="plan.html">خطة رحلتك</a>
+            <a href="contact.html">تواصل معنا</a>
+        </div>
+
+    </nav>
+
+
+    <!-- الواجهة الرئيسية -->
+    <header class="hero">
+
+        <div class="hero-label">جوهرة الجنوب العُماني</div>
+
+        <h1>🌴 صلالة .. أرض الخريف</h1>
+
+        <p>حيث تلتقي الجبال الخضراء بالشواطئ الزرقاء</p>
+
+    </header>
+
+
+    <!-- نبذة عن صلالة -->
+    <main>
+
+        <section class="intro">
+
+            <div class="intro-box">
+
+                <h2>🌿 حكاية مدينة لا تشبه غيرها</h2>
+
+                <p>
+                    تقع صلالة في محافظة ظفار جنوب سلطنة عُمان،
+                    وتُعد من الوجهات السياحية المميزة التي تجمع
+                    بين الطبيعة الساحرة والتاريخ العريق.
+                    وتشتهر بموسم الخريف الذي يكسو الجبال والسهول
+                    بالخضرة، ويمنح المنطقة أجواءً لطيفة ومناظر جميلة.
+                    كما تتميز بشواطئها الهادئة وأسواقها الشعبية
+                    ومواقعها الطبيعية والتاريخية.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- مميزات صلالة -->
+        <section class="features">
+
+            <div class="feature">
+                <span>🌧️</span>
+                <h3>موسم الخريف</h3>
+                <p>أجواء لطيفة وضباب وأمطار موسمية.</p>
+            </div>
+
+            <div class="feature">
+                <span>🌊</span>
+                <h3>الشواطئ</h3>
+                <p>سواحل جميلة وإطلالات بحرية رائعة.</p>
+            </div>
+
+            <div class="feature">
+                <span>🌳</span>
+                <h3>الطبيعة</h3>
+                <p>جبال خضراء وعيون مائية ومناظر خلابة.</p>
+            </div>
+
+        </section>
+
+
+        <!-- تجارب صلالة -->
+        <section class="experiences">
+
+            <h2 class="section-title">اكتشف أجواء صلالة</h2>
+
+            <p class="section-intro">
+                ثلاث تجارب تجعل زيارتك إلى ظفار مميزة
+            </p>
+
+            <div class="experience-grid">
+
+                <div class="experience-card">
+
+                    <div class="icon">🌫️</div>
+
+                    <h3>سحر الخريف</h3>
+
+                    <p>
+                        استمتع بمشاهدة الضباب وهو يلامس
+                        الجبال والسهول الخضراء.
+                    </p>
+
+                </div>
+
+                <div class="experience-card">
+
+                    <div class="icon">🐚</div>
+
+                    <h3>هدوء البحر</h3>
+
+                    <p>
+                        اكتشف جمال الشواطئ واستمتع
+                        بصوت الأمواج والمناظر البحرية.
+                    </p>
+
+                </div>
+
+                <div class="experience-card">
+
+                    <div class="icon">🏛️</div>
+
+                    <h3>عبق التاريخ</h3>
+
+                    <p>
+                        تعرّف على المواقع التاريخية
+                        والأسواق الشعبية في ظفار.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- الأماكن السياحية -->
+        <section class="places">
+
+            <h2 class="section-title">محطات تستحق الزيارة</h2>
+
+            <p class="section-intro">
+                تعرف على بعض الأماكن الجميلة في محافظة ظفار
+            </p>
+
+            <div class="place-grid">
+
+                <div class="place-card">
+
+                    <img src="../images/salalah-hero.png.png"
+                         alt="الطبيعة في صلالة">
+
+                    <div class="place-text">
+
+                        <h3>🌿 سهول صلالة</h3>
+
+                        <p>
+                            تتميز بالمساحات الخضراء والمناظر
+                            الطبيعية الجميلة، خاصة خلال موسم الخريف.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="place-card">
+
+                    <img src="../images/nature.jpg"
+                         alt="الطبيعة والجبال">
+
+                    <div class="place-text">
+
+                        <h3>🏞️ وادي دربات</h3>
+
+                        <p>
+                            من الوجهات الطبيعية المعروفة في ظفار،
+                            ويشتهر بالمناظر الخضراء والشلالات
+                            الموسمية والبحيرات.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="place-card">
+
+                    <img src="../images/coast.jpg"
+                         alt="الشواطئ العمانية">
+
+                    <div class="place-text">
+
+                        <h3>🌊 شواطئ ظفار</h3>
+
+                        <p>
+                            تمتد على طول الساحل مناظر بحرية
+                            جميلة تجمع بين زرقة البحر
+                            وروعة الطبيعة.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="place-card">
+
+                    <img src="../images/heritage.jpg"
+                         alt="التراث العماني">
+
+                    <div class="place-text">
+
+                        <h3>🏺 أرض اللبان</h3>
+
+                        <p>
+                            ترتبط ظفار بتاريخ اللبان العُماني
+                            وتضم مواقع أثرية تعكس أهميتها
+                            التجارية والحضارية.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- برنامج يوم سياحي -->
+        <section class="journey">
+
+            <h2 class="section-title">رحلة في يوم واحد 🌴</h2>
+
+            <p class="section-intro">
+                برنامج مقترح لاكتشاف بعض جمال صلالة
+            </p>
+
+            <div class="journey-list">
+
+                <div class="journey-item">
+
+                    <div class="journey-icon">🌅</div>
+
+                    <div>
+                        <h3>بداية اليوم</h3>
+                        <p>
+                            الاستمتاع بالأجواء الطبيعية
+                            وزيارة أحد المواقع الخضراء.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="journey-item">
+
+                    <div class="journey-icon">🏞️</div>
+
+                    <div>
+                        <h3>منتصف اليوم</h3>
+                        <p>
+                            اكتشاف الأودية والعيون المائية
+                            والاستمتاع بالمناظر الطبيعية.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="journey-item">
+
+                    <div class="journey-icon">🌊</div>
+
+                    <div>
+                        <h3>نهاية اليوم</h3>
+                        <p>
+                            زيارة أحد الشواطئ والاستمتاع
+                            بغروب الشمس على ساحل ظفار.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- هل تعلم -->
+        <section class="did-you-know">
+
+            <div class="fact-box">
+
+                <h2>💡 هل تعرف صلالة جيدًا؟</h2>
+
+                <p id="factText" aria-live="polite">
+                    تتميز محافظة ظفار بموسم الخريف الذي
+                    يحول أجزاء واسعة من طبيعتها إلى اللون الأخضر.
+                </p>
+
+                <button class="fact-button"
+                        type="button"
+                        onclick="changeFact()">
+
+                    اكتشف معلومة أخرى ✨
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- الختام -->
+        <section class="visit">
+
+            <h2>رحلتك إلى الجنوب تبدأ من هنا 🇴🇲</h2>
+
+            <p>
+                اجعل صلالة إحدى محطاتك القادمة،
+                واكتشف جمال الطبيعة العُمانية.
+            </p>
+
+            <a class="back" href="wilayat.html">
+                العودة إلى الولايات والمناطق
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <!-- التذييل -->
+    <footer>
+
+        رِحلة | دليلك السياحي في عُمان 🇴🇲
+
+    </footer>
+
+
+    <!-- JavaScript لتغيير المعلومات -->
+    <script>
+
+        const facts = [
+
+            "تشتهر محافظة ظفار بإنتاج اللبان العُماني الذي ارتبط بتاريخها التجاري والحضاري.",
+
+            "يُعد موسم الخريف من أبرز المواسم السياحية في محافظة ظفار.",
+
+            "يُعتبر وادي دربات من أشهر الوجهات الطبيعية في محافظة ظفار.",
+
+            "تضم ظفار مواقع أثرية مرتبطة بأرض اللبان وتاريخ التجارة القديمة.",
+
+            "تتميز سواحل ظفار بتنوع المناظر البحرية والطبيعية."
+
+        ];
+
+        let currentFact = 0;
+
+        function changeFact() {
+
+            currentFact++;
+
+            if (currentFact >= facts.length) {
+                currentFact = 0;
+            }
+
+            document.getElementById("factText").textContent =
+                facts[currentFact];
+
+        }
+
+    </script>
+
+</body>
+</html>

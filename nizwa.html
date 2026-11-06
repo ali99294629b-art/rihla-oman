@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ولاية نزوى | رحلة</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f8f3e9;
+            color: #4d4033;
+        }
+
+        /* =========================
+           شريط التنقل
+        ========================= */
+
+        .navbar {
+            background-color: #fffdf8;
+            min-height: 75px;
+            padding: 12px 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            box-shadow: 0 3px 15px rgba(80, 60, 40, 0.08);
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo {
+            font-size: 30px;
+            font-weight: bold;
+            color: #76552f;
+            white-space: nowrap;
+        }
+
+        .navbar-links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            flex-wrap: wrap;
+        }
+
+        .navbar-links a {
+            text-decoration: none;
+            color: #5b4a38;
+            font-size: 14px;
+            padding: 10px 13px;
+            border-radius: 20px;
+            transition: 0.3s;
+            white-space: nowrap;
+        }
+
+        .navbar-links a:hover,
+        .navbar-links a.active {
+            background-color: #80613b;
+            color: white;
+        }
+
+        /* =========================
+           الصورة الرئيسية
+        ========================= */
+
+        .nizwa-hero {
+            position: relative;
+            width: 100%;
+            height: 430px;
+            overflow: hidden;
+        }
+
+        .nizwa-hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 1s;
+        }
+
+        .nizwa-hero:hover img {
+            transform: scale(1.03);
+        }
+
+        .nizwa-hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to top,
+                rgba(35, 25, 15, 0.65),
+                rgba(0, 0, 0, 0.03)
+            );
+        }
+
+        .nizwa-hero-text {
+            position: absolute;
+            z-index: 2;
+            right: 9%;
+            bottom: 65px;
+            color: white;
+            text-align: right;
+        }
+
+        .hero-small-title {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.18);
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-size: 15px;
+            margin-bottom: 12px;
+        }
+
+        .nizwa-hero-text h1 {
+            margin: 0 0 12px;
+            font-size: 58px;
+            color: white;
+            text-shadow: 0 3px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .nizwa-hero-text p {
+            margin: 0;
+            font-size: 20px;
+            color: white;
+            line-height: 1.8;
+        }
+
+        /* =========================
+           شريط الأقسام
+        ========================= */
+
+        .page-tabs {
+            width: 90%;
+            max-width: 1050px;
+            margin: -28px auto 40px;
+            position: relative;
+            z-index: 5;
+            background-color: #fffdf8;
+            border-radius: 18px;
+            box-shadow: 0 6px 20px rgba(80, 60, 40, 0.13);
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 10px;
+            gap: 5px;
+        }
+
+        .page-tabs a {
+            text-decoration: none;
+            color: #725638;
+            padding: 13px 23px;
+            border-radius: 13px;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        .page-tabs a:hover,
+        .page-tabs a.active {
+            background-color: #80613b;
+            color: white;
+        }
+
+        /* =========================
+           المحتوى
+        ========================= */
+
+        .main-content {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .section-box {
+            background-color: #fffdf8;
+            border-radius: 22px;
+            padding: 38px;
+            margin-bottom: 32px;
+            box-shadow: 0 5px 20px rgba(80, 60, 40, 0.07);
+        }
+
+        .section-title {
+            text-align: center;
+            color: #76552f;
+            font-size: 31px;
+            margin: 0 0 12px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #9b8469;
+            font-size: 15px;
+            margin: 0 0 10px;
+        }
+
+        .section-line {
+            width: 75px;
+            height: 4px;
+            background-color: #b28a55;
+            margin: 0 auto 28px;
+            border-radius: 5px;
+        }
+
+        .intro-text {
+            text-align: center;
+            max-width: 850px;
+            margin: auto;
+            font-size: 17px;
+            line-height: 2.2;
+            color: #66594b;
+        }
+
+        /* =========================
+           بطاقات المعلومات
+        ========================= */
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 35px;
+        }
+
+        .info-card {
+            background-color: #f8f1e5;
+            border-radius: 18px;
+            padding: 25px 20px;
+            text-align: center;
+            transition: 0.35s;
+            border-bottom: 3px solid transparent;
+        }
+
+        .info-card:hover {
+            transform: translateY(-8px);
+            background-color: #f3e7d6;
+            border-bottom-color: #a17a4c;
+            box-shadow: 0 8px 18px rgba(80, 60, 40, 0.10);
+        }
+
+        .info-card .icon {
+            font-size: 38px;
+            margin-bottom: 12px;
+        }
+
+        .info-card h3 {
+            color: #76552f;
+            margin: 8px 0 12px;
+            font-size: 19px;
+        }
+
+        .info-card p {
+            margin: 0;
+            font-size: 14px;
+            line-height: 2;
+            color: #66594b;
+        }
+
+        /* =========================
+           بطاقات الأماكن
+        ========================= */
+
+        .place-card {
+            background-color: #f8f1e5;
+            border-radius: 18px;
+            overflow: hidden;
+            text-align: center;
+            transition: 0.35s;
+        }
+
+        .place-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 10px 22px rgba(80, 60, 40, 0.13);
+        }
+
+        .place-card img {
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+            display: block;
+            transition: 0.5s;
+        }
+
+        .place-card:hover img {
+            transform: scale(1.04);
+        }
+
+        .place-card h3 {
+            color: #76552f;
+            font-size: 19px;
+            margin: 18px 10px 8px;
+        }
+
+        .place-card p {
+            color: #66594b;
+            font-size: 14px;
+            line-height: 1.9;
+            padding: 0 18px 20px;
+            margin: 0;
+        }
+
+        /* =========================
+           معرض الصور
+        ========================= */
+
+        .gallery {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            grid-template-rows: 180px 180px;
+            gap: 13px;
+            margin-top: 25px;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+            display: block;
+            transition: 0.4s;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.025);
+            filter: brightness(0.9);
+        }
+
+        .gallery img:first-child {
+            grid-row: span 2;
+        }
+
+        /* =========================
+           رحلة اليوم التفاعلية
+        ========================= */
+
+        .journey-section {
+            background: linear-gradient(
+                135deg,
+                #76552f,
+                #a17d50
+            );
+            border-radius: 22px;
+            padding: 38px;
+            margin-bottom: 32px;
+            color: white;
+            box-shadow: 0 6px 20px rgba(80, 60, 40, 0.12);
+        }
+
+        .journey-section .section-title {
+            color: white;
+        }
+
+        .journey-section .section-subtitle {
+            color: #f4e6d3;
+        }
+
+        .journey-section .section-line {
+            background-color: #e5c89d;
+        }
+
+        .journey-intro {
+            text-align: center;
+            line-height: 2;
+            color: #fff7ed;
+            margin-bottom: 28px;
+        }
+
+        .journey-stops {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 13px;
+        }
+
+        .journey-stop {
+            background-color: rgba(255, 255, 255, 0.13);
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            color: white;
+            padding: 20px 10px;
+            border-radius: 16px;
+            cursor: pointer;
+            font-family: Arial, sans-serif;
+            transition: 0.3s;
+        }
+
+        .journey-stop:hover,
+        .journey-stop.active {
+            background-color: #fffaf2;
+            color: #76552f;
+            transform: translateY(-5px);
+        }
+
+        .journey-stop span {
+            display: block;
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .journey-stop strong {
+            font-size: 15px;
+        }
+
+        .journey-details {
+            margin-top: 22px;
+            padding: 25px;
+            background-color: #fffaf2;
+            color: #5b4937;
+            border-radius: 16px;
+            text-align: center;
+            min-height: 125px;
+            line-height: 2;
+        }
+
+        .journey-details h3 {
+            color: #76552f;
+            margin: 0 0 8px;
+        }
+
+        .journey-details p {
+            margin: 0;
+        }
+
+        /* =========================
+           التجارب
+        ========================= */
+
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .experience-card {
+            background-color: #f8f1e5;
+            border-radius: 17px;
+            padding: 25px 12px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .experience-card:hover {
+            transform: translateY(-6px);
+            background-color: #f1e5d4;
+            box-shadow: 0 6px 15px rgba(80, 60, 40, 0.08);
+        }
+
+        .experience-card .icon {
+            font-size: 35px;
+            margin-bottom: 12px;
+        }
+
+        .experience-card h3 {
+            margin: 5px 0;
+            font-size: 16px;
+            color: #76552f;
+        }
+
+        /* =========================
+           معلومة مميزة
+        ========================= */
+
+        .nizwa-fact {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background-color: #f3e8d8;
+            padding: 25px;
+            border-radius: 18px;
+            margin-bottom: 30px;
+        }
+
+        .nizwa-fact .fact-icon {
+            font-size: 45px;
+        }
+
+        .nizwa-fact h3 {
+            color: #76552f;
+            margin: 0 0 8px;
+        }
+
+        .nizwa-fact p {
+            margin: 0;
+            line-height: 2;
+            color: #66594b;
+        }
+
+        /* =========================
+           زر العودة
+        ========================= */
+
+        .back-button {
+            display: block;
+            width: fit-content;
+            margin: 32px auto 0;
+            padding: 14px 30px;
+            background-color: #80613b;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: #604725;
+            transform: translateY(-4px);
+        }
+
+        /* =========================
+           التذييل
+        ========================= */
+
+        footer {
+            margin-top: 55px;
+            background-color: #76552f;
+            color: white;
+            text-align: center;
+            padding: 35px 20px;
+        }
+
+        footer h3 {
+            margin: 0 0 12px;
+            font-size: 27px;
+        }
+
+        footer p {
+            margin: 8px 0;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        /* =========================
+           الشاشات الصغيرة
+        ========================= */
+
+        @media (max-width: 800px) {
+
+            .navbar {
+                flex-direction: column;
+                padding: 15px;
+            }
+
+            .navbar-links {
+                gap: 5px;
+            }
+
+            .nizwa-hero {
+                height: 330px;
+            }
+
+            .nizwa-hero-text {
+                right: 6%;
+                bottom: 40px;
+            }
+
+            .nizwa-hero-text h1 {
+                font-size: 40px;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .experience-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .gallery {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: auto;
+            }
+
+            .gallery img,
+            .gallery img:first-child {
+                height: 190px;
+                grid-row: auto;
+            }
+
+            .journey-stops {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .section-box,
+            .journey-section {
+                padding: 25px 18px;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            .nizwa-hero-text h1 {
+                font-size: 32px;
+            }
+
+            .nizwa-hero-text p {
+                font-size: 16px;
+            }
+
+            .page-tabs a {
+                padding: 10px 13px;
+                font-size: 13px;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .journey-stops {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .nizwa-fact {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- شريط التنقل -->
+
+    <nav class="navbar">
+
+        <div class="logo">رِحلة</div>
+
+        <div class="navbar-links">
+
+            <a href="../index.html">الرئيسية</a>
+
+            <a href="discover.html">اكتشف</a>
+
+            <a href="wilayat.html" class="active">الولايات والمناطق</a>
+
+            <a href="plan.html">خطط رحلتك</a>
+
+            <a href="stay.html">الإقامة والتجارة</a>
+
+            <a href="contact.html">تواصل معنا</a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- الصورة الرئيسية -->
+
+    <section class="nizwa-hero">
+
+        <img
+            src="../images/nizwa-hero.png"
+            alt="ولاية نزوى"
+        >
+
+        <div class="nizwa-hero-text">
+
+            <span class="hero-small-title">✨ جوهرة عُمان التاريخية</span>
+
+            <h1>ولاية نزوى</h1>
+
+            <p>مدينة التاريخ والتراث العُماني</p>
+
+        </div>
+
+    </section>
+
+
+    <!-- تبويبات الصفحة -->
+
+    <div class="page-tabs">
+
+        <a href="#about" class="active">نبذة</a>
+
+        <a href="#places">أهم الأماكن</a>
+
+        <a href="#gallery">معرض الصور</a>
+
+        <a href="#journey">رحلة اليوم</a>
+
+        <a href="#experiences">التجارب</a>
+
+    </div>
+
+
+    <main class="main-content">
+
+
+        <!-- نبذة عن نزوى -->
+
+        <section class="section-box" id="about">
+
+            <h2 class="section-title">حكاية مدينة نزوى</h2>
+
+            <p class="section-subtitle">
+                حيث يلتقي عبق الماضي بجمال الحاضر
+            </p>
+
+            <div class="section-line"></div>
+
+            <p class="intro-text">
+
+                تُعد ولاية نزوى من أبرز المدن التاريخية في سلطنة عُمان،
+                وتتميز بتراثها العريق وقلاعها وأسواقها التقليدية.
+                كما تجمع بين جمال الطبيعة والتاريخ والثقافة العُمانية،
+                مما يجعلها وجهة سياحية مميزة تستحق الزيارة والاستكشاف.
+
+            </p>
+
+
+            <div class="info-grid">
+
+                <div class="info-card">
+
+                    <div class="icon">🏰</div>
+
+                    <h3>التاريخ</h3>
+
+                    <p>
+                        تزخر نزوى بالمعالم التاريخية والقلاع والحصون
+                        التي تحكي قصص الماضي العُماني.
+                    </p>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <div class="icon">🛍️</div>
+
+                    <h3>الأسواق</h3>
+
+                    <p>
+                        تشتهر بالأسواق التقليدية والحرف اليدوية
+                        والمنتجات العُمانية الأصيلة.
+                    </p>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <div class="icon">🌴</div>
+
+                    <h3>الطبيعة</h3>
+
+                    <p>
+                        تتميز بالمزارع والواحات وأشجار النخيل
+                        والمناظر الطبيعية الجميلة.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- أهم الأماكن -->
+
+        <section class="section-box" id="places">
+
+            <h2 class="section-title">أماكن تستحق الزيارة</h2>
+
+            <p class="section-subtitle">
+                اكتشف أجمل معالم الولاية
+            </p>
+
+            <div class="section-line"></div>
+
+
+            <div class="info-grid">
+
+                <div class="place-card">
+
+                    <img
+                        src="../images/nizwa.jpg"
+                        alt="قلعة نزوى"
+                    >
+
+                    <h3>🏰 قلعة نزوى</h3>
+
+                    <p>
+                        أحد أشهر المعالم التاريخية في الولاية،
+                        وتتميز بعمارتها العُمانية القديمة.
+                    </p>
+
+                </div>
+
+
+                <div class="place-card">
+
+                    <img
+                        src="../images/heritage.jpg"
+                        alt="سوق نزوى"
+                    >
+
+                    <h3>🛍️ سوق نزوى</h3>
+
+                    <p>
+                        سوق تراثي يعكس جانبًا من الحياة العُمانية،
+                        ويشتهر بالمنتجات والحرف التقليدية.
+                    </p>
+
+                </div>
+
+
+                <div class="place-card">
+
+                    <img
+                        src="../images/culture.jpg"
+                        alt="التراث والثقافة"
+                    >
+
+                    <h3>🏺 التراث والثقافة</h3>
+
+                    <p>
+                        فرصة للتعرف على الثقافة العُمانية
+                        والحرف والفنون الشعبية الأصيلة.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- معرض الصور -->
+
+        <section class="section-box" id="gallery">
+
+            <h2 class="section-title">نافذة على نزوى</h2>
+
+            <p class="section-subtitle">
+                مشاهد من جمال المدينة وتاريخها
+            </p>
+
+            <div class="section-line"></div>
+
+
+            <div class="gallery">
+
+                <img
+                    src="../images/nizwa-hero.png"
+                    alt="منظر من نزوى"
+                >
+
+                <img
+                    src="../images/nizwa.jpg"
+                    alt="قلعة نزوى"
+                >
+
+                <img
+                    src="../images/heritage.jpg"
+                    alt="التراث العُماني"
+                >
+
+                <img
+                    src="../images/culture.jpg"
+                    alt="الثقافة العُمانية"
+                >
+
+                <img
+                    src="../images/destinations.jpg"
+                    alt="وجهات عُمانية"
+                >
+
+            </div>
+
+        </section>
+
+
+        <!-- رحلة اليوم التفاعلية -->
+
+        <section class="journey-section" id="journey">
+
+            <h2 class="section-title">يوم لا يُنسى في نزوى</h2>
+
+            <p class="section-subtitle">
+                أربع محطات لتعيش تجربة مميزة في المدينة
+            </p>
+
+            <div class="section-line"></div>
+
+            <p class="journey-intro">
+                اختر إحدى المحطات التالية، واكتشف ما ينتظرك فيها!
+            </p>
+
+
+            <div class="journey-stops">
+
+                <button class="journey-stop active"
+                    onclick="showJourney(0, this)">
+
+                    <span>🌅</span>
+
+                    <strong>بداية اليوم</strong>
+
+                </button>
+
+
+                <button class="journey-stop"
+                    onclick="showJourney(1, this)">
+
+                    <span>🏰</span>
+
+                    <strong>رحلة التاريخ</strong>
+
+                </button>
+
+
+                <button class="journey-stop"
+                    onclick="showJourney(2, this)">
+
+                    <span>🛍️</span>
+
+                    <strong>جولة السوق</strong>
+
+                </button>
+
+
+                <button class="journey-stop"
+                    onclick="showJourney(3, this)">
+
+                    <span>🌴</span>
+
+                    <strong>لحظات الطبيعة</strong>
+
+                </button>
+
+            </div>
+
+
+            <div class="journey-details" id="journeyDetails">
+
+                <h3>🌅 بداية اليوم</h3>
+
+                <p>
+                    ابدأ يومك بجولة هادئة في نزوى،
+                    واستمتع بأجوائها الجميلة ومشاهدها التراثية.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- معلومة مميزة -->
+
+        <div class="nizwa-fact">
+
+            <div class="fact-icon">💡</div>
+
+            <div>
+
+                <h3>هل تعلم؟</h3>
+
+                <p>
+                    تُعرف نزوى بلقب «بيضة الإسلام»،
+                    وقد كانت من المراكز العلمية والثقافية المهمة
+                    في تاريخ عُمان.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- التجارب -->
+
+        <section class="section-box" id="experiences">
+
+            <h2 class="section-title">عِش تجربة نزوى</h2>
+
+            <p class="section-subtitle">
+                أنشطة تجعل زيارتك أكثر تميزًا
+            </p>
+
+            <div class="section-line"></div>
+
+
+            <div class="experience-grid">
+
+                <div class="experience-card">
+
+                    <div class="icon">🏰</div>
+
+                    <h3>استكشاف القلاع</h3>
+
+                </div>
+
+
+                <div class="experience-card">
+
+                    <div class="icon">🛍️</div>
+
+                    <h3>زيارة الأسواق</h3>
+
+                </div>
+
+
+                <div class="experience-card">
+
+                    <div class="icon">📷</div>
+
+                    <h3>التقاط الصور</h3>
+
+                </div>
+
+
+                <div class="experience-card">
+
+                    <div class="icon">🌴</div>
+
+                    <h3>الاستمتاع بالطبيعة</h3>
+
+                </div>
+
+            </div>
+
+
+            <a href="wilayat.html" class="back-button">
+                ← العودة إلى الولايات والمناطق
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <!-- التذييل -->
+
+    <footer>
+
+        <h3>رِحلة</h3>
+
+        <p>اكتشف عُمان .. استمتع .. عِش التجربة</p>
+
+        <p>© رِحلة | دليلك السياحي في عُمان</p>
+
+    </footer>
+
+
+    <!-- JavaScript -->
+
+    <script>
+
+        function showJourney(number, button) {
+
+            let details = document.getElementById("journeyDetails");
+
+            let stops = document.querySelectorAll(".journey-stop");
+
+            let titles = [
+                "🌅 بداية اليوم",
+                "🏰 رحلة التاريخ",
+                "🛍️ جولة السوق",
+                "🌴 لحظات الطبيعة"
+            ];
+
+            let descriptions = [
+
+                "ابدأ يومك بجولة هادئة في نزوى، واستمتع بأجوائها الجميلة ومشاهدها التراثية.",
+
+                "توجه إلى قلعة نزوى، واكتشف تفاصيل العمارة العُمانية القديمة وتاريخ المدينة.",
+
+                "تجول في سوق نزوى التقليدي، وتعرف على الحرف اليدوية والمنتجات المحلية.",
+
+                "استمتع بمشاهدة المزارع وأشجار النخيل، والتقط صورًا جميلة توثق رحلتك."
+            ];
+
+            details.innerHTML =
+                "<h3>" + titles[number] + "</h3>" +
+                "<p>" + descriptions[number] + "</p>";
+
+            stops.forEach(function(stop) {
+
+                stop.classList.remove("active");
+
+            });
+
+            button.classList.add("active");
+
+        }
+
+
+        // تفعيل التبويب عند الضغط عليه
+
+        let tabLinks = document.querySelectorAll(".page-tabs a");
+
+        tabLinks.forEach(function(link) {
+
+            link.addEventListener("click", function() {
+
+                tabLinks.forEach(function(tab) {
+
+                    tab.classList.remove("active");
+
+                });
+
+                this.classList.add("active");
+
+            });
+
+        });
+
+    </script>
+
+</body>
+
+</html>

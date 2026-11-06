@@ -1,0 +1,926 @@
+/* =========================================
+   الإعدادات العامة
+========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f8f5ef;
+    color: #443c30;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* =========================================
+   القائمة العلوية لجميع الصفحات
+========================================= */
+
+.navbar {
+    width: 100%;
+    min-height: 72px;
+    padding: 10px 2.5%;
+    background-color: #faf5e9;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    border-bottom: 1px solid #e5d9c5;
+    box-shadow: 0 2px 10px rgba(80, 55, 30, 0.06);
+}
+
+.site-logo {
+    text-decoration: none;
+    flex-shrink: 0;
+}
+
+.logo {
+    color: #765633;
+    font-size: 27px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.navbar ul {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    gap: 3px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+}
+
+.navbar ul li a {
+    display: block;
+    padding: 9px 10px;
+    color: #554630;
+    font-size: 13px;
+    border-radius: 18px;
+    white-space: nowrap;
+    transition: 0.3s ease;
+}
+
+.navbar ul li a:hover,
+.navbar ul li a.active {
+    background-color: #89663d;
+    color: white;
+    transform: translateY(-1px);
+}
+
+/* =========================================
+   شريط البحث
+========================================= */
+
+.search-box {
+    width: 65%;
+    max-width: 850px;
+    margin: 20px auto 30px;
+    background-color: #fffaf2;
+    border: 1px solid #e5d9c5;
+    border-radius: 30px;
+    padding: 7px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 3px 12px rgba(80, 55, 30, 0.08);
+}
+
+.search-box input {
+    flex: 1;
+    min-width: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 12px 20px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    text-align: right;
+}
+
+.search-box button {
+    width: 48px;
+    height: 42px;
+    border: none;
+    border-radius: 25px;
+    background-color: #89663d;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* البحث داخل القائمة العلوية */
+
+.navbar .search-box {
+    flex: 0 0 185px;
+    width: 185px;
+    max-width: 185px;
+    min-width: 150px;
+    margin: 0;
+    padding: 4px 6px;
+    box-shadow: none;
+}
+
+.navbar .search-box input {
+    width: 100%;
+    min-width: 0;
+    padding: 8px 9px;
+    font-size: 13px;
+}
+
+.navbar .search-box button {
+    flex: 0 0 34px;
+    width: 34px;
+    height: 34px;
+    font-size: 17px;
+}
+
+/* =========================================
+   الصفحة الرئيسية
+========================================= */
+
+body:has(.hero) .navbar {
+    background-color: #f8f1e5;
+    min-height: 70px;
+    padding: 10px 2.5%;
+}
+
+body:has(.hero) .logo {
+    color: #735331;
+}
+
+body:has(.hero) .hero {
+    width: 100%;
+    min-height: 390px;
+    background-image: url("../images/hero-home.jpg.png");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    overflow: hidden;
+}
+
+body:has(.hero) .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        270deg,
+        rgba(45, 35, 23, 0.40),
+        transparent 85%
+    );
+}
+
+body:has(.hero) .hero-content {
+    position: relative;
+    z-index: 2;
+    width: 55%;
+    padding: 30px 7%;
+    text-align: right;
+    color: white;
+    animation: appear 1s ease;
+}
+
+body:has(.hero) .hero-content h1 {
+    color: white;
+    font-size: 43px;
+    margin: 0 0 15px;
+}
+
+body:has(.hero) .hero-content p {
+    color: white;
+    font-size: 18px;
+    line-height: 1.8;
+    margin-bottom: 25px;
+}
+
+body:has(.hero) .hero-button {
+    display: inline-block;
+    padding: 12px 28px;
+    background-color: #805c35;
+    color: white;
+    border-radius: 25px;
+    font-size: 15px;
+    transition: 0.3s ease;
+}
+
+body:has(.hero) .hero-button:hover {
+    background-color: #a9895c;
+    transform: translateY(-3px);
+}
+
+/* =========================================
+   قسم اختر رحلتك
+========================================= */
+
+body:has(.hero) .trips {
+    padding: 35px 5% 45px;
+    background-color: #f7f0e3;
+}
+
+body:has(.hero) .trips h2 {
+    color: #57452e;
+    font-size: 29px;
+    margin: 0 0 10px;
+}
+
+body:has(.hero) .section-intro {
+    color: #8a7962;
+    font-size: 15px;
+    margin-bottom: 25px;
+}
+
+body:has(.hero) .trip-cards {
+    max-width: 1150px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+}
+
+body:has(.hero) .trip-card {
+    background-color: #fffaf0;
+    border: 1px solid #e7d9c4;
+    border-radius: 9px;
+    padding: 20px 10px;
+    box-shadow: none;
+    transition: 0.3s ease;
+}
+
+body:has(.hero) .trip-card:hover {
+    background-color: #eee3d1;
+    transform: translateY(-5px);
+}
+
+body:has(.hero) .trip-icon {
+    background-color: #efe5d3;
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 15px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+}
+
+body:has(.hero) .trip-card h3 {
+    color: #765633;
+    font-size: 17px;
+}
+
+body:has(.hero) .trip-card p {
+    color: #81735f;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+/* =========================================
+   قسم اكتشف عُمان
+========================================= */
+
+body:has(.hero) .discover {
+    padding: 45px 5%;
+    background-color: #eee5d5;
+}
+
+body:has(.hero) .discover h2 {
+    color: #57452e;
+    font-size: 29px;
+}
+
+body:has(.hero) .discover-cards {
+    max-width: 1150px;
+    margin: 30px auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+body:has(.hero) .discover-card {
+    background-color: #fffaf0;
+    border: 1px solid #e7d9c4;
+    border-bottom: 3px solid #a8875b;
+    border-radius: 9px;
+    padding: 25px 12px;
+    box-shadow: none;
+    transition: 0.3s ease;
+}
+
+body:has(.hero) .discover-card:hover {
+    background-color: #e4d4bb;
+    transform: translateY(-5px);
+}
+
+body:has(.hero) .discover-card h3 {
+    color: #765633;
+    font-size: 18px;
+}
+
+body:has(.hero) .discover-card p {
+    color: #81735f;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+/* =========================================
+   صفحات الاكتشاف
+========================================= */
+
+.discover {
+    padding: 50px 30px;
+    background-color: #f4eddf;
+    text-align: center;
+}
+
+.discover h1,
+.discover h2 {
+    color: #765633;
+    font-size: 38px;
+}
+
+.discover-cards {
+    max-width: 1050px;
+    margin: 35px auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.discover-card {
+    background-color: #fffaf2;
+    border-radius: 10px;
+    padding: 12px;
+    box-shadow: 0 3px 12px rgba(80, 55, 30, 0.10);
+    transition: 0.3s ease;
+}
+
+.discover-card:hover {
+    transform: translateY(-6px);
+}
+
+.discover-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+}
+
+.discover-card h3 {
+    margin: 12px 10px 8px;
+    color: #765633;
+    font-size: 19px;
+}
+
+.discover-card p {
+    margin: 0 12px 15px;
+    color: #777;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+/* =========================================
+   صور العناوين
+========================================= */
+
+.page-hero {
+    position: relative;
+    width: 100%;
+    height: 230px;
+    margin: 0 auto 35px;
+    overflow: hidden;
+}
+
+.page-hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.page-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.25);
+}
+
+.page-hero-text {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    z-index: 2;
+    text-align: center;
+    color: white;
+    width: 100%;
+}
+
+.page-hero-text h1 {
+    margin: 0 0 8px;
+    font-size: 40px;
+    color: white;
+}
+
+.page-hero-text p {
+    margin: 0;
+    font-size: 19px;
+    color: white;
+}
+
+/* =========================================
+   صفحة الولايات والمناطق
+========================================= */
+
+.wilayat-banner {
+    width: 100%;
+    height: 320px;
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.wilayat-header {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.wilayat-header img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.wilayat-header::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(50, 35, 20, 0.28);
+}
+
+.wilayat-title {
+    position: absolute;
+    top: 50%;
+    right: 7%;
+    transform: translateY(-50%);
+    z-index: 2;
+    color: white;
+    text-align: right;
+}
+
+.wilayat-title h1 {
+    margin: 0 0 10px;
+    font-size: 44px;
+    color: white;
+}
+
+.wilayat-title p {
+    margin: 0;
+    font-size: 20px;
+    color: white;
+}
+
+.wilayat-section {
+    padding: 10px 30px 50px;
+    background-image: url("../images/background.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.wilayat-section .discover-cards {
+    max-width: 1050px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.wilayat-section .discover-card {
+    background-color: rgba(255, 250, 242, 0.96);
+    padding: 10px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(80, 55, 30, 0.10);
+}
+
+.wilayat-section .discover-card img {
+    width: 100%;
+    height: 135px;
+    object-fit: cover;
+    border-radius: 9px;
+    display: block;
+}
+
+.wilayat-section .discover-card h3 {
+    margin: 12px 0 7px;
+    font-size: 19px;
+    color: #765633;
+}
+
+.wilayat-section .discover-card p {
+    margin: 0 5px 10px;
+    font-size: 14px;
+    line-height: 1.7;
+    color: #666;
+}
+
+.wilayat-section::after {
+    content: "⌖ اختر ولايتك وابدأ رحلتك ⌖";
+    display: block;
+    text-align: center;
+    margin-top: 45px;
+    font-size: 25px;
+    font-weight: bold;
+    color: #89663d;
+}
+
+/* =========================================
+   الفيديو
+========================================= */
+
+.video-box {
+    max-width: 800px;
+    margin: 30px auto;
+    background-color: #fffaf2;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.10);
+}
+
+.video-box video {
+    width: 100%;
+    display: block;
+    border-radius: 9px;
+}
+
+/* =========================================
+   تبويبات صفحة اكتشف
+========================================= */
+
+.discover-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 30px auto;
+    flex-wrap: wrap;
+}
+
+.discover-tab {
+    padding: 12px 25px;
+    border: 1px solid #e5d9c5;
+    border-radius: 25px;
+    background-color: #fffaf2;
+    color: #765633;
+    font-size: 17px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.discover-tab:hover {
+    background-color: #eee3d1;
+}
+
+.discover-tab.active {
+    background-color: #89663d;
+    color: white;
+}
+
+/* =========================================
+   التذييل
+========================================= */
+
+.footer {
+    padding: 35px 20px 25px;
+    background-color: #554a38;
+    color: white;
+    text-align: center;
+}
+
+.footer-logo {
+    color: #f3e7d1;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.footer-logo span {
+    color: #c4a477;
+}
+
+.footer p {
+    font-size: 17px;
+    color: #eee3d1;
+}
+
+.footer-line {
+    width: 80px;
+    height: 2px;
+    background-color: #c4a477;
+    margin: 25px auto;
+}
+
+.footer small {
+    color: #e0d5c3;
+}
+
+/* =========================================
+   العبارة السفلية
+========================================= */
+
+.site-bottom {
+    padding: 22px 15px;
+    background-color: #eee5d5;
+    text-align: center;
+}
+
+.site-bottom p {
+    margin: 0;
+    color: #89663d;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+/* =========================================
+   تأثيرات الحركة
+========================================= */
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================================
+   الشاشات المتوسطة
+========================================= */
+
+@media (max-width: 1050px) {
+
+    .navbar {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .navbar ul {
+        order: 3;
+        flex: 1 1 100%;
+        flex-wrap: wrap;
+    }
+
+    .navbar .search-box {
+        flex: 0 1 220px;
+        width: 220px;
+        max-width: 220px;
+    }
+
+    body:has(.hero) .trip-cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    body:has(.hero) .discover-cards,
+    .discover-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* =========================================
+   الهواتف
+========================================= */
+
+@media (max-width: 700px) {
+
+    .navbar {
+        gap: 8px;
+        padding: 12px;
+    }
+
+    .navbar ul {
+        gap: 3px;
+    }
+
+    .navbar ul li a {
+        font-size: 12px;
+        padding: 8px 9px;
+    }
+
+    .navbar .search-box {
+        flex-basis: 90%;
+        width: 90%;
+        max-width: 360px;
+    }
+
+    body:has(.hero) .hero {
+        min-height: 350px;
+    }
+
+    body:has(.hero) .hero-content {
+        width: 100%;
+        padding: 25px;
+    }
+
+    body:has(.hero) .hero-content h1 {
+        font-size: 32px;
+    }
+
+    body:has(.hero) .hero-content p {
+        font-size: 15px;
+    }
+
+    body:has(.hero) .trip-cards,
+    body:has(.hero) .discover-cards,
+    .discover-cards,
+    .wilayat-section .discover-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .search-box {
+        width: 90%;
+    }
+
+    .site-bottom p {
+        font-size: 18px;
+    }
+
+    .page-hero {
+        height: 180px;
+    }
+
+    .page-hero-text h1 {
+        font-size: 28px;
+    }
+}
+
+/* =========================================
+   الشاشات الصغيرة جدًا
+========================================= */
+
+@media (max-width: 400px) {
+
+    body:has(.hero) .trip-cards,
+    body:has(.hero) .discover-cards,
+    .discover-cards {
+        grid-template-columns: 1fr;
+    }
+}
+/* ===== تصميم الطبيعة بدون صور ===== */
+
+.nature-grid {
+    max-width: 1100px;
+    margin: 30px auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.nature-item {
+    background: #fffaf2;
+    border: 1px solid #e6dccb;
+    border-bottom: 4px solid #c5a46d;
+    border-radius: 14px;
+    padding: 25px 18px;
+    text-align: center;
+    transition: 0.3s ease;
+}
+
+.nature-item:hover {
+    background: #172b3a;
+    transform: translateY(-6px);
+    border-bottom-color: #e0c58e;
+}
+
+.nature-icon {
+    font-size: 42px;
+    margin-bottom: 12px;
+}
+
+.nature-item h3 {
+    color: #172b3a;
+    font-size: 20px;
+    margin: 8px 0 12px;
+    transition: 0.3s;
+}
+
+.nature-item p {
+    color: #666;
+    font-size: 15px;
+    line-height: 2;
+    margin: 0;
+    transition: 0.3s;
+}
+
+.nature-item:hover h3,
+.nature-item:hover p {
+    color: #fffaf2;
+}
+
+.nature-facts {
+    max-width: 1000px;
+    margin: 35px auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.nature-fact {
+    background: #172b3a;
+    color: #fffaf2;
+    padding: 22px;
+    border-radius: 12px;
+    text-align: right;
+    border-right: 5px solid #c5a46d;
+}
+
+.nature-fact h3 {
+    color: #e0c58e;
+    margin-top: 0;
+}
+
+.nature-fact p {
+    line-height: 2;
+    margin-bottom: 0;
+}
+
+.nature-message {
+    max-width: 950px;
+    margin: 35px auto;
+    padding: 25px;
+    background: #eee7d9;
+    border-radius: 14px;
+    text-align: right;
+    line-height: 2.1;
+}
+
+.nature-message h3 {
+    color: #172b3a;
+}
+
+@media (max-width: 800px) {
+    .nature-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 550px) {
+    .nature-grid,
+    .nature-facts {
+        grid-template-columns: 1fr;
+    }
+}
+/* =========================================
+   تحسين صفحة الولايات والمناطق
+========================================= */
+
+.wilayat-page .navbar {
+    position: relative;
+    z-index: 10;
+}
+
+.wilayat-page .wilayat-card a:hover {
+    color: inherit;
+}
+
+.wilayat-page .wilayat-card:focus-within {
+    outline: 2px solid #a8875b;
+    outline-offset: 3px;
+}
+
+/* تحسين عرض~ البطاقات على الأجهزة المختلفة */
+
+@media (max-width: 800px) {
+
+    .wilayat-page .navbar ul {
+        flex-wrap: wrap;
+    }
+
+}
+
+@media (max-width: 550px) {
+
+    .wilayat-page .navbar ul li a {
+        font-size: 11px;
+        padding: 7px;
+    }
+
+} 

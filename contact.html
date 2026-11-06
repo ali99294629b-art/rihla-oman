@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>تواصل معنا | رِحلة</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Tahoma, Arial, sans-serif;
+            background-color: #f8f5ef;
+            color: #443629;
+            line-height: 1.8;
+        }
+
+        /* القائمة العلوية */
+
+        .navbar {
+            width: 100%;
+            min-height: 75px;
+            padding: 12px 2%;
+            background-color: #faf5e9;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            border-bottom: 1px solid #e5d9c5;
+        }
+
+        .site-logo {
+            text-decoration: none;
+            flex-shrink: 0;
+        }
+
+        .logo {
+            color: #765633;
+            font-size: 29px;
+            font-weight: bold;
+        }
+
+        .navbar ul {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+            flex-wrap: wrap;
+            gap: 5px;
+            list-style: none;
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        .navbar ul li a {
+            display: block;
+            padding: 9px 10px;
+            color: #554630;
+            font-size: 13px;
+            border-radius: 20px;
+            text-decoration: none;
+            transition: 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .navbar ul li a:hover,
+        .navbar ul li a.active {
+            background-color: #89663d;
+            color: white;
+        }
+
+        /* شريط البحث */
+
+        .search-box {
+            width: 210px;
+            min-width: 170px;
+            margin: 0;
+            padding: 4px;
+            background-color: #fffaf2;
+            border: 1px solid #e5d9c5;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .search-box input {
+            width: 100%;
+            min-width: 0;
+            border: none;
+            outline: none;
+            background: transparent;
+            padding: 9px;
+            font-family: Tahoma, Arial, sans-serif;
+            font-size: 12px;
+            text-align: right;
+        }
+
+        .search-box button {
+            width: 38px;
+            height: 36px;
+            border: none;
+            border-radius: 50%;
+            background-color: #89663d;
+            color: white;
+            font-size: 19px;
+            cursor: pointer;
+        }
+
+        /* الصورة العلوية */
+
+        .contact-hero {
+            height: 240px;
+            background:
+                linear-gradient(
+                    rgba(35, 27, 19, 0.35),
+                    rgba(35, 27, 19, 0.35)
+                ),
+                url("../images/contact-banner.jpg") center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            padding: 35px 8%;
+            color: white;
+        }
+
+        .contact-hero h1 {
+            font-size: 38px;
+            margin: 0 0 5px;
+            color: white;
+        }
+
+        .contact-hero p {
+            font-size: 16px;
+            margin: 0;
+            color: white;
+        }
+
+        /* محتوى الصفحة */
+
+        .contact-container {
+            max-width: 1150px;
+            margin: 35px auto;
+            padding: 25px;
+            background-color: #fffaf1;
+            border: 1px solid #e8dccb;
+            border-radius: 15px;
+            box-shadow: 0 5px 18px rgba(74, 51, 26, 0.07);
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 22px;
+        }
+
+        .contact-box {
+            background-color: #fffdf8;
+            padding: 22px;
+            border-radius: 12px;
+            border: 1px solid #eee2d1;
+        }
+
+        .contact-box h2 {
+            color: #6d4e2c;
+            font-size: 21px;
+            margin-top: 0;
+            margin-bottom: 18px;
+        }
+
+        /* معلومات التواصل */
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            margin-bottom: 18px;
+        }
+
+        .info-icon {
+            background-color: #f0e4d1;
+            color: #80603a;
+            width: 42px;
+            height: 42px;
+            min-width: 42px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+        }
+
+        .info-item h3 {
+            font-size: 14px;
+            margin: 0;
+        }
+
+        .info-item p {
+            color: #847565;
+            font-size: 13px;
+            margin: 0;
+            overflow-wrap: anywhere;
+        }
+
+        .info-item a {
+            color: #80603a;
+            text-decoration: none;
+        }
+
+        .info-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* الخريطة التوضيحية */
+
+        .map-box {
+            height: 165px;
+            margin-top: 22px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #e6d9c3, #d6c09f);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .map-box::before,
+        .map-box::after {
+            content: "";
+            position: absolute;
+            width: 130%;
+            height: 55%;
+            border: 2px solid rgba(128, 96, 58, 0.22);
+            border-radius: 50%;
+            transform: rotate(-20deg);
+        }
+
+        .map-box::after {
+            transform: rotate(25deg);
+            height: 80%;
+        }
+
+        .map-location {
+            background-color: rgba(255, 250, 241, 0.9);
+            border-radius: 12px;
+            padding: 10px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .map-location span {
+            display: block;
+            font-size: 27px;
+        }
+
+        .map-location strong {
+            color: #6d4e2c;
+        }
+
+        .map-location p {
+            margin: 0;
+            font-size: 12px;
+        }
+
+        .map-link {
+            display: inline-block;
+            margin-top: 8px;
+            color: #80603a;
+            font-size: 12px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .map-link:hover {
+            text-decoration: underline;
+        }
+
+        /* نموذج الرسالة */
+
+        .form-group {
+            margin-bottom: 14px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #e5d8c5;
+            border-radius: 9px;
+            background-color: #fffdf8;
+            font-family: Tahoma, Arial, sans-serif;
+            font-size: 13px;
+            color: #443629;
+            outline: none;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: #80603a;
+        }
+
+        textarea {
+            height: 125px;
+            resize: vertical;
+        }
+
+        .send-button {
+            width: 100%;
+            border: none;
+            background-color: #80603a;
+            color: white;
+            padding: 12px;
+            border-radius: 25px;
+            font-family: Tahoma, Arial, sans-serif;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .send-button:hover {
+            background-color: #604629;
+        }
+
+        .form-note {
+            color: #847565;
+            font-size: 12px;
+            margin-top: 12px;
+            text-align: center;
+        }
+
+        /* أسفل الصفحة */
+
+        footer {
+            background-color: #554a38;
+            color: #fff4e2;
+            padding: 22px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            font-size: 18px;
+        }
+
+        /* الهواتف والشاشات الصغيرة */
+
+        @media (max-width: 950px) {
+            .navbar {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .navbar ul {
+                flex: 1 1 100%;
+                order: 3;
+            }
+
+            .search-box {
+                width: 220px;
+            }
+        }
+
+        @media (max-width: 750px) {
+            .contact-hero {
+                height: 220px;
+            }
+
+            .contact-hero h1 {
+                font-size: 30px;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+                margin: 25px 12px;
+                padding: 12px;
+            }
+
+            footer {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 430px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .navbar ul {
+                gap: 3px;
+            }
+
+            .navbar ul a {
+                font-size: 11px;
+                padding: 7px;
+            }
+
+            .search-box {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- القائمة العلوية -->
+
+    <header class="navbar">
+
+        <a href="../index.html" class="site-logo">
+            <div class="logo">رِحلة</div>
+        </a>
+
+        <ul>
+            <li><a href="../index.html">الرئيسية</a></li>
+            <li><a href="discover.html">اكتشف</a></li>
+            <li><a href="wilayat.html">الولايات</a></li>
+            <li><a href="stay.html">الإقامة والتجارة</a></li>
+            <li><a href="plan.html">خطط رحلتك</a></li>
+            <li><a href="contact.html" class="active">تواصل معنا</a></li>
+        </ul>
+
+        <!-- شريط البحث -->
+
+        <div class="search-box">
+            <input type="search" id="siteSearch" placeholder="ابحث...">
+            <button type="button" onclick="searchSite()">⌕</button>
+        </div>
+
+    </header>
+
+    <!-- الصورة والعنوان -->
+
+    <section class="contact-hero">
+
+        <div>
+            <h1>تواصل معنا</h1>
+            <p>نحن هنا لمساعدتك في رحلتك</p>
+        </div>
+
+    </section>
+
+    <!-- معلومات التواصل ونموذج الرسالة -->
+
+    <main class="contact-container">
+
+        <!-- معلومات التواصل -->
+
+        <section class="contact-box">
+
+            <h2>ⓘ معلومات التواصل</h2>
+
+            <div class="info-item">
+
+                <div class="info-icon">✉</div>
+
+                <div>
+                    <h3>البريد الإلكتروني</h3>
+                    <p>
+                        <a href="mailto:ali99294629b@gmail.com">
+                            ali99294629b@gmail.com
+                        </a>
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="info-item">
+
+                <div class="info-icon">☎</div>
+
+                <div>
+                    <h3>الهاتف</h3>
+                    <p dir="ltr">+968 9123 4567</p>
+                </div>
+
+            </div>
+
+            <div class="info-item">
+
+                <div class="info-icon">⌖</div>
+
+                <div>
+                    <h3>الموقع</h3>
+                    <p>سلطنة عُمان — مسقط</p>
+                </div>
+
+            </div>
+
+            <div class="map-box">
+
+                <div class="map-location">
+                    <span>📍</span>
+                    <strong>سلطنة عُمان</strong>
+                    <p>مسقط — عُمان</p>
+
+                    <a class="map-link"
+                       href="https://www.google.com/maps/search/?api=1&query=Muscat+Oman"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        عرض الموقع على الخريطة
+                    </a>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- نموذج إرسال الرسالة -->
+
+        <section class="contact-box">
+
+            <h2>✉ أرسل رسالة</h2>
+
+            <form
+    action="https://api.web3forms.com/submit"
+    method="POST">
+
+    <!-- مفتاح الربط -->
+    <input
+        type="hidden"
+        name="access_key"
+        value="871b4f6a-2eee-4d51-8139-5639c8a72d36">
+
+    <!-- عنوان الرسالة -->
+    <input
+        type="hidden"
+        name="subject"
+        value="رسالة جديدة من موقع رِحلة">
+
+    <!-- اسم الموقع -->
+    <input
+        type="hidden"
+        name="from_name"
+        value="موقع رِحلة">
+
+    <!-- حماية من الرسائل المزعجة -->
+    <input
+        type="checkbox"
+        name="botcheck"
+        style="display:none;">
+
+    <!-- بقية حقول النموذج تبقى كما هي -->
+
+                <!-- إعدادات البريد -->
+
+                <input
+                    type="hidden"
+                    name="_subject"
+                    value="رسالة جديدة من موقع رِحلة">
+
+                <input
+                    type="hidden"
+                    name="_template"
+                    value="table">
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="name">الاسم</label>
+
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder="اكتب اسمك"
+                            required>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="email">البريد الإلكتروني</label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="example@email.com"
+                            required>
+
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="subject">الموضوع</label>
+
+                    <input
+                        type="text"
+                        id="subject"
+                        name="subject"
+                        placeholder="موضوع الرسالة"
+                        required>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="message">الرسالة</label>
+
+                    <textarea
+                        id="message"
+                        name="message"
+                        placeholder="اكتب رسالتك هنا..."
+                        required></textarea>
+
+                </div>
+
+                <button type="submit" class="send-button">
+                    إرسال الرسالة ←
+                </button>
+
+                <p class="form-note">
+                    شكرًا لزيارتك موقع رِحلة، يسعدنا استقبال رسائلك وملاحظاتك.
+                </p>
+
+            </form>
+
+        </section>
+
+    </main>
+
+    <!-- التذييل -->
+
+    <footer>
+
+        <div>
+            رِحلة — دليلك السياحي في عُمان
+        </div>
+
+        <div class="social-icons">
+            <span>◎</span>
+            <span>♥</span>
+            <span>▶</span>
+            <span>♪</span>
+        </div>
+
+        <div>
+            جميع الحقوق محفوظة © رِحلة
+        </div>
+
+    </footer>
+
+    <script>
+
+        // البحث
+
+        function searchSite() {
+
+            const searchText = document
+                .getElementById("siteSearch")
+                .value.trim();
+
+            if (searchText !== "") {
+
+                window.location.href =
+                    "wilayat.html?search=" +
+                    encodeURIComponent(searchText);
+
+            }
+
+        }
+
+        document
+            .getElementById("siteSearch")
+            .addEventListener("keydown", function(event) {
+
+                if (event.key === "Enter") {
+                    searchSite();
+                }
+
+            });
+
+    </script>
+
+</body>
+</html>

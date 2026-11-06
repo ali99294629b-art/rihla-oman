@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>رحلة | دليلك السياحي في عُمان</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+
+</head>
+
+<body>
+
+<!-- شريط التنقل -->
+<nav class="navbar">
+
+    <a href="index.html" class="site-logo">
+        <div class="logo">رحلة</div>
+    </a>
+
+    <ul>
+        <li><a href="index.html" class="active">الرئيسية</a></li>
+        <li><a href="pages/discover.html">اكتشف</a></li>
+        <li><a href="pages/wilayat.html">الولايات والمناطق</a></li>
+        <li><a href="pages/plan.html">خطط رحلتك</a></li>
+        <li><a href="pages/stay.html">الإقامة والتجارة</a></li>
+        <li><a href="pages/contact.html">تواصل معنا</a></li>
+    </ul>
+
+</nav>
+
+<!-- شريط البحث -->
+<div class="search-box">
+    <input type="search" id="siteSearch" placeholder="ابحث عن مكان أو وجهة سياحية...">
+    <button type="button" onclick="searchSite()">⌕</button>
+</div>
+
+<!-- الصورة الرئيسية -->
+<section class="hero">
+
+    <div class="hero-content">
+
+        <h1>رحلتك تبدأ من هنا</h1>
+
+        <p>
+            دليل رحلتك السياحية الكامل في عُمان
+        </p>
+
+        <a href="pages/discover.html" class="hero-button">
+            ابدأ رحلتك
+        </a>
+
+    </div>
+
+</section>
+
+<!-- قسم اختر رحلتك -->
+<section class="trips">
+
+    <h2>اختر رحلتك</h2>
+
+    <p class="section-intro">
+        اختر التجربة التي تناسبك واكتشف جمال عُمان
+    </p>
+
+    <div class="trip-cards">
+
+        <div class="trip-card">
+            <div class="trip-icon">📷</div>
+            <h3>رحلة التصوير</h3>
+            <p>اكتشف أجمل الأماكن والتقط ذكريات مميزة.</p>
+        </div>
+
+        <div class="trip-card">
+            <div class="trip-icon">🌴</div>
+            <h3>رحلة الاسترخاء</h3>
+            <p>استمتع بالهدوء والطبيعة والشواطئ الجميلة.</p>
+        </div>
+
+        <div class="trip-card">
+            <div class="trip-icon">🏔️</div>
+            <h3>رحلة المغامرة</h3>
+            <p>عش تجربة مليئة بالمغامرات والطبيعة.</p>
+        </div>
+
+        <div class="trip-card">
+            <div class="trip-icon">💡</div>
+            <h3>رحلة التطوير</h3>
+            <p>اكتشف تجارب جديدة وتعلم مهارات مختلفة.</p>
+        </div>
+
+        <div class="trip-card">
+            <div class="trip-icon">🏰</div>
+            <h3>رحلة التراث</h3>
+            <p>تعرف على تاريخ عُمان وتراثها العريق.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- قسم اكتشف عُمان -->
+<section class="discover">
+
+    <h2>اكتشف عُمان</h2>
+
+    <p class="section-intro">
+        أماكن جميلة وتجارب مميزة في مختلف أنحاء السلطنة
+    </p>
+
+    <div class="discover-cards">
+
+        <div class="discover-card">
+            <h3>🏔️ الجبال</h3>
+            <p>استمتع بجمال جبال عُمان ومناظرها الطبيعية الرائعة.</p>
+        </div>
+
+        <div class="discover-card">
+            <h3>🏖️ الشواطئ</h3>
+            <p>اكتشف الشواطئ العُمانية واستمتع بجمال البحر.</p>
+        </div>
+
+        <div class="discover-card">
+            <h3>🏜️ الصحراء</h3>
+            <p>عش تجربة مختلفة وسط الرمال الذهبية والطبيعة الصحراوية.</p>
+        </div>
+
+        <div class="discover-card">
+            <h3>🏰 التراث</h3>
+            <p>تعرف على القلاع والحصون والأسواق التاريخية في عُمان.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- العبارة السفلية -->
+<footer class="site-bottom">
+    <p>⌖ اكتشف عُمان وابدأ رحلتك ⌖</p>
+</footer>
+
+<script>
+    function searchSite() {
+        const searchText = document.getElementById("siteSearch").value.trim();
+
+        if (searchText !== "") {
+            window.location.href = "pages/wilayat.html?search=" + encodeURIComponent(searchText);
+        }
+    }
+
+    document.getElementById("siteSearch").addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            searchSite();
+        }
+    });
+</script>
+
+
+</body>
+</html>

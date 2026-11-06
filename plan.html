@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>خطط رحلتك | رِحلة</title>
+
+    <style>
+        :root {
+            --cream: #f8f4ec;
+            --paper: #fffdf8;
+            --brown: #80613d;
+            --dark: #30271f;
+            --muted: #74695d;
+            --line: #e7ddcf;
+            --gold: #b89155;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Tahoma, Arial, sans-serif;
+            background: var(--cream);
+            color: var(--dark);
+            line-height: 1.8;
+        }
+
+        /* القائمة العلوية */
+        header.navbar {
+            width: 100%;
+            background: var(--paper);
+            border-bottom: 1px solid var(--line);
+            padding: 14px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 27px;
+            font-weight: bold;
+            color: var(--brown);
+            text-decoration: none;
+        }
+
+        header.navbar nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex: 1;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        header.navbar nav a {
+            display: block;
+            padding: 8px 12px;
+            border-radius: 7px;
+            color: var(--dark);
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        header.navbar nav a:hover,
+        header.navbar nav a.active {
+            background-color: #80603a;
+            color: white;
+        }
+
+        /* الواجهة الرئيسية */
+        .hero {
+            background:
+                linear-gradient(90deg, rgba(25, 20, 15, 0.64), rgba(25, 20, 15, 0.25)),
+                url("../images/hero-home.jpg.png") center / cover no-repeat;
+
+            min-height: 260px;
+            display: flex;
+            align-items: center;
+            padding: 30px 7%;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: clamp(27px, 4vw, 40px);
+            margin: 0 0 6px;
+        }
+
+        .hero p {
+            margin: 0;
+        }
+
+        .hero-label {
+            display: inline-block;
+            padding: 5px 17px;
+            border: 1px solid #ffffffaa;
+            border-radius: 25px;
+            margin-bottom: 10px;
+            background: #ffffff20;
+        }
+
+        /* محتوى الصفحة */
+        main {
+            max-width: 1050px;
+            margin: 35px auto;
+            padding: 0 18px 45px;
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .intro h2 {
+            color: var(--brown);
+            margin-bottom: 5px;
+        }
+
+        .section-title {
+            color: var(--brown);
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .section-description {
+            text-align: center;
+            color: var(--muted);
+            margin-top: 0;
+            margin-bottom: 25px;
+        }
+
+        /* بطاقة الإلهام */
+        .inspiration {
+            background: linear-gradient(135deg, #e8ddca, #f6eddf);
+            border-radius: 18px;
+            padding: 25px;
+            text-align: center;
+            margin: 30px 0;
+            border: 1px solid #e4d5bf;
+        }
+
+        .inspiration .big-icon {
+            font-size: 38px;
+        }
+
+        .inspiration h3 {
+            color: var(--brown);
+            margin: 5px 0;
+        }
+
+        #inspirationText {
+            min-height: 30px;
+        }
+
+        .small-button {
+            border: none;
+            background: var(--brown);
+            color: white;
+            padding: 9px 22px;
+            border-radius: 25px;
+            cursor: pointer;
+            font: inherit;
+            transition: 0.3s;
+        }
+
+        .small-button:hover {
+            background: #604a31;
+            transform: translateY(-2px);
+        }
+
+        /* النموذج */
+        form {
+            background: var(--paper);
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            padding: clamp(18px, 4vw, 32px);
+            box-shadow: 0 8px 24px #5b43200d;
+        }
+
+        fieldset {
+            border: 1px solid var(--line);
+            border-radius: 13px;
+            padding: 16px;
+            margin: 0 0 22px;
+            min-width: 0;
+        }
+
+        legend {
+            font-weight: bold;
+            color: var(--brown);
+            padding: 0 8px;
+        }
+
+        .help {
+            font-size: 13px;
+            color: var(--muted);
+            margin: 0 0 12px;
+        }
+
+        /* خيارات الوجهات */
+        .options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            gap: 10px;
+        }
+
+        .option {
+            display: flex;
+            align-items: flex-start;
+            gap: 9px;
+            padding: 11px 12px;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            background: #fffefa;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .option:hover {
+            border-color: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        .option:has(input:checked) {
+            border-color: var(--gold);
+            background: #f7efe1;
+        }
+
+        .option input {
+            margin-top: 7px;
+            accent-color: var(--brown);
+        }
+
+        /* شريط عدد الوجهات */
+        .destination-progress {
+            margin-top: 20px;
+            background: #eee7dc;
+            height: 10px;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            width: 0%;
+            height: 100%;
+            background: var(--gold);
+            transition: width 0.4s;
+        }
+
+        #destinationCount {
+            color: var(--brown);
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        /* حقول البيانات */
+        .fields {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 15px;
+        }
+
+        label.field {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            font-weight: bold;
+        }
+
+        input[type="date"],
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d9cdbd;
+            border-radius: 9px;
+            background: white;
+            font: inherit;
+            color: var(--dark);
+        }
+
+        input[readonly] {
+            background: #f1ece4;
+        }
+
+        /* معاينة الرحلة */
+        .preview {
+            background: #f5eee2;
+            border: 1px dashed #c8ae87;
+            border-radius: 15px;
+            padding: 22px;
+            margin: 25px 0;
+        }
+
+        .preview h3 {
+            color: var(--brown);
+            margin-top: 0;
+            text-align: center;
+        }
+
+        .preview-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .preview-item {
+            background: #fffdf8;
+            padding: 12px;
+            border-radius: 10px;
+        }
+
+        .preview-item strong {
+            display: block;
+            color: var(--brown);
+            font-size: 14px;
+        }
+
+        .preview-item span {
+            font-size: 14px;
+        }
+
+        /* زر إنشاء الخطة */
+        .submit-button {
+            display: block;
+            margin: 20px auto 0;
+            border: 0;
+            border-radius: 30px;
+            padding: 13px 34px;
+            background: var(--brown);
+            color: white;
+            font: inherit;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .submit-button:hover {
+            background: #644a2d;
+            transform: translateY(-3px);
+        }
+
+        /* قائمة التجهيزات */
+        .packing {
+            background: var(--paper);
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            padding: 25px;
+            margin-top: 35px;
+            box-shadow: 0 5px 18px #00000008;
+        }
+
+        .packing h2 {
+            color: var(--brown);
+            text-align: center;
+        }
+
+        .packing-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .packing-item {
+            padding: 12px;
+            background: #f7f2e9;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .packing-item input {
+            accent-color: var(--brown);
+            margin-left: 7px;
+        }
+
+        .packing-item:has(input:checked) {
+            background: #e9dfcd;
+            text-decoration: line-through;
+            color: #786a59;
+        }
+
+        #packingCount {
+            text-align: center;
+            color: var(--brown);
+            font-weight: bold;
+            margin-top: 18px;
+        }
+
+        /* تذييل الصفحة */
+        footer {
+            text-align: center;
+            padding: 22px;
+            background: #4d4033;
+            color: white;
+            margin-top: 40px;
+        }
+
+        /* الهواتف */
+        @media (max-width: 700px) {
+
+            header.navbar {
+                justify-content: center;
+            }
+
+            header.navbar nav {
+                flex-basis: 100%;
+                justify-content: center;
+            }
+
+            .hero {
+                min-height: 200px;
+            }
+
+            .preview-grid,
+            .packing-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- القائمة العلوية -->
+    <header class="navbar">
+
+        <a class="logo" href="../index.html">رِحلة</a>
+
+        <nav>
+            <a href="../index.html">الرئيسية</a>
+            <a href="discover.html">اكتشف</a>
+            <a href="wilayat.html">الولايات والمناطق</a>
+            <a href="plan.html" class="active">خطط رحلتك</a>
+            <a href="stay.html">الإقامة والتجارة</a>
+            <a href="contact.html">تواصل معنا</a>
+        </nav>
+
+    </header>
+
+
+    <!-- مقدمة الصفحة -->
+    <section class="hero">
+
+        <div>
+            <div class="hero-label">رحلتك تبدأ بفكرة ✨</div>
+
+            <h1>خطّطي رحلتك في عُمان</h1>
+
+            <p>
+                اختاري وجهاتك، وحددي المدة والميزانية،
+                وابدئي مغامرتك الجميلة.
+            </p>
+        </div>
+
+    </section>
+
+
+    <main>
+
+        <!-- مقدمة -->
+        <div class="intro">
+
+            <h2>كل رحلة جميلة تبدأ بتخطيط جميل 🌷</h2>
+
+            <p>
+                اختاري ما يناسبك، واجعلي رحلتك القادمة
+                مليئة بالتجارب والذكريات.
+            </p>
+
+        </div>
+
+
+        <!-- بطاقة الإلهام -->
+        <section class="inspiration">
+
+            <div class="big-icon">🧭</div>
+
+            <h3>رسالة ملهمة للمسافر</h3>
+
+            <p id="inspirationText" aria-live="polite">
+                عُمان ليست مجرد وجهة، بل حكاية جميلة تنتظر أن تكتشفيها.
+            </p>
+
+            <button class="small-button" type="button" onclick="changeInspiration()">
+                رسالة أخرى ✨
+            </button>
+
+        </section>
+
+
+        <!-- نموذج التخطيط -->
+        <form action="trip-summary.html" method="get" id="tripForm">
+
+            <!-- الوجهات -->
+            <fieldset>
+
+                <legend>١. اختاري الوجهات</legend>
+
+                <p class="help">
+                    يمكنك اختيار أكثر من وجهة لتكون جزءًا من رحلتك.
+                </p>
+
+                <div class="options">
+
+                    <label class="option">
+                        <input type="checkbox" name="destination" value="muscat">
+                        <span>
+                            <strong>مسقط 🏙️</strong><br>
+                            <small>المتاحف والأسواق والمعالم</small>
+                        </span>
+                    </label>
+
+                    <label class="option">
+                        <input type="checkbox" name="destination" value="nizwa">
+                        <span>
+                            <strong>نزوى والداخلية 🏰</strong><br>
+                            <small>القلاع والأسواق والجبال</small>
+                        </span>
+                    </label>
+
+                    <label class="option">
+                        <input type="checkbox" name="destination" value="salalah">
+                        <span>
+                            <strong>صلالة وظفار 🌴</strong><br>
+                            <small>الطبيعة والشلالات والعيون</small>
+                        </span>
+                    </label>
+
+                    <label class="option">
+                        <input type="checkbox" name="destination" value="sur">
+                        <span>
+                            <strong>صور والساحل الشرقي ⛵</strong><br>
+                            <small>الشواطئ والتراث البحري</small>
+                        </span>
+                    </label>
+
+                    <label class="option">
+                        <input type="checkbox" name="destination" value="jabal">
+                        <span>
+                            <strong>الجبل الأخضر وجبال الحجر ⛰️</strong><br>
+                            <small>المرتفعات والمناظر الطبيعية</small>
+                        </span>
+                    </label>
+
+                    <label class="option">
+                        <input type="checkbox" name="destination" value="wadi">
+                        <span>
+                            <strong>وادي بني خالد 💧</strong><br>
+                            <small>المياه والطبيعة</small>
+                        </span>
+                    </label>
+
+                    <label class="option">
+                        <input type="checkbox" name="destination" value="musandam">
+                        <span>
+                            <strong>مسندم 🛥️</strong><br>
+                            <small>البحر والخلجان</small>
+                        </span>
+                    </label>
+
+                </div>
+
+                <div class="destination-progress">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+
+                <p id="destinationCount" aria-live="polite">
+                    لم تختاري أي وجهة بعد.
+                </p>
+
+            </fieldset>
+
+
+            <!-- مدة الرحلة -->
+            <fieldset>
+
+                <legend>٢. مدة الرحلة وتاريخها</legend>
+
+                <div class="fields">
+
+                    <label class="field">
+                        مدة الرحلة
+
+                        <select id="duration" name="duration" required>
+                            <option value="">اختاري المدة</option>
+                            <option value="1">يوم واحد</option>
+                            <option value="2">يومان</option>
+                            <option value="3">3 أيام</option>
+                            <option value="4">4 أيام</option>
+                            <option value="5">5 أيام</option>
+                            <option value="7">أسبوع</option>
+                            <option value="10">10 أيام</option>
+                            <option value="14">أسبوعان</option>
+                        </select>
+                    </label>
+
+                    <label class="field">
+                        تاريخ بداية الرحلة
+
+                        <input type="date" id="start" name="start" required>
+                    </label>
+
+                    <label class="field">
+                        تاريخ نهاية الرحلة
+
+                        <input type="date" id="end" name="end" readonly required>
+                    </label>
+
+                </div>
+
+                <p class="help">
+                    يُحسب تاريخ نهاية الرحلة تلقائيًا حسب المدة التي تختارينها.
+                </p>
+
+            </fieldset>
+
+
+            <!-- نوع الرحلة والميزانية -->
+            <fieldset>
+
+                <legend>٣. نوع الرحلة والميزانية</legend>
+
+                <div class="fields">
+
+                    <label class="field">
+                        نوع الرحلة
+
+                        <select name="type" id="tripType" required>
+                            <option value="">اختاري النوع</option>
+                            <option value="nature">طبيعة ومغامرات هادئة</option>
+                            <option value="heritage">تراث وتاريخ</option>
+                            <option value="sea">بحر وشواطئ</option>
+                            <option value="family">رحلة عائلية</option>
+                            <option value="culture">ثقافة وتجارب محلية</option>
+                            <option value="relax">استرخاء</option>
+                        </select>
+                    </label>
+
+                    <label class="field">
+                        الميزانية اليومية للشخص
+
+                        <select name="budget" id="budget" required>
+                            <option value="">اختاري الميزانية</option>
+                            <option value="low">اقتصادية: 10–20 ر.ع</option>
+                            <option value="medium">متوسطة: 21–45 ر.ع</option>
+                            <option value="high">مرتفعة: 46–80 ر.ع</option>
+                        </select>
+                    </label>
+
+                    <label class="field">
+                        عدد المسافرين
+
+                        <select name="people" id="people" required>
+                            <option value="1">شخص واحد</option>
+                            <option value="2" selected>شخصان</option>
+                            <option value="3">3 أشخاص</option>
+                            <option value="4">4 أشخاص</option>
+                            <option value="5">5 أشخاص</option>
+                            <option value="6">6 أشخاص</option>
+                        </select>
+                    </label>
+
+                </div>
+
+            </fieldset>
+
+
+            <!-- معاينة الرحلة -->
+            <section class="preview">
+
+                <h3>🧳 معاينة رحلتك</h3>
+
+                <div class="preview-grid">
+
+                    <div class="preview-item">
+                        <strong>📍 الوجهات</strong>
+                        <span id="previewDestinations">لم يتم الاختيار بعد</span>
+                    </div>
+
+                    <div class="preview-item">
+                        <strong>📅 مدة الرحلة</strong>
+                        <span id="previewDuration">لم تحدد بعد</span>
+                    </div>
+
+                    <div class="preview-item">
+                        <strong>🎯 نوع الرحلة</strong>
+                        <span id="previewType">لم يتم الاختيار</span>
+                    </div>
+
+                    <div class="preview-item">
+                        <strong>👥 المسافرون</strong>
+                        <span id="previewPeople">شخصان</span>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <button type="submit" class="submit-button">
+                اكتشفي خطتك اليومية ←
+            </button>
+
+        </form>
+
+
+        <!-- قائمة تجهيزات السفر -->
+        <section class="packing">
+
+            <h2>🎒 هل أنتِ مستعدة للرحلة؟</h2>
+
+            <p class="section-description">
+                ضعي علامة أمام كل شيء جهزته قبل السفر.
+            </p>
+
+            <div class="packing-grid">
+
+                <label class="packing-item">
+                    <input type="checkbox" class="packing-check">
+                    الملابس المناسبة للرحلة 👕
+                </label>
+
+                <label class="packing-item">
+                    <input type="checkbox" class="packing-check">
+                    حقيبة السفر 🧳
+                </label>
+
+                <label class="packing-item">
+                    <input type="checkbox" class="packing-check">
+                    الهاتف والشاحن 📱
+                </label>
+
+                <label class="packing-item">
+                    <input type="checkbox" class="packing-check">
+                    الكاميرا لالتقاط الصور 📷
+                </label>
+
+                <label class="packing-item">
+                    <input type="checkbox" class="packing-check">
+                    مستلزمات العناية الشخصية 🧴
+                </label>
+
+                <label class="packing-item">
+                    <input type="checkbox" class="packing-check">
+                    الماء والمستلزمات الضرورية 💧
+                </label>
+
+            </div>
+
+            <p id="packingCount" aria-live="polite">
+                جهزتِ 0 من 6 مستلزمات.
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        رِحلة | دليلك السياحي في عُمان 🇴🇲
+    </footer>
+
+
+    <script>
+
+        /* حساب تاريخ نهاية الرحلة */
+
+        const startInput = document.getElementById('start');
+        const durationInput = document.getElementById('duration');
+        const endInput = document.getElementById('end');
+
+        const now = new Date();
+
+        const localToday = new Date(
+            now.getTime() - now.getTimezoneOffset() * 60000
+        ).toISOString().slice(0, 10);
+
+        startInput.min = localToday;
+
+        function updateEnd() {
+
+            if (!startInput.value || !durationInput.value) {
+                endInput.value = '';
+                updatePreview();
+                return;
+            }
+
+            const date = new Date(startInput.value + 'T12:00:00');
+
+            date.setDate(
+                date.getDate() + Number(durationInput.value) - 1
+            );
+
+            endInput.value =
+                date.getFullYear() + '-' +
+                String(date.getMonth() + 1).padStart(2, '0') + '-' +
+                String(date.getDate()).padStart(2, '0');
+
+            updatePreview();
+        }
+
+
+        /* تحديث عدد الوجهات */
+
+        const destinationInputs =
+            document.querySelectorAll('input[name="destination"]');
+
+        function updateDestinations() {
+
+            const selected = document.querySelectorAll(
+                'input[name="destination"]:checked'
+            );
+
+            const count = selected.length;
+
+            document.getElementById('destinationCount').textContent =
+                count === 0
+                    ? 'لم تختاري أي وجهة بعد.'
+                    : 'اخترتِ ' + count + ' وجهة من أصل 7 وجهات.';
+
+            document.getElementById('progressFill').style.width =
+                (count / 7 * 100) + '%';
+
+            updatePreview();
+        }
+
+
+        /* معاينة الرحلة مباشرة */
+
+        function updatePreview() {
+
+            const selected = Array.from(
+                document.querySelectorAll(
+                    'input[name="destination"]:checked'
+                )
+            ).map(item => item.parentElement.querySelector('strong').textContent);
+
+            document.getElementById('previewDestinations').textContent =
+                selected.length ? selected.join('، ') : 'لم يتم الاختيار بعد';
+
+            const duration = durationInput.value;
+
+            document.getElementById('previewDuration').textContent =
+                duration ? duration + ' يوم' : 'لم تحدد بعد';
+
+            const type = document.getElementById('tripType');
+
+            document.getElementById('previewType').textContent =
+                type.value ? type.options[type.selectedIndex].text : 'لم يتم الاختيار';
+
+            const people = document.getElementById('people');
+
+            document.getElementById('previewPeople').textContent =
+                people.options[people.selectedIndex].text;
+        }
+
+
+        destinationInputs.forEach(input => {
+            input.addEventListener('change', updateDestinations);
+        });
+
+        startInput.addEventListener('change', updateEnd);
+        durationInput.addEventListener('change', updateEnd);
+
+        document.getElementById('tripType').addEventListener('change', updatePreview);
+        document.getElementById('people').addEventListener('change', updatePreview);
+
+
+        /* رسائل الإلهام المتغيرة */
+
+        const inspirations = [
+
+            'عُمان ليست مجرد وجهة، بل حكاية جميلة تنتظر أن تكتشفيها.',
+
+            'كل طريق جديد يحمل ذكرى تستحق أن تُروى.',
+
+            'بين الجبل والبحر، ستجدين جمالًا لا يُنسى.',
+
+            'اجعلي رحلتك القادمة بداية لمغامرة رائعة.',
+
+            'اكتشفي عُمان بعينيك، واحتفظي بجمالها في ذاكرتك.'
+
+        ];
+
+        let inspirationIndex = 0;
+
+        function changeInspiration() {
+
+            inspirationIndex++;
+
+            if (inspirationIndex >= inspirations.length) {
+                inspirationIndex = 0;
+            }
+
+            document.getElementById('inspirationText').textContent =
+                inspirations[inspirationIndex];
+        }
+
+
+        /* عداد تجهيزات السفر */
+
+        const packingChecks =
+            document.querySelectorAll('.packing-check');
+
+        function updatePacking() {
+
+            let checked = 0;
+
+            packingChecks.forEach(item => {
+                if (item.checked) {
+                    checked++;
+                }
+            });
+
+            document.getElementById('packingCount').textContent =
+                'جهزتِ ' + checked + ' من 6 مستلزمات. ' +
+                (checked === 6 ? '🎉 أنتِ مستعدة للانطلاق!' : '');
+        }
+
+        packingChecks.forEach(item => {
+            item.addEventListener('change', updatePacking);
+        });
+
+
+        /* التحقق قبل إرسال النموذج */
+
+        document.getElementById('tripForm').addEventListener('submit', function (event) {
+
+            const selected = document.querySelector(
+                'input[name="destination"]:checked'
+            );
+
+            if (!selected) {
+                event.preventDefault();
+                alert('يرجى اختيار وجهة واحدة على الأقل قبل إنشاء الخطة.');
+                return;
+            }
+
+            if (endInput.value === '') {
+                event.preventDefault();
+                alert('يرجى تحديد تاريخ بداية الرحلة ومدتها.');
+                return;
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>
